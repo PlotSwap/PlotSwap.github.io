@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plot Swap Theater Tickets</title>
+    <style>
+        body {
+            background: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/Z4G15yL.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 1;
+            filter: brightness(0.2) blur(2px);
+            z-index: -1;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .ticket {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 420px;
+            text-align: left;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+        }
+        .highlight {
+            background: rgba(242, 169, 0, 0.9);
+            padding: 40px;
+            border-radius: 14px;
+            text-align: left;
+            width: 95%;
+            max-width: 500px;
+            box-shadow: 0 8px 16px rgba(255, 204, 0, 0.7);
+            font-size: 18px;
+        }
+        .highlight h2 {
+            color: black;
+            font-size: 28px;
+        }
+        .highlight p {
+            color: black;
+            font-size: 18px;
+        }
+        .highlight button {
+            background-color: black;
+            color: gold;
+            font-size: 22px;
+            padding: 16px;
+            font-weight: bold;
+        }
+        .ticket h2 {
+            color: #f2a900;
+            font-size: 24px;
+        }
+        .ticket p {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+        .ticket button {
+            background-color: #f2a900;
+            color: black;
+            border: none;
+            padding: 14px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            opacity: 0.8;
+        }
+        .ticket button:hover {
+            opacity: 1;
+        }
+        .ticket-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            justify-content: center;
+        }
+        .small-ticket {
+            max-width: 360px;
+        }
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Experience</h1>
+    <div class="container">
+        <div class="highlight">
+            <h2>💛 Most Popular Option! 💛<br>Private Performance — $300</h2>
+            <p><strong>Your Own Exclusive Show—A Full Night of Control & Chaos.</strong></p>
+            <p>Up to 10 people – that’s just $30 each!</p>
+            <p>You decide the story as a Director while your friends enjoy the twists and turns.</p>
+            <p>No strangers—just your group and the cast in an intimate, high-stakes theatrical experience.</p>
+            <p><strong>Best value for groups!</strong></p>
+            <button onclick="window.location.href='PURCHASE_LINK_PRIVATE'">Book Now</button>
+        </div>
+        <div class="ticket-container">
+            <div class="ticket small-ticket">
+                <h2>Director’s Ticket — $200</h2>
+                <p><strong>Be the Mastermind.</strong></p>
+                <p>For 1 Director + up to 2 guests</p>
+                <p>You make the decisions that shape the story’s outcome.</p>
+                <p>High-stakes storytelling where your choices decide it all.</p>
+                <button onclick="window.location.href='PURCHASE_LINK_DIRECTOR'">Get Tickets</button>
+            </div>
+            <div class="ticket small-ticket">
+                <h2>Spectator’s Ticket — $100</h2>
+                <p><strong>Sit Back & Watch the Drama Unfold.</strong></p>
+                <p>For 1 Spectator + up to 7 guests</p>
+                <p>No pressure—just enjoy the show as it takes unexpected turns.</p>
+                <p>A front-row seat to thrilling storytelling.</p>
+                <button onclick="window.location.href='PURCHASE_LINK_SPECTATOR'">Get Tickets</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

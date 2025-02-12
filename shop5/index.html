@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plot Swap Theater Tickets</title>
+  <style>
+    body {
+      background: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      position: relative;
+      margin: 0;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/Z4G15yL.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 1;
+      filter: brightness(0.2) blur(2px);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    /* Base card styling */
+    .ticket {
+      position: relative;      /* so the price can be positioned absolutely */
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px 30px 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 460px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    /* Metallic borders */
+    .gold-border {
+      border: 2px solid #d4af37; /* gold */
+    }
+    .silver-border {
+      border: 2px solid #c0c0c0; /* silver */
+    }
+    .bronze-border {
+      border: 2px solid #cd7f32; /* bronze */
+    }
+
+    /* Card headings */
+    .ticket h2 {
+      font-size: 28px;
+      color: #f2a900;
+      margin: 0 0 10px;
+    }
+
+    /* Price in top-right corner */
+    .price {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      color: #f2a900;
+      font-weight: bold;
+    }
+
+    .ticket p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+    .ticket p strong {
+      font-size: 17px;
+    }
+
+    /* Bullet list for details */
+    .ticket ul {
+      /* Center the list block but left-align its text */
+      margin: 15px auto 0;    /* 15px top margin adds space after tagline */
+      text-align: left;       /* bullets/text left-aligned */
+      list-style-position: inside;
+      max-width: 320px;       /* keeps lines from getting too wide */
+      padding: 0;
+    }
+    .ticket ul li {
+      margin: 5px 0;
+    }
+
+    /* Button styling */
+    .ticket button {
+      background-color: #f2a900;
+      color: black;
+      border: none;
+      padding: 14px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(242, 169, 0, 0.4);
+      transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s;
+    }
+    .ticket button:hover {
+      background-color: #d48b00;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(242, 169, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose Your Experience</h1>
+
+  <div class="container">
+    <!-- PRIVATE ROOM -->
+    <div class="ticket gold-border">
+      <span class="price">$300</span>
+      <h2>Private Room</h2>
+      <p><strong>The Original Experience</strong></p>
+      <ul>
+        <li>No strangers allowed</li>
+        <li>Max 11 guests</li>
+      </ul>
+      <button onclick="window.location.href='PURCHASE_LINK_PRIVATE'">Buy Now</button>
+    </div>
+
+    <!-- DIRECTOR'S COUCH -->
+    <div class="ticket silver-border">
+      <span class="price">$200</span>
+      <h2>Director's Couch</h2>
+      <p><strong>Control the Narrative</strong></p>
+      <ul>
+        <li>Follow your heart, or anything else</li>
+        <li>Max 3 guests</li>
+      </ul>
+      <button onclick="window.location.href='PURCHASE_LINK_DIRECTOR'">Buy Now</button>
+    </div>
+
+    <!-- SPECTATOR'S LOUNGE -->
+    <div class="ticket bronze-border">
+      <span class="price">$100</span>
+      <h2>Spectator's Lounge</h2>
+      <p><strong>Along for the Ride</strong></p>
+      <ul>
+        <li>Watch as the directors choose the story</li>
+        <li>Max 8 guests</li>
+      </ul>
+      <button onclick="window.location.href='PURCHASE_LINK_SPECTATOR'">Buy Now</button>
+    </div>
+  </div>
+</body>
+</html>

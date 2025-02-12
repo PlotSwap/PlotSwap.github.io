@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plot Swap Theater Tickets</title>
+  <style>
+    body {
+      background: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/Z4G15yL.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 1;
+      filter: brightness(0.2) blur(2px);
+      z-index: -1;
+    }
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-top: 50px;
+    }
+    .ticket {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 420px;
+      text-align: left;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    }
+    .ticket h2 {
+      color: #f2a900; /* Keep the golden heading color for consistency */
+      font-size: 24px;
+    }
+    .ticket p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .ticket button {
+      background-color: #f2a900;
+      color: black;
+      border: none;
+      padding: 14px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(242, 169, 0, 0.4);
+      transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s;
+    }
+    .ticket button:hover {
+      background-color: #d48b00;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(242, 169, 0, 0.8);
+    }
+
+    /* Muted metallic borders */
+    .gold-border {
+      border: 2px solid #d4af37; /* A muted gold */
+    }
+    .silver-border {
+      border: 2px solid #c0c0c0; /* Classic silver */
+    }
+    .bronze-border {
+      border: 2px solid #cd7f32; /* Standard bronze */
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose Your Experience</h1>
+  <div class="container">
+    <!-- Private Performance first (gold border) -->
+    <div class="ticket gold-border">
+      <h2>Private Performance — $300</h2>
+      <p><strong>Your own exclusive show.</strong></p>
+      <p>Up to 10 people.</p>
+      <p>No strangers—just your group and the cast.</p>
+      <button onclick="window.location.href='PURCHASE_LINK_PRIVATE'">Buy Now</button>
+    </div>
+
+    <!-- Director’s Ticket second (silver border) -->
+    <div class="ticket silver-border">
+      <h2>Director’s Ticket — $200</h2>
+      <p><strong>You steer the story.</strong></p>
+      <p>Admission for 1 director + up to 2 companions.</p>
+      <p>Make decisions that guide the show’s plot.</p>
+      <button onclick="window.location.href='PURCHASE_LINK_DIRECTOR'">Buy Now</button>
+    </div>
+    
+    <!-- Spectator’s Ticket third (bronze border) -->
+    <div class="ticket bronze-border">
+      <h2>Spectator’s Ticket — $100</h2>
+      <p><strong>You watch the story unfold.</strong></p>
+      <p>Admission for 1 spectator + up to 7 guests.</p>
+      <p>Enjoy the performance without controlling any outcomes.</p>
+      <button onclick="window.location.href='PURCHASE_LINK_SPECTATOR'">Buy Now</button>
+    </div>
+  </div>
+</body>
+</html>

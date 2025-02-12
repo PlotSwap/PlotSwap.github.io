@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plot Swap Theater Tickets</title>
+  <style>
+    body {
+      background: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+      padding: 20px;
+      position: relative;
+      margin: 0; /* remove default body margin so content is truly centered */
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://i.imgur.com/Z4G15yL.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      opacity: 1;
+      filter: brightness(0.2) blur(2px);
+      z-index: -1;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    /* Base .ticket styling */
+    .ticket {
+      position: relative;       /* so we can absolutely position the price within */
+      background: rgba(0, 0, 0, 0.8);
+      padding: 40px 30px 30px;  /* extra top padding for the price’s space */
+      border-radius: 12px;
+      width: 90%;
+      max-width: 460px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      text-align: center;       /* center all text inside */
+    }
+
+    /* Metallic borders (same as before) */
+    .gold-border {
+      border: 2px solid #d4af37;
+    }
+    .silver-border {
+      border: 2px solid #c0c0c0;
+    }
+    .bronze-border {
+      border: 2px solid #cd7f32;
+    }
+
+    /* Centered card title */
+    .ticket h2 {
+      font-size: 28px;
+      color: #f2a900;
+      margin: 0 0 10px; /* reduce default margin */
+    }
+
+    /* The “price” in top-right corner */
+    .price {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      color: #f2a900;
+      font-weight: bold;
+    }
+
+    /* Slightly larger text for the bold tagline */
+    .ticket p strong {
+      font-size: 18px;
+    }
+
+    .ticket p {
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    /* Button styling remains similar, though you can adjust as needed */
+    .ticket button {
+      background-color: #f2a900;
+      color: black;
+      border: none;
+      padding: 14px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+      border-radius: 6px;
+      box-shadow: 0 4px 8px rgba(242, 169, 0, 0.4);
+      transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s;
+    }
+    .ticket button:hover {
+      background-color: #d48b00;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(242, 169, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <h1>Choose Your Experience</h1>
+
+  <div class="container">
+    <!-- Gold border, top-right price -->
+    <div class="ticket gold-border">
+      <span class="price">$300</span>
+      <h2>Private Performance</h2>
+      <p><strong>Your own exclusive show.</strong></p>
+      <p>Up to 10 people.</p>
+      <p>No strangers—just your group and the cast.</p>
+      <button onclick="window.location.href='PURCHASE_LINK_PRIVATE'">Buy Now</button>
+    </div>
+
+    <!-- Silver border, top-right price -->
+    <div class="ticket silver-border">
+      <span class="price">$200</span>
+      <h2>Director’s Ticket</h2>
+      <p><strong>You steer the story.</strong></p>
+      <p>Admission for 1 director + up to 2 companions.</p>
+      <p>Make decisions that guide the show’s plot.</p>
+      <button onclick="window.location.href='PURCHASE_LINK_DIRECTOR'">Buy Now</button>
+    </div>
+
+    <!-- Bronze border, top-right price -->
+    <div class="ticket bronze-border">
+      <span class="price">$100</span>
+      <h2>Spectator’s Ticket</h2>
+      <p><strong>You watch the story unfold.</strong></p>
+      <p>Admission for 1 spectator + up to 7 guests.</p>
+      <p>Enjoy the performance without controlling any outcomes.</p>
+      <button onclick="window.location.href='PURCHASE_LINK_SPECTATOR'">Buy Now</button>
+    </div>
+  </div>
+</body>
+</html>
