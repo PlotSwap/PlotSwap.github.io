@@ -31,6 +31,11 @@ body {
   transition: opacity 1s ease;
 }
 
+/* Hide elements by default */
+.hidden {
+  display: none;
+}
+
 /* Style for prompt and waitlist containers */
 .prompt-container, .waitlist-container {
   text-align: center;
@@ -48,7 +53,6 @@ body {
 
 .waitlist-container {
   top: 275px;
-  display: none;
 }
 
 /* Center the label above the input and button */
@@ -122,9 +126,8 @@ body {
   border-bottom: 1px solid white;
 }
 
-/* Center and style the submit button for both containers */
-.prompt-container button,
-.waitlist-container button {
+/* Center and style buttons */
+button {
   padding: 10px 20px;
   font-size: 1em;
   border: none;
@@ -135,24 +138,12 @@ body {
   transition: transform 3s ease, opacity 3s ease;
 }
 
-.prompt-container button:hover,
-.waitlist-container button:hover {
-  background-color: #666;
-}
-
-/* Styling for the submit button in the waitlist container when disabled */
-#waitlist-submit-button {
+button:disabled {
   cursor: not-allowed;
-  opacity: 0.5; /* Makes the button look dimmed when disabled */
+  opacity: 0.5;
 }
 
-#waitlist-submit-button:enabled {
-  cursor: pointer;
-  background-color: #444;
-  opacity: 1.0; /* Make the button fully opaque when enabled */
-}
-
-#waitlist-submit-button:hover:enabled {
+button:hover:enabled {
   background-color: #666;
 }
 
@@ -163,19 +154,10 @@ body {
   transition: transform 1s ease, opacity 1s ease;
 }
 
-/* Fade-in effect for waitlist-container */
-.fade-in {
+/* Fade-out effect */
+.fade-out {
   opacity: 0;
-  animation: fadeIn 2s forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  transition: opacity 2s ease;
 }
 
 /* Shake effect for wrong answer */
@@ -201,19 +183,8 @@ body {
   50% { opacity: 0.5; }
 }
 
-/* Shrinking effect for waitlist elements */
-.waitlist-container .shrink {
-  transform: scale(0);
-  opacity: 0;
-  transition: transform 1s ease, opacity 1s ease;
-}
-
-/* Fade-in effect for 'See you soon' message */
-.see-you-soon {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  margin-top: 20px;
+/* Fade-in effect for waitlist-container */
+.fade-in {
   opacity: 0;
   animation: fadeIn 2s forwards;
 }
@@ -227,10 +198,11 @@ body {
   }
 }
 
-/* Fade-out effect for logo */
-.logo-container.fade-out {
+/* Shrinking effect for waitlist elements */
+.waitlist-container .shrink {
+  transform: scale(0);
   opacity: 0;
-  transition: opacity 2s ease;
+  transition: transform 1s ease, opacity 1s ease;
 }
 
 /* Fade-in effect for 'We'll be in touch' message */
@@ -240,21 +212,13 @@ body {
   font-size: 1.5em;
   margin-top: 20px;
   opacity: 0;
+  display: none; /* Ensure it starts hidden */
   animation: fadeIn 2s forwards;
 }
 
 /* Fade-out effect for 'We'll be in touch' message */
 .we-will-be-in-touch.fade-out {
   animation: fadeOut 2s forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes fadeOut {
@@ -264,4 +228,9 @@ body {
   to {
     opacity: 0;
   }
+}
+
+/* Ensure elements start hidden */
+.hidden {
+  display: none;
 }

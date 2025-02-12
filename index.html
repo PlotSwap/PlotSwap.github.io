@@ -1,37 +1,54 @@
-<div class="logo-container">
-  <img src="https://i.imgur.com/Z4G15yL.jpeg" alt="Plot Swap Theater Logo">
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plot Swap</title>
+  
+  <!-- Link to your CSS file -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-<div class="prompt-container">
-  <label for="name-input">What is his name?</label>
-  <input type="text" id="name-input" placeholder="Enter name here" 
-         oninput="resetTextColor()" onclick="clearText()">
-  <button onclick="checkAnswer()">Submit</button>
-</div>
-
-<!-- Updated waitlist form container with form-style labels -->
-<div class="waitlist-container" style="display: none;">
-  <label id="waitlist-label">Join the waitlist</label>
-
-  <div class="form-field">
-    <span class="form-label">Ticket ID:</span>
-    <input type="text" id="ticket-id" placeholder="Write here" oninput="validateWaitlistFields()">
+  <div class="logo-container">
+    <img src="https://i.imgur.com/Z4G15yL.jpeg" alt="Plot Swap Theater Logo">
   </div>
 
-  <div class="form-field">
-    <span class="form-label">Full Name:</span>
-    <input type="text" id="full-name" placeholder="Write here" oninput="validateWaitlistFields()">
+  <div class="prompt-container">
+    <label for="name-input">What is his name?</label>
+    <input type="text" id="name-input" placeholder="Enter name here"
+           oninput="resetTextColor()" onclick="clearText()">
+    <button onclick="checkAnswer()">Submit</button>
   </div>
 
-  <div class="form-field">
-    <span class="form-label">Phone Number:</span>
-    <input type="tel" id="phone-number" placeholder="Write here" oninput="validateWaitlistFields()">
+  <div class="waitlist-container hidden">
+    <label id="waitlist-label">Join the waitlist</label>
+
+    <div class="form-field">
+      <span class="form-label">Ticket ID:</span>
+      <input type="text" id="ticket-id" placeholder="Write here" oninput="validateWaitlistFields()">
+    </div>
+
+    <div class="form-field">
+      <span class="form-label">Full Name:</span>
+      <input type="text" id="full-name" placeholder="Write here" oninput="validateWaitlistFields()">
+    </div>
+
+    <div class="form-field">
+      <span class="form-label">Phone Number:</span>
+      <input type="tel" id="phone-number" placeholder="Write here" oninput="validateWaitlistFields()">
+    </div>
+
+    <button id="attempt-submit-button" onclick="attemptWaitlistSubmit()">Submit</button>
+    <button id="waitlist-submit-button" disabled>Submit</button>
   </div>
 
-  <button id="attempt-submit-button" onclick="attemptWaitlistSubmit()">Submit</button>
-<button id="waitlist-submit-button" disabled style="display: none;">Submit</button>
-</div>
+  <div id="we-will-be-in-touch" class="hidden">
+    We'll be in touch
+  </div>
 
-<div id="we-will-be-in-touch" class="we-will-be-in-touch" style="display: none;">
-  We'll be in touch
-</div>
+  <!-- Link to your JavaScript file -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
+

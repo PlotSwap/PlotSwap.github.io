@@ -7,6 +7,7 @@ function checkAnswer() {
   const button = document.querySelector(".prompt-container button");
   const label = document.querySelector(".prompt-container label");
 
+  
   if (userAnswer.toLowerCase() === "russell") {
     input.value = "Correct";
     input.style.color = "green";
@@ -97,16 +98,13 @@ function formatPhoneNumber() {
 }
 
 function confirmWaitlist() {
-  // Retrieve input values for reference (optional, could be used for validation here if needed)
   const ticketId = document.getElementById("ticket-id").value.trim();
   const fullName = document.getElementById("full-name").value.trim();
   const phoneNumber = document.getElementById("phone-number").value.trim();
 
-  // Confirmation dialog
   const isConfirmed = confirm("Are you sure the information is correct? Ticket IDs can only be used once.");
 
   if (isConfirmed) {
-    // Shrink away the waitlist container elements including labels, inputs, and buttons
     const waitlistContainer = document.querySelector(".waitlist-container");
     waitlistContainer.querySelectorAll("input, button, label, .form-label").forEach((element) => {
       element.classList.add("shrink");
@@ -120,16 +118,23 @@ function confirmWaitlist() {
     setTimeout(() => {
       waitlistContainer.style.display = "none"; // Hide waitlist container
       const messageDiv = document.getElementById("we-will-be-in-touch");
-      messageDiv.style.display = "block"; // Show "We'll be in touch" message
 
-      // After 2 seconds, fade out the "We'll be in touch" message
+      messageDiv.classList.remove("hidden"); // Show the message
+      messageDiv.style.opacity = "1"; // Ensure it's fully visible
+
+      // After 2 seconds, fade out the message
       setTimeout(() => {
         messageDiv.classList.add("fade-out");
-      }, 2000); // Wait for 2 seconds before fading out the message
 
-    }, 2000); // Wait for shrinking animation to complete before displaying the message
+        // Hide the message after fading out
+        setTimeout(() => {
+          messageDiv.style.display = "none";
+        }, 2000);
+
+      }, 2000);
+
+    }, 2000);
   } else {
-    // If declined, allow the user to continue editing
     alert("Please review your information before submitting.");
   }
 }
