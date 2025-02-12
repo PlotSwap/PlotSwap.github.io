@@ -1,7 +1,37 @@
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
-</html>
+<div class="logo-container">
+  <img src="https://i.imgur.com/Z4G15yL.jpeg" alt="Plot Swap Theater Logo">
+</div>
+
+<div class="prompt-container">
+  <label for="name-input">What is his name?</label>
+  <input type="text" id="name-input" placeholder="Enter name here" 
+         oninput="resetTextColor()" onclick="clearText()">
+  <button onclick="checkAnswer()">Submit</button>
+</div>
+
+<!-- Updated waitlist form container with form-style labels -->
+<div class="waitlist-container" style="display: none;">
+  <label id="waitlist-label">Join the waitlist</label>
+
+  <div class="form-field">
+    <span class="form-label">Ticket ID:</span>
+    <input type="text" id="ticket-id" placeholder="Write here" oninput="validateWaitlistFields()">
+  </div>
+
+  <div class="form-field">
+    <span class="form-label">Full Name:</span>
+    <input type="text" id="full-name" placeholder="Write here" oninput="validateWaitlistFields()">
+  </div>
+
+  <div class="form-field">
+    <span class="form-label">Phone Number:</span>
+    <input type="tel" id="phone-number" placeholder="Write here" oninput="validateWaitlistFields()">
+  </div>
+
+  <button id="attempt-submit-button" onclick="attemptWaitlistSubmit()">Submit</button>
+<button id="waitlist-submit-button" disabled style="display: none;">Submit</button>
+</div>
+
+<div id="we-will-be-in-touch" class="we-will-be-in-touch" style="display: none;">
+  We'll be in touch
+</div>

@@ -1,0 +1,267 @@
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* Set background color to black */
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Position logo at the top and fix it independently */
+.logo-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 200px;
+}
+
+.logo-container img {
+  max-width: 100%;
+  height: auto;
+  opacity: 0.05;
+  transition: opacity 1s ease;
+}
+
+/* Style for prompt and waitlist containers */
+.prompt-container, .waitlist-container {
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+}
+
+.prompt-container {
+  top: 275px;
+}
+
+.waitlist-container {
+  top: 275px;
+  display: none;
+}
+
+/* Center the label above the input and button */
+.prompt-container label,
+.waitlist-container label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  display: block;
+  transition: transform 3s ease, opacity 3s ease;
+}
+
+/* Style for prompt container text box (unchanged) */
+.prompt-container input[type="text"] {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+  transition: transform 3s ease, opacity 3s ease;
+}
+
+/* Form-style layout for the waitlist container input fields */
+.form-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.form-label {
+  font-size: 1em;
+  margin-right: 10px;
+  width: 120px;
+  text-align: left;
+  color: white;
+  opacity: 0.7;
+}
+
+.form-field input[type="text"],
+.form-field input[type="tel"] {
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  padding: 5px;
+  color: white;
+  width: 100%;
+  max-width: 180px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Style for input placeholder */
+.prompt-container input::placeholder,
+.waitlist-container input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-style: italic;
+}
+
+/* Change border color on focus for inputs */
+.form-field input:focus,
+.prompt-container input:focus {
+  border-bottom: 1px solid white;
+}
+
+/* Center and style the submit button for both containers */
+.prompt-container button,
+.waitlist-container button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: transform 3s ease, opacity 3s ease;
+}
+
+.prompt-container button:hover,
+.waitlist-container button:hover {
+  background-color: #666;
+}
+
+/* Styling for the submit button in the waitlist container when disabled */
+#waitlist-submit-button {
+  cursor: not-allowed;
+  opacity: 0.5; /* Makes the button look dimmed when disabled */
+}
+
+#waitlist-submit-button:enabled {
+  cursor: pointer;
+  background-color: #444;
+  opacity: 1.0; /* Make the button fully opaque when enabled */
+}
+
+#waitlist-submit-button:hover:enabled {
+  background-color: #666;
+}
+
+/* Shrinking effect */
+.shrink {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Fade-in effect for waitlist-container */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Shake effect for wrong answer */
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%, 75% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+
+/* Flash red effect for invalid fields */
+.flash-red {
+  color: red;
+  font-weight: bold;
+  animation: flash 0.5s ease-in-out;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Shrinking effect for waitlist elements */
+.waitlist-container .shrink {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Fade-in effect for 'See you soon' message */
+.see-you-soon {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade-out effect for logo */
+.logo-container.fade-out {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+/* Fade-in effect for 'We'll be in touch' message */
+.we-will-be-in-touch {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+/* Fade-out effect for 'We'll be in touch' message */
+.we-will-be-in-touch.fade-out {
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
