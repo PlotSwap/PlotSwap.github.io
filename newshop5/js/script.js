@@ -7,64 +7,48 @@ const captainChoice = document.getElementById('captainChoice');
 const crewChoice = document.getElementById('crewChoice');
 
 const captainBack = document.getElementById('captainBack');
-// If you have a back button for the crew screen, you'd reference it similarly:
+// If you have a back button on the crew screen, reference it similarly:
 // const crewBack = document.getElementById('crewBack');
 
 // --- Elements for Price & Upgrade in Captain Screen ---
 const upgradeCheckbox = document.getElementById('upgradeCheckbox');
+const friendCountItem = document.getElementById('friendCountItem');
 const basePriceValueEl = document.getElementById('basePriceValue');
 const addOnValueEl = document.getElementById('addOnValue');
 const totalPriceEl = document.getElementById('captainTotalPrice');
 const captainBuyNowButton = document.getElementById('captainBuyNow');
 
-// "What's Included" lines
-const friendsLine = document.getElementById('friendsLine');
-const privatePerformanceLine = document.getElementById('privatePerformanceLine');
-const choiceStylesLine = document.getElementById('choiceStylesLine');
-const specialKeepsakeLine = document.getElementById('specialKeepsakeLine');
-
 // --- Pricing Constants ---
 const BASE_CAPTAIN_PRICE = 200;
 const UPGRADE_COST = 100;
 
-// On page load, set the base & add-on prices
+// Initialize the base and add-on values
 basePriceValueEl.textContent = BASE_CAPTAIN_PRICE;
 addOnValueEl.textContent = UPGRADE_COST;
 
-// Function to update friend count, perks, and total price
-function updateCaptainInfo() {
+// --- Update Pricing & Friend Count Function ---
+function updatePrices() {
   let totalPrice = BASE_CAPTAIN_PRICE;
-  
+
   if (upgradeCheckbox.checked) {
-    // If the add-on is selected:
-    friendsLine.textContent = '+ Up to 10 friends';
+    // If upgrade is selected, set friend count to 10 and add cost
+    friendCountItem.textContent = '1 Captain + up to 10 friends';
     addOnValueEl.textContent = UPGRADE_COST;
     totalPrice += UPGRADE_COST;
-
-    // Remove the crossed-out class from perks
-    privatePerformanceLine.classList.remove('crossed-out');
-    choiceStylesLine.classList.remove('crossed-out');
-    specialKeepsakeLine.classList.remove('crossed-out');
   } else {
-    // If the add-on is NOT selected:
-    friendsLine.textContent = '+ Up to 2 friends';
+    // Otherwise, 2 friends and 0 add-on
+    friendCountItem.textContent = '1 Captain + up to 2 friends';
     addOnValueEl.textContent = '0';
-
-    // Cross out the perks
-    privatePerformanceLine.classList.add('crossed-out');
-    choiceStylesLine.classList.add('crossed-out');
-    specialKeepsakeLine.classList.add('crossed-out');
   }
 
-  // Update the total
   totalPriceEl.textContent = totalPrice;
 }
 
 // Listen for changes on the upgrade checkbox
-upgradeCheckbox.addEventListener('change', updateCaptainInfo);
+upgradeCheckbox.addEventListener('change', updatePrices);
 
-// Initialize on page load
-updateCaptainInfo();
+// Initialize pricing on page load
+updatePrices();
 
 // --- Screen Navigation ---
 // Show Captain Screen
@@ -91,8 +75,10 @@ captainBack.addEventListener('click', () => {
   initialScreen.classList.add('fade');
 });
 
+// (If you have a crewBack, do similarly for the crew screen)
+
 // Buy Now (Captain)
 captainBuyNowButton.addEventListener('click', () => {
   alert('Captain ticket purchased!');
-  // Integrate your checkout or next steps here
+  // Integrate your checkout or additional steps here
 });

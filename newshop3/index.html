@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Plot Swap Theater</title>
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Initial Screen -->
+  <div class="container" id="initialScreen">
+    <h1>Are you...</h1>
+    <div class="choice-grid">
+      <!-- The Captain Choice -->
+      <div class="choice-box" id="captainChoice">
+        <h2>The Captain</h2>
+        <p>Take the Wheel</p>
+      </div>
+      
+      <!-- OR Separator -->
+      <div class="or-separator">
+        <h2>OR</h2>
+      </div>
+      
+      <!-- The Crew Choice -->
+      <div class="choice-box" id="crewChoice">
+        <h2>The Crew</h2>
+        <p>Along for the Ride</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Captain Screen -->
+  <div class="container fade hidden" id="captainScreen">
+    <!-- Title Bar: Back button + Title in one row -->
+    <div class="title-bar">
+      <button id="captainBack" class="back-button">&larr; Back</button>
+      <h1 class="captain-title">The Captain's Ticket</h1>
+    </div>
+    
+    <h2 class="captain-subtitle">Control the Story</h2>
+
+    <p>Presented with A or B choices, the Captain alone decides their fate.</p>
+    <p>Follow your heart, or anything else.</p>
+
+    <!-- Plot Swap Experience toggle -->
+    <div class="upgrade-box">
+      <label>
+        <input type="checkbox" id="upgradeCheckbox" checked>
+        <strong>Plot Swap Experience (+$100)</strong>
+      </label>
+      <div class="upgrade-details">
+        <ul>
+          <li>Private Performance</li>
+          <li>Additional seating for 8</li>
+          <li>Progression keepsake (upon completion)</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>The captain gets a free T-Shirt too!</p>
+
+    <!-- "Your Experience" box -->
+    <div class="experience-box">
+      <h3>Your Experience</h3>
+      <p id="experienceSummary">1 Captain + up to 10 friends</p>
+      <button id="captainBuyNow" class="buy-now-button">Buy Now: $300</button>
+    </div>
+  </div>
+
+  <!-- Crew Screen (unchanged) -->
+  <div class="container fade hidden" id="crewScreen">
+    <h1>Crew</h1>
+    <h2>Silently observe a Captain at work</h2>
+    <p>Up to 8 guests are invited to attend a performance as the audience of an unknown captain.</p>
+    <p>This ticket is for the tentative guests who would rather dip their toes before trying it themselves.</p>
+    <p class="price">$100</p>
+
+    <button id="crewBuyNow">Buy Now</button>
+    <button id="crewBack">Back</button>
+  </div>
+
+  <!-- Link to your external JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

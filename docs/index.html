@@ -1,179 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Plot Swap Theater Tickets</title>
+  <meta charset="UTF-8">
+  <title>Plot Swap Theater</title>
   <style>
-    body {
-      background: black;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      color: white;
-      padding: 20px;
-      position: relative;
+    /* Remove default body padding/margin */
+    * {
       margin: 0;
-    }
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://i.imgur.com/Z4G15yL.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      opacity: 1;
-      filter: brightness(0.2) blur(2px);
-      z-index: -1;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-      margin-top: 40px;
-    }
-
-    /* Base card styling */
-    .ticket {
-      position: relative; /* so the price can be absolutely positioned */
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px 30px 30px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 460px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-      text-align: center;
-    }
-
-    /* Metallic borders */
-    .gold-border {
-      border: 2px solid #d4af37; /* gold */
-    }
-    .silver-border {
-      border: 2px solid #c0c0c0; /* silver */
-    }
-    .bronze-border {
-      border: 2px solid #cd7f32; /* bronze */
-    }
-
-    /* Headings (font size, margin) */
-    .ticket h2 {
-      font-size: 28px;
-      margin: 0 0 10px;
-    }
-
-    /* Match heading color to border color */
-    .gold-border h2 {
-      color: #d4af37;
-    }
-    .silver-border h2 {
-      color: #c0c0c0;
-    }
-    .bronze-border h2 {
-      color: #cd7f32;
-    }
-
-    /* Price in top-right corner */
-    .price {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 20px;
-      color: #f2a900; /* keeping the price color gold for all cards */
-      font-weight: bold;
-    }
-
-    /* Paragraph styling */
-    .ticket p {
-      font-size: 17px;
-      line-height: 1.6;
-      margin: 10px 0;
-    }
-    .ticket p strong {
-      font-size: 17px;
-    }
-
-    /* Bullet list for details */
-    .ticket ul {
-      margin: 15px auto 0;
-      text-align: left; /* left-align bullets */
-      list-style-position: inside;
-      max-width: 320px;
       padding: 0;
-    }
-    .ticket ul li {
-      margin: 5px 0;
+      box-sizing: border-box;
     }
 
-    /* Button styling */
-    .ticket button {
-      background-color: #f2a900;
-      color: black;
+    /* All screens share the same dimensions (e.g., 414×896) */
+    .screen {
+      width: 414px;
+      height: 896px;
+      position: relative;
+      margin: 0 auto;            /* center horizontally */
+      background-size: cover;
+      background-position: center;
+      display: none;             /* hidden by default, except #landing */
+    }
+
+    /* Landing screen is shown by default */
+    #landing {
+      display: block;
+      background: url("https://i.imgur.com/xTDwJFX.png") no-repeat center center;
+      background-size: cover; /* ensures the landing image is sized properly */
+    }
+
+    /* A shared base class for all buttons. */
+    .common-button {
+      position: absolute;
+      background-color: grey;   /* base color, can override inline */
+      color: white;             /* text color, can override inline */
       border: none;
-      padding: 14px;
       cursor: pointer;
-      width: 100%;
-      font-size: 20px;
-      margin-top: 20px;
-      font-weight: bold;
-      border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(242, 169, 0, 0.4);
-      transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s;
+      opacity: 0;
+      /* Optionally define a default width/height/shape here if you want
+         them consistent across all screens, e.g.:
+         width: 260px;
+         height: 85px;
+         border-radius: 8px;
+       Or just define them inline per button. */
     }
-    .ticket button:hover {
-      background-color: #d48b00;
-      transform: scale(1.05);
-      box-shadow: 0 6px 12px rgba(242, 169, 0, 0.8);
+
+    /* The single button on landing screen, near bottom, 20% grey */
+    #landing button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 5%;
+      background-color: rgba(128,128,128,0.2); /* 20% opacity grey */
+      padding: 1rem 2rem;
+      font-size: 1rem;
     }
+
+    /* Backgrounds for screens 1, 2, 3 */
+    #screen1 {
+      background: url("https://i.imgur.com/xSwRvDy.png") no-repeat center center;
+      background-size: cover;
+    }
+    #screen2 {
+      background: url("https://i.imgur.com/ufbqqaS.png") no-repeat center center;
+      background-size: cover;
+    }
+    #screen3 {
+      background: url("https://i.imgur.com/EzXjBEw.png") no-repeat center center;
+      background-size: cover;
+    }
+
+    /* Example unique positions for the first two buttons on each screen */
+    /* Screen 1 */
+    #screen1 button:nth-of-type(1) {
+      top: 66.5%;
+      left: 18%;
+    }
+    #screen1 button:nth-of-type(2) {
+      top: 77.5%;
+      left: 18%;
+    }
+
+    /* Screen 2 */
+    #screen2 button:nth-of-type(1) {
+      top: 47.5%;
+      left: 18%;
+    }
+    #screen2 button:nth-of-type(2) {
+      top: 77.5%;
+      left: 18%;
+    }
+
+    /* Screen 3 */
+    #screen3 button:nth-of-type(1) {
+      top: 47.5%;
+      left: 18%;
+    }
+    #screen3 button:nth-of-type(2) {
+      top: 58.5%;
+      left: 18%;
+    }
+
+    /* 
+       The new 3rd button on each screen will appear as the 
+       third <button> element, so you can position it with 
+       nth-of-type(3) if desired. Example (commented out):
+       
+       #screen1 button:nth-of-type(3) {
+         top: 87.5%;
+         left: 18%;
+       }
+       
+       But here, we’ll just specify inline styles on each button
+       for demonstration.
+    */
   </style>
 </head>
 <body>
-  <h1>Choose Your Experience</h1>
 
-  <div class="container">
-    <!-- PRIVATE ROOM (gold border, gold heading) -->
-    <div class="ticket gold-border">
-      <span class="price">$300</span>
-      <h2>Private Room</h2>
-      <p><strong>The Original Experience</strong></p>
-      <ul>
-        <li>No strangers allowed</li>
-        <li>Max 11 guests</li>
-      </ul>
-      <button onclick="window.location.href='PURCHASE_LINK_PRIVATE'">Buy Now</button>
-    </div>
-
-    <!-- DIRECTOR'S COUCH (silver border, silver heading) -->
-    <div class="ticket silver-border">
-      <span class="price">$200</span>
-      <h2>Director's Couch</h2>
-      <p><strong>Control the Narrative</strong></p>
-      <ul>
-        <li>Follow your heart, or anything else</li>
-        <li>Max 3 guests</li>
-      </ul>
-      <button onclick="window.location.href='PURCHASE_LINK_DIRECTOR'">Buy Now</button>
-    </div>
-
-    <!-- SPECTATOR'S LOUNGE (bronze border, bronze heading) -->
-    <div class="ticket bronze-border">
-      <span class="price">$100</span>
-      <h2>Spectator's Lounge</h2>
-      <p><strong>Along for the Ride</strong></p>
-      <ul>
-        <li>Watch as the directors choose the story</li>
-        <li>Max 8 guests</li>
-      </ul>
-      <button onclick="window.location.href='PURCHASE_LINK_SPECTATOR'">Buy Now</button>
-    </div>
+  <!-- LANDING SCREEN -->
+  <div id="landing" class="screen">
+    <button onclick="showScreen('screen1')">Start The Show</button>
   </div>
+
+  <!-- SCREEN 1 -->
+  <div id="screen1" class="screen">
+    <!-- Existing two buttons -->
+    <button class="common-button"
+            style="width: 260px; height: 85px;"
+            onclick="showScreen('screen2')">Go to Screen 2</button>
+    <button class="common-button"
+            style="width: 260px; height: 85px;"
+            onclick="showScreen('screen3')">Go to Screen 3</button>
+
+    <!-- NEW "Get Tickets" button -->
+    <button class="common-button"
+            style="top: 87.5%; left: 35%; width: 150px; height: 85px;"
+            onclick="getTickets()">Get Tickets</button>
+  </div>
+
+  <!-- SCREEN 2 -->
+  <div id="screen2" class="screen">
+    <!-- Existing two buttons -->
+    <button class="common-button"
+            style="width: 260px; height: 85px;"
+            onclick="showScreen('screen1')">Screen 1</button>
+    <button class="common-button"
+            style="width: 260px; height: 85px;"
+            onclick="showScreen('screen3')">Screen 3</button>
+
+    <!-- NEW "Get Tickets" button -->
+    <button class="common-button"
+            style="top: 87.5%; left: 35%; width: 150px; height: 85px;"
+            onclick="getTickets()">Get Tickets</button>
+  </div>
+
+  <!-- SCREEN 3 -->
+  <div id="screen3" class="screen">
+    <!-- Existing two buttons -->
+    <button class="common-button"
+            style="width: 260px; height: 85px;"
+            onclick="showScreen('screen1')">Screen 1</button>
+    <button class="common-button"
+            style="width: 260px; height: 85px;"
+            onclick="showScreen('screen2')">Screen 2</button>
+
+    <!-- NEW "Get Tickets" button -->
+    <button class="common-button"
+            style="top: 87.5%; left: 35%; width: 150px; height: 85px;"
+            onclick="getTickets()">Get Tickets</button>
+  </div>
+
+  <script>
+    function showScreen(screenId) {
+      // Hide them all
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('screen1').style.display = 'none';
+      document.getElementById('screen2').style.display = 'none';
+      document.getElementById('screen3').style.display = 'none';
+
+      // Show just the requested screen
+      document.getElementById(screenId).style.display = 'block';
+    }
+
+    // A single function that checks which screen is visible
+    // and navigates to a different link depending on that screen.
+    function getTickets() {
+      if (document.getElementById('screen1').style.display === 'block') {
+        window.location.href = "https://example.com/tickets-for-screen-1";
+      } else if (document.getElementById('screen2').style.display === 'block') {
+        window.location.href = "https://example.com/tickets-for-screen-2";
+      } else if (document.getElementById('screen3').style.display === 'block') {
+        window.location.href = "https://example.com/tickets-for-screen-3";
+      }
+    }
+  </script>
 </body>
 </html>

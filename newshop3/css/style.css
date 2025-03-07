@@ -1,7 +1,7 @@
 /* Import Roboto font */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
-/* Global Reset & Base Styles */
+/* Global reset / base styles */
 html, body {
   margin: 0;
   padding: 0;
@@ -14,18 +14,17 @@ body {
   min-height: 100vh;
 }
 
-/* Container for Each Screen */
+/* Container for each screen */
 .container {
   max-width: 600px;
   margin: 4rem auto;
   background: #222;
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.container h1,
-.container h2 {
+.container h1, .container h2 {
   margin-top: 0;
 }
 
@@ -35,7 +34,6 @@ body {
   gap: 1rem;
   margin-top: 2rem;
 }
-
 .choice-box {
   flex: 1;
   background: #333;
@@ -45,11 +43,9 @@ body {
   text-align: center;
   transition: background 0.3s;
 }
-
 .choice-box:hover {
   background: #444;
 }
-
 .or-separator {
   display: flex;
   align-items: center;
@@ -60,26 +56,26 @@ body {
 }
 
 /* ---------- Captain Screen Layout ---------- */
-/* BANNER at the top for Back button + Title */
-.banner {
+/* Title Bar: back button on left, title in center */
+.title-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #333, #444);
-  padding: 1rem;
-  margin: -2rem -2rem 1rem -2rem; 
-  /* Negative margins to pull the banner out 
-     so it spans edge-to-edge of the container. */
-  border-radius: 8px 8px 0 0;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
-
-.banner-title {
-  flex: 1;
+.captain-title {
+  flex: 1; /* push title to fill space */
   text-align: center;
   margin: 0;
-  font-size: 1.5em;
+}
+.captain-subtitle {
+  text-align: center;
+  margin: 0 0 1rem 0;
+  font-size: 1.2em;
+  color: #ccc;
 }
 
+/* Back button (top-left) */
 .back-button {
   background: none;
   border: none;
@@ -92,112 +88,71 @@ body {
   border-radius: 4px;
   transition: background 0.3s;
 }
-
 .back-button:hover {
-  background: #555;
+  background: #444;
 }
 
-/* Subheading under the banner */
-.captain-subtitle {
-  text-align: center;
-  margin: 0 0 1rem 0;
-  font-size: 1.2em;
-  color: #ccc;
-}
-
-/* Two-Column Layout for Add-On & What's Included */
-.two-column {
-  display: flex;
-  flex-wrap: wrap; /* columns can wrap on smaller screens */
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.left-col,
-.right-col {
-  flex: 1;
-  min-width: 0;
+/* Upgrade box for Plot Swap Experience */
+.upgrade-box {
   background: #333;
+  border-left: 4px solid #999;
   padding: 1rem;
+  margin: 1.5rem 0;
   border-radius: 4px;
 }
-
-.addon-title {
-  margin-top: 0;
-  color: #ffb74d;
+.upgrade-box label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.upgrade-box input[type="checkbox"] {
+  margin-right: 0.5rem;
+  transform: scale(1.2);
+}
+.upgrade-details ul {
+  list-style-type: disc;
+  margin: 0.5rem 0 0 1.5rem;
+  padding-left: 0;
 }
 
-.addon-subtext {
-  margin: 0.5rem 0 1rem;
-  font-size: 0.9em;
+/* ---------- Your Experience Box ---------- */
+.experience-box {
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.experience-box h3 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.2em;
+}
+.experience-box p {
+  margin: 0.5rem 0;
+  font-size: 1em;
   color: #ccc;
 }
 
-.upgrade-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.upgrade-label input[type="checkbox"] {
-  transform: scale(1.2);
-}
-
-/* What's Included */
-.included-title {
-  margin-top: 0;
-  color: #ffb74d;
-}
-
-.included-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.included-list li {
-  margin: 0.5rem 0;
-  font-size: 1em;
-}
-
-/* Crossed-Out Class for perks that don't apply if add-on is unchecked */
-.crossed-out {
-  text-decoration: line-through;
-  color: #777;
-}
-
-/* Price & Buy Now at the bottom */
-.final-price-area {
-  text-align: center;
-  margin-top: 1.5rem;
-}
-
-.price-details {
-  margin-bottom: 1rem;
-  font-size: 1em;
-}
-
-.price-details strong {
-  font-size: 1.2em;
-}
-
+/* Wide Buy Now button with a more subdued orange */
 .buy-now-button {
-  background: #f1a53d; /* subdued orange */
+  display: inline-block; /* keep it centered in the box */
+  background: #f1a53d; /* more subdued orange */
   color: #000;
   font-weight: bold;
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1rem;
+  margin-top: 0.5rem;
   cursor: pointer;
   font-size: 1em;
   transition: background 0.3s;
 }
-
 .buy-now-button:hover {
-  background: #e08f2f;
+  background: #e08f2f; /* slightly darker on hover */
 }
 
 /* ---------- Fade/Hidden transitions ---------- */
@@ -206,7 +161,6 @@ body {
   overflow: hidden;
   max-height: 1000px;
 }
-
 .hidden {
   display: none;
   opacity: 0;

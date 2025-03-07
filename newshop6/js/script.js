@@ -7,7 +7,7 @@ const captainChoice = document.getElementById('captainChoice');
 const crewChoice = document.getElementById('crewChoice');
 
 const captainBack = document.getElementById('captainBack');
-// If you have a back button for the crew screen, you'd reference it similarly:
+// If you have a back button for the crew screen, reference it similarly:
 // const crewBack = document.getElementById('crewBack');
 
 // --- Elements for Price & Upgrade in Captain Screen ---
@@ -23,7 +23,7 @@ const privatePerformanceLine = document.getElementById('privatePerformanceLine')
 const choiceStylesLine = document.getElementById('choiceStylesLine');
 const specialKeepsakeLine = document.getElementById('specialKeepsakeLine');
 
-// --- Pricing Constants ---
+// Pricing Constants
 const BASE_CAPTAIN_PRICE = 200;
 const UPGRADE_COST = 100;
 
@@ -45,6 +45,7 @@ function updateCaptainInfo() {
     privatePerformanceLine.classList.remove('crossed-out');
     choiceStylesLine.classList.remove('crossed-out');
     specialKeepsakeLine.classList.remove('crossed-out');
+
   } else {
     // If the add-on is NOT selected:
     friendsLine.textContent = '+ Up to 2 friends';

@@ -60,26 +60,28 @@ body {
 }
 
 /* ---------- Captain Screen Layout ---------- */
-/* BANNER at the top for Back button + Title */
-.banner {
+/* Title Bar: back button + title in one row */
+.title-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #333, #444);
-  padding: 1rem;
-  margin: -2rem -2rem 1rem -2rem; 
-  /* Negative margins to pull the banner out 
-     so it spans edge-to-edge of the container. */
-  border-radius: 8px 8px 0 0;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.banner-title {
+.captain-title {
   flex: 1;
   text-align: center;
   margin: 0;
-  font-size: 1.5em;
 }
 
+.captain-subtitle {
+  text-align: center;
+  margin: 0 0 1rem 0;
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+/* Back Button */
 .back-button {
   background: none;
   border: none;
@@ -94,21 +96,18 @@ body {
 }
 
 .back-button:hover {
-  background: #555;
+  background: #444;
 }
 
-/* Subheading under the banner */
-.captain-subtitle {
-  text-align: center;
-  margin: 0 0 1rem 0;
-  font-size: 1.2em;
-  color: #ccc;
+/* Top Show Description */
+.show-description p {
+  margin: 0.5rem 0;
 }
 
-/* Two-Column Layout for Add-On & What's Included */
+/* ---------- Two-Column Layout ---------- */
 .two-column {
   display: flex;
-  flex-wrap: wrap; /* columns can wrap on smaller screens */
+  flex-wrap: wrap; /* in case screen is small, columns can wrap */
   gap: 1rem;
   margin-top: 1.5rem;
 }
@@ -116,15 +115,16 @@ body {
 .left-col,
 .right-col {
   flex: 1;
-  min-width: 0;
+  min-width: 0; /* helps columns handle shrinking properly */
   background: #333;
   padding: 1rem;
   border-radius: 4px;
 }
 
+/* Add-On Title & Text */
 .addon-title {
   margin-top: 0;
-  color: #ffb74d;
+  color: #ffb74d; /* highlight color */
 }
 
 .addon-subtext {
@@ -133,6 +133,7 @@ body {
   color: #ccc;
 }
 
+/* Checkbox label */
 .upgrade-label {
   display: flex;
   align-items: center;
@@ -159,16 +160,20 @@ body {
 
 .included-list li {
   margin: 0.5rem 0;
-  font-size: 1em;
 }
 
-/* Crossed-Out Class for perks that don't apply if add-on is unchecked */
-.crossed-out {
-  text-decoration: line-through;
-  color: #777;
+/* T-Shirt Badge */
+.tshirt-badge {
+  display: inline-block;
+  background: #ff9800;
+  color: #000;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-left: 0.5rem;
 }
 
-/* Price & Buy Now at the bottom */
+/* ---------- Final Price Area ---------- */
 .final-price-area {
   text-align: center;
   margin-top: 1.5rem;
@@ -183,6 +188,7 @@ body {
   font-size: 1.2em;
 }
 
+/* Buy Now Button */
 .buy-now-button {
   background: #f1a53d; /* subdued orange */
   color: #000;

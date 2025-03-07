@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Plot Swap Theater</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Initial Screen -->
+  <div class="container" id="initialScreen">
+    <h1>Are you...</h1>
+    <div class="choice-grid">
+      <!-- The Captain Choice -->
+      <div class="choice-box" id="captainChoice">
+        <h2>The Captain</h2>
+        <p>Take the Wheel</p>
+      </div>
+      
+      <!-- OR Separator -->
+      <div class="or-separator">
+        <h2>OR</h2>
+      </div>
+      
+      <!-- The Crew Choice -->
+      <div class="choice-box" id="crewChoice">
+        <h2>The Crew</h2>
+        <p>Along for the Ride</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Captain Screen -->
+  <div class="container fade hidden" id="captainScreen">
+    <h1 class="captain-title">The Captain's Ticket</h1>
+    <h2 class="captain-subtitle">Control the Story</h2>
+
+    <p>Presented with A or B choices, the Captain alone decides their fate.</p>
+    <p>Follow your heart, or anything else.</p>
+
+    <!-- Upgrade Section with Checkbox -->
+    <div class="upgrade-box">
+      <label>
+        <input type="checkbox" id="upgradeCheckbox" checked>
+        <strong>Plot Swap Experience (+$100)</strong>
+      </label>
+      <div class="upgrade-details">
+        <ul>
+          <li>Private Performance</li>
+          <li>Additional seating for 8</li>
+          <li>Progression keepsake (upon completion)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Price and guest info -->
+    <p class="price">Total: <span id="captainPrice">$300</span></p>
+    <p id="guestInfo">1 Captain + up to 10 friends</p>
+
+    <p>The captain gets a free T-Shirt too!</p>
+
+    <!-- Action Buttons -->
+    <button id="captainBuyNow">Buy Now</button>
+    <button id="captainBack">Back</button>
+  </div>
+
+  <!-- Crew Screen -->
+  <div class="container fade hidden" id="crewScreen">
+    <h1>Crew</h1>
+    <h2>Silently observe a Captain at work</h2>
+    <p>Up to 8 guests are invited to attend a performance as the audience of an unknown captain.</p>
+    <p>This ticket is for the tentative guests who would rather dip their toes before trying it themselves.</p>
+    <p class="price">$100</p>
+
+    <button id="crewBuyNow">Buy Now</button>
+    <button id="crewBack">Back</button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

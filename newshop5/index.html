@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Plot Swap Theater</title>
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Initial Screen -->
+  <div class="container" id="initialScreen">
+    <h1>Are you...</h1>
+    <div class="choice-grid">
+      <!-- The Captain Choice -->
+      <div class="choice-box" id="captainChoice">
+        <h2>The Captain</h2>
+        <p>Take the Wheel</p>
+      </div>
+      
+      <!-- OR Separator -->
+      <div class="or-separator">
+        <h2>OR</h2>
+      </div>
+      
+      <!-- The Crew Choice -->
+      <div class="choice-box" id="crewChoice">
+        <h2>The Crew</h2>
+        <p>Along for the Ride</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Captain Screen -->
+  <div class="container fade hidden" id="captainScreen">
+    <!-- Title Bar: Back button + Title in one row -->
+    <div class="title-bar">
+      <button id="captainBack" class="back-button">&larr; Back</button>
+      <h1 class="captain-title">The Captain's Ticket</h1>
+    </div>
+    
+    <!-- Top: Show Description -->
+    <div class="show-description">
+      <h2 class="captain-subtitle">Control the Story</h2>
+      <p>Presented with A or B choices, the Captain alone decides their fate.</p>
+      <p>Follow your heart, or anything else.</p>
+    </div>
+
+    <!-- Middle: Two-Column Layout -->
+    <div class="two-column">
+      <!-- Left: Optional Add-On -->
+      <div class="left-col">
+        <h3 class="addon-title">Plot Swap Experience (+$100)</h3>
+        <p class="addon-subtext">
+          Elevate your journey with a private performance, additional seating, 
+          and a special keepsake to commemorate your adventure.
+        </p>
+        <label class="upgrade-label">
+          <input type="checkbox" id="upgradeCheckbox" checked>
+          <strong>Yes, add the Plot Swap Experience</strong>
+        </label>
+      </div>
+
+      <!-- Right: What's Included -->
+      <div class="right-col">
+        <h3 class="included-title">What's Included</h3>
+        <ul class="included-list">
+          <li id="friendCountItem">1 Captain + up to 10 friends</li>
+          <li>
+            <span class="tshirt-badge">Free T-Shirt</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom: Price & Buy Now -->
+    <div class="final-price-area">
+      <p class="price-details">
+        Base Price: $<span id="basePriceValue">200</span><br>
+        Add-On: $<span id="addOnValue">100</span><br>
+        <strong>Total: $<span id="captainTotalPrice">300</span></strong>
+      </p>
+      <button id="captainBuyNow" class="buy-now-button">Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Crew Screen (unchanged) -->
+  <div class="container fade hidden" id="crewScreen">
+    <h1>Crew</h1>
+    <h2>Silently observe a Captain at work</h2>
+    <p>Up to 8 guests are invited to attend a performance as the audience of an unknown captain.</p>
+    <p>This ticket is for the tentative guests who would rather dip their toes before trying it themselves.</p>
+    <p class="price">$100</p>
+
+    <button id="crewBuyNow">Buy Now</button>
+    <button id="crewBack">Back</button>
+  </div>
+
+  <!-- Link to your external JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -60,26 +60,28 @@ body {
 }
 
 /* ---------- Captain Screen Layout ---------- */
-/* BANNER at the top for Back button + Title */
-.banner {
+/* Title Bar: back button + title in one row */
+.title-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #333, #444);
-  padding: 1rem;
-  margin: -2rem -2rem 1rem -2rem; 
-  /* Negative margins to pull the banner out 
-     so it spans edge-to-edge of the container. */
-  border-radius: 8px 8px 0 0;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.banner-title {
+.captain-title {
   flex: 1;
   text-align: center;
   margin: 0;
-  font-size: 1.5em;
 }
 
+.captain-subtitle {
+  text-align: center;
+  margin: 0 0 1rem 0;
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+/* Back Button */
 .back-button {
   background: none;
   border: none;
@@ -94,15 +96,12 @@ body {
 }
 
 .back-button:hover {
-  background: #555;
+  background: #444;
 }
 
-/* Subheading under the banner */
-.captain-subtitle {
-  text-align: center;
-  margin: 0 0 1rem 0;
-  font-size: 1.2em;
-  color: #ccc;
+/* Show Description */
+.show-description p {
+  margin: 0.5rem 0;
 }
 
 /* Two-Column Layout for Add-On & What's Included */
@@ -145,7 +144,7 @@ body {
   transform: scale(1.2);
 }
 
-/* What's Included */
+/* Included Title & List */
 .included-title {
   margin-top: 0;
   color: #ffb74d;
@@ -162,13 +161,24 @@ body {
   font-size: 1em;
 }
 
-/* Crossed-Out Class for perks that don't apply if add-on is unchecked */
+/* Crossed-Out Class for Perks */
 .crossed-out {
   text-decoration: line-through;
   color: #777;
 }
 
-/* Price & Buy Now at the bottom */
+/* T-Shirt Badge */
+.tshirt-badge {
+  display: inline-block;
+  background: #ff9800;
+  color: #000;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+/* Final Price Area */
 .final-price-area {
   text-align: center;
   margin-top: 1.5rem;
@@ -183,6 +193,7 @@ body {
   font-size: 1.2em;
 }
 
+/* Buy Now Button */
 .buy-now-button {
   background: #f1a53d; /* subdued orange */
   color: #000;
@@ -200,7 +211,7 @@ body {
   background: #e08f2f;
 }
 
-/* ---------- Fade/Hidden transitions ---------- */
+/* Fade/Hidden transitions */
 .fade {
   transition: opacity 0.5s ease, max-height 0.5s ease;
   overflow: hidden;

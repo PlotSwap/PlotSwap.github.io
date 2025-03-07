@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Experience</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { width: 80%; margin: auto; }
+        .perks-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .perks-table th, .perks-table td { border: 1px solid #ddd; padding: 10px; text-align: center; }
+        .perks-table th { background-color: #f4f4f4; }
+        .button-container { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .play-button { background-color: #ff6600; color: white; padding: 15px 30px; border: none; cursor: pointer; }
+        .watch-button { background-color: #888; color: white; padding: 15px 30px; border: none; cursor: pointer; }
+        .upsell { margin-top: 30px; padding: 15px; background-color: #f8e6e6; border: 1px solid #ff6600; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Step into the Story – How Will You Experience It?</h1>
+        <p>Every show is unique. Players make the choices that shape the night, while watchers see the twists play out in real time.</p>
+        
+        <table class="perks-table">
+            <tr>
+                <th>Perks</th>
+                <th>Play the Game ($200+)</th>
+                <th>Watch the Game ($100)</th>
+            </tr>
+            <tr>
+                <td>Control the Story</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+            <tr>
+                <td>Bring Friends</td>
+                <td>✅ (2 included, upgrade to 10)</td>
+                <td>✅ (8 included)</td>
+            </tr>
+            <tr>
+                <td>Exclusive Behind-the-Scenes Access</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+            <tr>
+                <td>Post-Show Debrief with Cast</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+            <tr>
+                <td>Seating Choice Priority</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+        </table>
+        
+        <div class="button-container">
+            <button class="play-button">Play the Game</button>
+            <button class="watch-button">Watch the Game</button>
+        </div>
+        
+        <div class="upsell" id="upsell-message" style="display: none;">
+            <p>⚠️ As a spectator, you’ll watch, but won’t control the choices.</p>
+            <p>Want to experience the full story? <strong>Upgrade to Player now!</strong></p>
+            <button class="play-button">Upgrade to Player</button>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelector(".watch-button").addEventListener("click", function() {
+            document.getElementById("upsell-message").style.display = "block";
+        });
+    </script>
+</body>
+</html>
