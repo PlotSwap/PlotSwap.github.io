@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Plot Swap Theater</title>
+  <!-- Ensures the page is scaled to the device’s width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     /* Remove default body padding/margin */
     * {
@@ -11,38 +14,35 @@
       box-sizing: border-box;
     }
 
-    /* All screens share the same dimensions (e.g., 414×896) */
+    /*
+      Each "screen" now fills the entire viewport
+      (instead of a fixed 414×896).
+    */
     .screen {
-      width: 414px;
-      height: 896px;
+      width: 100vw;
+      height: 100vh;
       position: relative;
-      margin: 0 auto;            /* center horizontally */
+      margin: 0 auto;         /* center horizontally, though 100vw covers anyway */
       background-size: cover;
       background-position: center;
-      display: none;             /* hidden by default, except #landing */
+      display: none;          /* hidden by default, except #landing */
     }
 
     /* Landing screen is shown by default */
     #landing {
       display: block;
       background: url("https://i.imgur.com/xTDwJFX.png") no-repeat center center;
-      background-size: cover; /* ensures the landing image is sized properly */
+      background-size: cover;
     }
 
     /* A shared base class for all buttons. */
     .common-button {
       position: absolute;
-      background-color: grey;   /* base color, can override inline */
-      color: white;             /* text color, can override inline */
+      background-color: grey;  /* base color, can override inline */
+      color: white;            /* text color, can override inline */
       border: none;
       cursor: pointer;
-      opacity: 0;
-      /* Optionally define a default width/height/shape here if you want
-         them consistent across all screens, e.g.:
-         width: 260px;
-         height: 85px;
-         border-radius: 8px;
-       Or just define them inline per button. */
+      opacity: 0;             /* currently invisible: set to 1 or remove if you want them visible */
     }
 
     /* The single button on landing screen, near bottom, 20% grey */
@@ -54,6 +54,7 @@
       background-color: rgba(128,128,128,0.2); /* 20% opacity grey */
       padding: 1rem 2rem;
       font-size: 1rem;
+      cursor: pointer;
     }
 
     /* Backgrounds for screens 1, 2, 3 */
@@ -70,8 +71,13 @@
       background-size: cover;
     }
 
-    /* Example unique positions for the first two buttons on each screen */
-    /* Screen 1 */
+    /*
+      The positions (top/left) are in percentages
+      so they move along with the background. 
+      You already set these; we leave them as is.
+    */
+
+    /* Screen 1: first two buttons */
     #screen1 button:nth-of-type(1) {
       top: 66.5%;
       left: 18%;
@@ -81,7 +87,7 @@
       left: 18%;
     }
 
-    /* Screen 2 */
+    /* Screen 2: first two buttons */
     #screen2 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -91,7 +97,7 @@
       left: 18%;
     }
 
-    /* Screen 3 */
+    /* Screen 3: first two buttons */
     #screen3 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -100,20 +106,6 @@
       top: 58.5%;
       left: 18%;
     }
-
-    /* 
-       The new 3rd button on each screen will appear as the 
-       third <button> element, so you can position it with 
-       nth-of-type(3) if desired. Example (commented out):
-       
-       #screen1 button:nth-of-type(3) {
-         top: 87.5%;
-         left: 18%;
-       }
-       
-       But here, we’ll just specify inline styles on each button
-       for demonstration.
-    */
   </style>
 </head>
 <body>
@@ -126,16 +118,24 @@
   <!-- SCREEN 1 -->
   <div id="screen1" class="screen">
     <!-- Existing two buttons -->
+    <!-- 
+      Using ~63vw × 20.5vw keeps roughly the same ~260×85 ratio 
+      from your original code (260px:85px). 
+    -->
     <button class="common-button"
-            style="width: 260px; height: 85px;"
+            style="width: 63vw; height: 20.5vw;"
             onclick="showScreen('screen2')">Go to Screen 2</button>
     <button class="common-button"
-            style="width: 260px; height: 85px;"
+            style="width: 63vw; height: 20.5vw;"
             onclick="showScreen('screen3')">Go to Screen 3</button>
 
-    <!-- NEW "Get Tickets" button -->
+    <!-- "Get Tickets" button -->
+    <!-- 
+      This was 150×85 in your code, 
+      which is ~36vw wide and ~20.5vw tall for the same ratio 
+    -->
     <button class="common-button"
-            style="top: 87.5%; left: 35%; width: 150px; height: 85px;"
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
             onclick="getTickets()">Get Tickets</button>
   </div>
 
@@ -143,15 +143,15 @@
   <div id="screen2" class="screen">
     <!-- Existing two buttons -->
     <button class="common-button"
-            style="width: 260px; height: 85px;"
+            style="width: 63vw; height: 20.5vw;"
             onclick="showScreen('screen1')">Screen 1</button>
     <button class="common-button"
-            style="width: 260px; height: 85px;"
+            style="width: 63vw; height: 20.5vw;"
             onclick="showScreen('screen3')">Screen 3</button>
 
-    <!-- NEW "Get Tickets" button -->
+    <!-- "Get Tickets" button -->
     <button class="common-button"
-            style="top: 87.5%; left: 35%; width: 150px; height: 85px;"
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
             onclick="getTickets()">Get Tickets</button>
   </div>
 
@@ -159,15 +159,15 @@
   <div id="screen3" class="screen">
     <!-- Existing two buttons -->
     <button class="common-button"
-            style="width: 260px; height: 85px;"
+            style="width: 63vw; height: 20.5vw;"
             onclick="showScreen('screen1')">Screen 1</button>
     <button class="common-button"
-            style="width: 260px; height: 85px;"
+            style="width: 63vw; height: 20.5vw;"
             onclick="showScreen('screen2')">Screen 2</button>
 
-    <!-- NEW "Get Tickets" button -->
+    <!-- "Get Tickets" button -->
     <button class="common-button"
-            style="top: 87.5%; left: 35%; width: 150px; height: 85px;"
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
             onclick="getTickets()">Get Tickets</button>
   </div>
 
@@ -183,8 +183,7 @@
       document.getElementById(screenId).style.display = 'block';
     }
 
-    // A single function that checks which screen is visible
-    // and navigates to a different link depending on that screen.
+    // Checks which screen is visible and navigates to a different link
     function getTickets() {
       if (document.getElementById('screen1').style.display === 'block') {
         window.location.href = "https://example.com/tickets-for-screen-1";
