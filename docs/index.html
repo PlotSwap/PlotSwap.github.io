@@ -54,6 +54,14 @@
       opacity: 0;          /* <--- set to 1 (or remove) if you want to see them */
     }
 
+    /* Prevent buttons from showing any visual feedback when clicked */
+    .common-button:active,
+    .common-button:focus {
+      outline: none;
+      background-color: transparent; /* Ensures no color change */
+      box-shadow: none; /* Removes any shadows */
+    }
+
     /* Landing button (on top of the landing image) */
     #landing button {
       position: absolute;
@@ -65,13 +73,6 @@
       font-size: 1rem;
       cursor: pointer;
     }
-
-    /*
-      If you want each button in specific positions relative 
-      to the image, you can still use top/left in percentages or vw. 
-      But be aware that as the image grows vertically, 
-      the percentages might not match exact “spots” on the picture. 
-    */
 
     /* Example positions for your first two buttons on each screen */
     #screen1 button:nth-of-type(1) {
