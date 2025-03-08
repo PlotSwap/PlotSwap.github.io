@@ -32,9 +32,9 @@
     }
 
     /*
-      Each screen image takes full width
+      Each screen <img> takes full width
       and auto-adjusts height so it's not cut off horizontally.
-      If the image is taller than the screen, the user can scroll down.
+      If the image is taller than the screen, the user can scroll.
     */
     .screen img {
       display: block;       /* remove inline gaps */
@@ -51,7 +51,7 @@
       color: white;
       border: none;
       cursor: pointer;
-      opacity: 0;          /* <--- set to 1 (or remove) if you want to see them */
+      opacity: 0; /* <--- set to 1 (or remove) if you want to see them */
     }
 
     /* Prevent buttons from showing any visual feedback when clicked */
@@ -59,7 +59,7 @@
     .common-button:focus {
       outline: none;
       background-color: transparent; /* Ensures no color change */
-      box-shadow: none; /* Removes any shadows */
+      box-shadow: none;             /* Removes any shadows */
     }
 
     /* Landing button (on top of the landing image) */
@@ -156,7 +156,17 @@
   </div>
 
   <script>
+    // Global flag to ensure we only scroll to top once 
+    // (when going from landing -> screen1)
+    let hasScrolledTop = false;
+
     function showScreen(screenId) {
+      // If user is transitioning to "screen1" for the first time, scroll to top
+      if (screenId === 'screen1' && !hasScrolledTop) {
+        window.scrollTo(0, 0);
+        hasScrolledTop = true;
+      }
+
       // Hide them all
       document.getElementById('landing').style.display = 'none';
       document.getElementById('screen1').style.display = 'none';
