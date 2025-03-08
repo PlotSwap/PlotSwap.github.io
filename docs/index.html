@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Plot Swap Theater</title>
-  <!-- Ensures the page is scaled to the device’s width -->
+  <!-- Ensures mobile browsers fit the page width to the device -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* Remove default body padding/margin */
+    /* Remove default padding & margin */
     * {
       margin: 0;
       padding: 0;
@@ -15,37 +15,46 @@
     }
 
     /*
-      Each "screen" now fills the entire viewport
-      (instead of a fixed 414×896).
+      Each "screen" is a scrollable container 
+      that can expand if the image is taller than the viewport.
     */
     .screen {
-      width: 100vw;
-      height: 100vh;
-      position: relative;
-      margin: 0 auto;         /* center horizontally, though 100vw covers anyway */
-      background-size: cover;
-      background-position: center;
-      display: none;          /* hidden by default, except #landing */
+      position: relative;   /* So absolutely-positioned buttons can be placed inside */
+      width: 100vw;         /* Fill the device's width */
+      min-height: 100vh;    /* At least fill one screen's height */
+      display: none;        /* Hidden by default except #landing */
+      overflow: auto;       /* Allow scrolling if the image is taller than the screen */
     }
 
-    /* Landing screen is shown by default */
+    /* Show the landing screen by default */
     #landing {
       display: block;
-      background: url("https://i.imgur.com/xTDwJFX.png") no-repeat center center;
-      background-size: cover;
     }
 
-    /* A shared base class for all buttons. */
+    /*
+      Each screen image takes full width
+      and auto-adjusts height so it's not cut off horizontally.
+      If the image is taller than the screen, the user can scroll down.
+    */
+    .screen img {
+      display: block;       /* remove inline gaps */
+      width: 100%;          /* scale to container width */
+      height: auto;         /* maintain aspect ratio, can exceed screen height */
+    }
+
+    /* Shared base for the invisible "hotspot" buttons.
+       If you want them visible, remove or change `opacity: 0;` 
+    */
     .common-button {
       position: absolute;
-      background-color: grey;  /* base color, can override inline */
-      color: white;            /* text color, can override inline */
+      background-color: grey;
+      color: white;
       border: none;
       cursor: pointer;
-      opacity: 0;             /* currently invisible: set to 1 or remove if you want them visible */
+      opacity: 0;          /* <--- set to 1 (or remove) if you want to see them */
     }
 
-    /* The single button on landing screen, near bottom, 20% grey */
+    /* Landing button (on top of the landing image) */
     #landing button {
       position: absolute;
       left: 50%;
@@ -57,27 +66,14 @@
       cursor: pointer;
     }
 
-    /* Backgrounds for screens 1, 2, 3 */
-    #screen1 {
-      background: url("https://i.imgur.com/xSwRvDy.png") no-repeat center center;
-      background-size: cover;
-    }
-    #screen2 {
-      background: url("https://i.imgur.com/ufbqqaS.png") no-repeat center center;
-      background-size: cover;
-    }
-    #screen3 {
-      background: url("https://i.imgur.com/EzXjBEw.png") no-repeat center center;
-      background-size: cover;
-    }
-
     /*
-      The positions (top/left) are in percentages
-      so they move along with the background. 
-      You already set these; we leave them as is.
+      If you want each button in specific positions relative 
+      to the image, you can still use top/left in percentages or vw. 
+      But be aware that as the image grows vertically, 
+      the percentages might not match exact “spots” on the picture. 
     */
 
-    /* Screen 1: first two buttons */
+    /* Example positions for your first two buttons on each screen */
     #screen1 button:nth-of-type(1) {
       top: 66.5%;
       left: 18%;
@@ -87,7 +83,6 @@
       left: 18%;
     }
 
-    /* Screen 2: first two buttons */
     #screen2 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -97,7 +92,6 @@
       left: 18%;
     }
 
-    /* Screen 3: first two buttons */
     #screen3 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -112,62 +106,51 @@
 
   <!-- LANDING SCREEN -->
   <div id="landing" class="screen">
+    <!-- The landing image -->
+    <img src="https://i.imgur.com/xTDwJFX.png" alt="Landing Screen">
+    <!-- The visible "Start" button -->
     <button onclick="showScreen('screen1')">Start The Show</button>
   </div>
 
   <!-- SCREEN 1 -->
   <div id="screen1" class="screen">
-    <!-- Existing two buttons -->
-    <!-- 
-      Using ~63vw × 20.5vw keeps roughly the same ~260×85 ratio 
-      from your original code (260px:85px). 
-    -->
-    <button class="common-button"
-            style="width: 63vw; height: 20.5vw;"
+    <img src="https://i.imgur.com/xSwRvDy.png" alt="Screen1 Image">
+    <button class="common-button" 
+            style="width: 63vw; height: 20.5vw;" 
             onclick="showScreen('screen2')">Go to Screen 2</button>
-    <button class="common-button"
-            style="width: 63vw; height: 20.5vw;"
+    <button class="common-button" 
+            style="width: 63vw; height: 20.5vw;" 
             onclick="showScreen('screen3')">Go to Screen 3</button>
-
-    <!-- "Get Tickets" button -->
-    <!-- 
-      This was 150×85 in your code, 
-      which is ~36vw wide and ~20.5vw tall for the same ratio 
-    -->
-    <button class="common-button"
-            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
+    <button class="common-button" 
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
             onclick="getTickets()">Get Tickets</button>
   </div>
 
   <!-- SCREEN 2 -->
   <div id="screen2" class="screen">
-    <!-- Existing two buttons -->
-    <button class="common-button"
-            style="width: 63vw; height: 20.5vw;"
+    <img src="https://i.imgur.com/ufbqqaS.png" alt="Screen2 Image">
+    <button class="common-button" 
+            style="width: 63vw; height: 20.5vw;" 
             onclick="showScreen('screen1')">Screen 1</button>
-    <button class="common-button"
-            style="width: 63vw; height: 20.5vw;"
+    <button class="common-button" 
+            style="width: 63vw; height: 20.5vw;" 
             onclick="showScreen('screen3')">Screen 3</button>
-
-    <!-- "Get Tickets" button -->
-    <button class="common-button"
-            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
+    <button class="common-button" 
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
             onclick="getTickets()">Get Tickets</button>
   </div>
 
   <!-- SCREEN 3 -->
   <div id="screen3" class="screen">
-    <!-- Existing two buttons -->
-    <button class="common-button"
-            style="width: 63vw; height: 20.5vw;"
+    <img src="https://i.imgur.com/EzXjBEw.png" alt="Screen3 Image">
+    <button class="common-button" 
+            style="width: 63vw; height: 20.5vw;" 
             onclick="showScreen('screen1')">Screen 1</button>
-    <button class="common-button"
-            style="width: 63vw; height: 20.5vw;"
+    <button class="common-button" 
+            style="width: 63vw; height: 20.5vw;" 
             onclick="showScreen('screen2')">Screen 2</button>
-
-    <!-- "Get Tickets" button -->
-    <button class="common-button"
-            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
+    <button class="common-button" 
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
             onclick="getTickets()">Get Tickets</button>
   </div>
 
@@ -179,11 +162,11 @@
       document.getElementById('screen2').style.display = 'none';
       document.getElementById('screen3').style.display = 'none';
 
-      // Show just the requested screen
+      // Show only the requested screen
       document.getElementById(screenId).style.display = 'block';
     }
 
-    // Checks which screen is visible and navigates to a different link
+    // Checks which screen is visible and navigates accordingly
     function getTickets() {
       if (document.getElementById('screen1').style.display === 'block') {
         window.location.href = "https://example.com/tickets-for-screen-1";
