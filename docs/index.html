@@ -1,321 +1,198 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Overlay with About Us + Ticket Info Pages</title>
+  <meta charset="UTF-8">
+  <title>Plot Swap Theater</title>
+  <!-- Ensures the page is scaled to the device’s width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    /* Container for the main image */
-    .image-container {
-      position: relative;
-      width: 400px;
-      margin: 0 auto;
-    }
-
-    /* Main image expands to fill the container’s width */
-    .image-container img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Invisible hotspot “buttons” on the main image */
-    .hotspot {
-      position: absolute;
-      cursor: pointer;
-      opacity: 0; /* invisible but clickable */
-    }
-    .button1 {
-      bottom: 13%;
-      left: 20%;
-      width: 60%;
-      height: 10%;
-      background-color: rgba(255, 0, 0, 0.3); /* Debug color; remove if desired */
-    }
-    .button2 {
-      bottom: 24%;
-      left: 20%;
-      width: 60%;
-      height: 10%;
-      background-color: rgba(0, 72, 255, 0.3); /* Debug color; remove if desired */
-    }
-    .bottomHotspot-left {
-      bottom: 0;
-      left: 0;
-      width: 49%;
-      height: 10%;
-      background-color: rgba(0, 255, 0, 0.3); /* Debug color; remove if desired */
-    }
-    .bottomHotspot-right {
-      bottom: 0;
-      left: 51%;
-      width: 49%;
-      height: 10%;
-      background-color: rgba(255, 255, 0, 0.3); /* Debug color; remove if desired */
-    }
-
-    /* The overlay covers the .image-container, not the entire screen */
-    .overlay {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%; /* 400px */
-      min-height: 100%;
-      background-color: rgba(0,0,0,0.75);
-      z-index: 9999;
-    }
-
-    /* Content inside the overlay (e.g. the About Us or ticket pages) */
-    .overlay-content {
-      position: relative;
-      width: 100%;  /* match container width */
-      height: auto;
-    }
-
-    .overlay-content img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* Arrow hotspots for the ticket slideshow (invisible but clickable) */
-    .overlay-arrow-left,
-    .overlay-arrow-right {
-      position: absolute;
-      top: 30%; /* ~30% down from top of overlay */
-      width: 15%; /* narrower so user can click near edges */
-      height: 10%;
-      cursor: pointer;
-      opacity: 0;
-      /* Debug colors:
-         background-color: rgba(255,0,0,0.3) for left,
-         background-color: rgba(0,255,0,0.3) for right, etc. */
-    }
-    .overlay-arrow-left {
-      left: 0;
-      background-color: rgba(255,0,0,0.3); /* Debug color; remove if desired */
-    }
-    .overlay-arrow-right {
-      right: 0;
-      background-color: rgba(0,255,0,0.3); /* Debug color; remove if desired */
+    /* Remove default body padding/margin */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     /*
-      Two side-by-side buttons at bottom of overlay:
-      - "Back" on left
-      - "Ticket Info" on right (only shown on About Us page)
-      or if in ticket mode, just "Back" remains (and we show arrows).
+      Each "screen" now fills the entire viewport
+      (instead of a fixed 414×896).
     */
-    .overlay-bottom-btn {
-      position: absolute;
-      bottom: 0;
-      height: 10%;
-      margin: 0;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .back-button {
-      left: 0;
-      width: 48%;
-      background-color: #ff9999; /* Debug color; remove if desired */
-    }
-    .ticket-button {
-      right: 0;
-      width: 48%;
-      background-color: #9999ff; /* Debug color; remove if desired */
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      margin: 0 auto;         /* center horizontally, though 100vw covers anyway */
+      background-size: cover;
+      background-position: center;
+      display: none;          /* hidden by default, except #landing */
     }
 
+    /* Landing screen is shown by default */
+    #landing {
+      display: block;
+      background: url("https://i.imgur.com/xTDwJFX.png") no-repeat center center;
+      background-size: cover;
+    }
+
+    /* A shared base class for all buttons. */
+    .common-button {
+      position: absolute;
+      background-color: grey;  /* base color, can override inline */
+      color: white;            /* text color, can override inline */
+      border: none;
+      cursor: pointer;
+      opacity: 0;             /* currently invisible: set to 1 or remove if you want them visible */
+    }
+
+    /* The single button on landing screen, near bottom, 20% grey */
+    #landing button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 5%;
+      background-color: rgba(128,128,128,0.2); /* 20% opacity grey */
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    /* Backgrounds for screens 1, 2, 3 */
+    #screen1 {
+      background: url("https://i.imgur.com/xSwRvDy.png") no-repeat center center;
+      background-size: cover;
+    }
+    #screen2 {
+      background: url("https://i.imgur.com/ufbqqaS.png") no-repeat center center;
+      background-size: cover;
+    }
+    #screen3 {
+      background: url("https://i.imgur.com/EzXjBEw.png") no-repeat center center;
+      background-size: cover;
+    }
+
+    /*
+      The positions (top/left) are in percentages
+      so they move along with the background. 
+      You already set these; we leave them as is.
+    */
+
+    /* Screen 1: first two buttons */
+    #screen1 button:nth-of-type(1) {
+      top: 66.5%;
+      left: 18%;
+    }
+    #screen1 button:nth-of-type(2) {
+      top: 77.5%;
+      left: 18%;
+    }
+
+    /* Screen 2: first two buttons */
+    #screen2 button:nth-of-type(1) {
+      top: 47.5%;
+      left: 18%;
+    }
+    #screen2 button:nth-of-type(2) {
+      top: 77.5%;
+      left: 18%;
+    }
+
+    /* Screen 3: first two buttons */
+    #screen3 button:nth-of-type(1) {
+      top: 47.5%;
+      left: 18%;
+    }
+    #screen3 button:nth-of-type(2) {
+      top: 58.5%;
+      left: 18%;
+    }
   </style>
 </head>
 <body>
 
-<div class="image-container">
-  <!-- MAIN IMAGE -->
-  <img
-    id="mainImage"
-    src="https://i.imgur.com/r7C1ChN.png"
-    alt="Default Website Image"
-  />
-
-  <!-- Invisible hotspots for toggling -->
-  <div class="hotspot button1" onclick="toggleButton1()"></div>
-  <div class="hotspot button2" onclick="toggleButton2()"></div>
-  <div class="hotspot bottomHotspot-left" onclick="openOverlay()"></div>
-  <div class="hotspot bottomHotspot-right" onclick="buyNow()"></div>
-
-  <!-- OVERLAY -->
-  <div id="infoOverlay" class="overlay">
-    <div class="overlay-content">
-      <!-- The main image in the overlay (either About Us or a ticket page) -->
-      <img id="overlayImg" src="" alt="Overlay Page" />
-
-      <!-- Arrows for ticket slideshow. Only visible in "ticket" mode. -->
-      <div
-        id="arrowLeft"
-        class="overlay-arrow-left"
-        onclick="prevTicketPage()"
-        style="display: none;"
-      ></div>
-      <div
-        id="arrowRight"
-        class="overlay-arrow-right"
-        onclick="nextTicketPage()"
-        style="display: none;"
-      ></div>
-
-      <!-- Bottom Buttons -->
-      <button
-        class="overlay-bottom-btn back-button"
-        onclick="closeOverlay()"
-        id="overlayBackBtn"
-      >
-        Back
-      </button>
-      <button
-        class="overlay-bottom-btn ticket-button"
-        onclick="goToTicketInfo()"
-        id="overlayTicketBtn"
-      >
-        Ticket Info
-      </button>
-    </div>
+  <!-- LANDING SCREEN -->
+  <div id="landing" class="screen">
+    <button onclick="showScreen('screen1')">Start The Show</button>
   </div>
-</div>
 
-<script>
-  // -------------------------------
-  // MAIN IMAGE LOGIC
-  // -------------------------------
-  let button1Active = false;
-  let button2Active = false;
+  <!-- SCREEN 1 -->
+  <div id="screen1" class="screen">
+    <!-- Existing two buttons -->
+    <!-- 
+      Using ~63vw × 20.5vw keeps roughly the same ~260×85 ratio 
+      from your original code (260px:85px). 
+    -->
+    <button class="common-button"
+            style="width: 63vw; height: 20.5vw;"
+            onclick="showScreen('screen2')">Go to Screen 2</button>
+    <button class="common-button"
+            style="width: 63vw; height: 20.5vw;"
+            onclick="showScreen('screen3')">Go to Screen 3</button>
 
-  const defaultImg  = "https://i.imgur.com/r7C1ChN.png";
-  const galleryImg  = "https://i.imgur.com/Nz6CLMN.png";
-  const directorImg = "https://i.imgur.com/j4YLuCe.png";
-  const bothImg     = "https://i.imgur.com/ZVRL0sC.png";
+    <!-- "Get Tickets" button -->
+    <!-- 
+      This was 150×85 in your code, 
+      which is ~36vw wide and ~20.5vw tall for the same ratio 
+    -->
+    <button class="common-button"
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
+            onclick="getTickets()">Get Tickets</button>
+  </div>
 
-  function updateMainImage() {
-    const mainImage = document.getElementById("mainImage");
-    if (button1Active && button2Active) {
-      mainImage.src = bothImg;
-    } else if (button1Active) {
-      mainImage.src = galleryImg;
-    } else if (button2Active) {
-      mainImage.src = directorImg;
-    } else {
-      mainImage.src = defaultImg;
+  <!-- SCREEN 2 -->
+  <div id="screen2" class="screen">
+    <!-- Existing two buttons -->
+    <button class="common-button"
+            style="width: 63vw; height: 20.5vw;"
+            onclick="showScreen('screen1')">Screen 1</button>
+    <button class="common-button"
+            style="width: 63vw; height: 20.5vw;"
+            onclick="showScreen('screen3')">Screen 3</button>
+
+    <!-- "Get Tickets" button -->
+    <button class="common-button"
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
+            onclick="getTickets()">Get Tickets</button>
+  </div>
+
+  <!-- SCREEN 3 -->
+  <div id="screen3" class="screen">
+    <!-- Existing two buttons -->
+    <button class="common-button"
+            style="width: 63vw; height: 20.5vw;"
+            onclick="showScreen('screen1')">Screen 1</button>
+    <button class="common-button"
+            style="width: 63vw; height: 20.5vw;"
+            onclick="showScreen('screen2')">Screen 2</button>
+
+    <!-- "Get Tickets" button -->
+    <button class="common-button"
+            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;"
+            onclick="getTickets()">Get Tickets</button>
+  </div>
+
+  <script>
+    function showScreen(screenId) {
+      // Hide them all
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('screen1').style.display = 'none';
+      document.getElementById('screen2').style.display = 'none';
+      document.getElementById('screen3').style.display = 'none';
+
+      // Show just the requested screen
+      document.getElementById(screenId).style.display = 'block';
     }
-  }
 
-  function toggleButton1() {
-    button1Active = !button1Active;
-    updateMainImage();
-  }
-
-  function toggleButton2() {
-    button2Active = !button2Active;
-    updateMainImage();
-  }
-
-  function buyNow() {
-    if (button1Active && button2Active) {
-      window.location.href = "buy_both.html";
-    } else if (button1Active) {
-      window.location.href = "buy_gallery.html";
-    } else if (button2Active) {
-      window.location.href = "buy_director.html";
-    } else {
-      window.location.href = "buy_default.html";
+    // Checks which screen is visible and navigates to a different link
+    function getTickets() {
+      if (document.getElementById('screen1').style.display === 'block') {
+        window.location.href = "https://example.com/tickets-for-screen-1";
+      } else if (document.getElementById('screen2').style.display === 'block') {
+        window.location.href = "https://example.com/tickets-for-screen-2";
+      } else if (document.getElementById('screen3').style.display === 'block') {
+        window.location.href = "https://example.com/tickets-for-screen-3";
+      }
     }
-  }
-
-  // -------------------------------
-  // OVERLAY + MULTI-PAGE LOGIC
-  // -------------------------------
-
-  // We have 2 states for the overlay: "about" or "ticket".
-  let overlayState = "about"; // default to about
-  // The About Us page (no arrows)
-  const aboutUsImg = "https://i.imgur.com/6vt2f5m.png";
-  // The 3 ticket info pages (with arrows)
-  const ticketPages = [
-    "https://i.imgur.com/CB29YnT.png", /*private */
-    "https://i.imgur.com/As3g6BM.png", /*director */
-    "https://i.imgur.com/njJFt8e.png"  /*gallery */
-  ];
-  let currentTicketIndex = 0;
-
-  // Show the overlay with the last state the user had
-  function openOverlay() {
-    document.getElementById("infoOverlay").style.display = "block";
-    updateOverlay();
-  }
-
-  // Close the overlay
-  function closeOverlay() {
-    document.getElementById("infoOverlay").style.display = "none";
-  }
-
-  // Switch to the "about" page
-  function showAboutUs() {
-    overlayState = "about";
-    updateOverlay();
-  }
-
-  // Switch to the ticket pages (start or resume from last index)
-  function goToTicketInfo() {
-    overlayState = "ticket";
-    updateOverlay();
-  }
-
-  // Go to previous ticket page if possible
-  function prevTicketPage() {
-    if (currentTicketIndex > 0) {
-      currentTicketIndex--;
-      updateOverlay();
-    }
-  }
-
-  // Go to next ticket page if possible
-  function nextTicketPage() {
-    if (currentTicketIndex < ticketPages.length - 1) {
-      currentTicketIndex++;
-      updateOverlay();
-    }
-  }
-
-  // Update the overlay content based on overlayState
-  function updateOverlay() {
-    const overlayImg = document.getElementById("overlayImg");
-    const arrowLeft  = document.getElementById("arrowLeft");
-    const arrowRight = document.getElementById("arrowRight");
-    const ticketBtn  = document.getElementById("overlayTicketBtn");
-
-    if (overlayState === "about") {
-      // Show About Us image
-      overlayImg.src = aboutUsImg;
-      // Hide arrows
-      arrowLeft.style.display = "none";
-      arrowRight.style.display = "none";
-      // Show "Ticket Info" button
-      ticketBtn.style.display = "block";
-
-    } else if (overlayState === "ticket") {
-      // Show the current ticket page
-      overlayImg.src = ticketPages[currentTicketIndex];
-      // Show arrows
-      arrowLeft.style.display  = "block";
-      arrowRight.style.display = "block";
-      // Hide the "Ticket Info" button
-      ticketBtn.style.display  = "none";
-    }
-  }
-
-  // Initially, overlayState is "about", so if user opens overlay for the first time,
-  // they'll see the About Us page. If they close and reopen, they'll come back to
-  // whichever state (and page) they last viewed.
-</script>
-
+  </script>
 </body>
 </html>
