@@ -14,16 +14,11 @@
       box-sizing: border-box;
     }
 
-    /*
-      Each "screen" is a scrollable container 
-      that can expand if the image is taller than the viewport.
-    */
     .screen {
-      position: relative;   /* So absolutely-positioned buttons can be placed inside */
-      width: 100vw;         /* Fill the device's width */
-      min-height: 100vh;    /* At least fill one screen's height */
-      display: none;        /* Hidden by default except #landing */
-      overflow: auto;       /* Allow scrolling if the image is taller than the screen */
+      position: relative; 
+      width: 100vw;       
+      display: none;       
+      overflow: auto;      /* allow scroll if the image is taller than the browser */
     }
 
     /* Show the landing screen by default */
@@ -31,32 +26,24 @@
       display: block;
     }
 
-    /*
-      Each screen <img> takes full width
-      and auto-adjusts height so it's not cut off horizontally.
-      If the image is taller than the screen, the user can scroll.
-    */
+    /* The image expands to the container width and keeps aspect ratio */
     .screen img {
-      display: block;       /* remove inline gaps */
-      width: 100%;          /* scale to container width */
-      height: auto;         /* maintain aspect ratio, can exceed screen height */
+      display: block;  
+      width: 100%;     /* fill container width */
+      height: auto;    /* keep aspect ratio */
     }
 
-    /* 
-      Shared base for the invisible "hotspot" buttons.
-      If you want them visible, remove or change `opacity: 0;` 
-    */
     .common-button {
       position: absolute;
-      background: none;                 /* no background */
-      color: white;                     /* text color (irrelevant since opacity=0) */
+      background: none;
+      color: white;
       border: none;
       cursor: pointer;
-      opacity: 0;                      /* invisible by default */
-      -webkit-tap-highlight-color: transparent; /* removes iOS grey highlight */
+      opacity: 0;  /* invisible “hotspot” */
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Remove any press/focus/hover feedback */
+    /* Remove pressed/focus states */
     .common-button:hover,
     .common-button:active,
     .common-button:focus {
@@ -65,19 +52,19 @@
       box-shadow: none;
     }
 
-    /* Landing button (on top of the landing image) */
+    /* The visible button on the landing page */
     #landing button {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: 5%;
-      background-color: rgba(128,128,128,0.2); /* 20% opacity grey */
+      background-color: rgba(128,128,128,0.2);
       padding: 1rem 2rem;
       font-size: 1rem;
       cursor: pointer;
     }
 
-    /* Example positions for your first two buttons on each screen */
+    /* Positions for the “hotspot” buttons on each screen */
     #screen1 button:nth-of-type(1) {
       top: 66.5%;
       left: 18%;
@@ -110,9 +97,7 @@
 
   <!-- LANDING SCREEN -->
   <div id="landing" class="screen">
-    <!-- The landing image -->
     <img src="https://i.imgur.com/xTDwJFX.png" alt="Landing Screen">
-    <!-- The visible "Start" button -->
     <button onclick="showScreen('screen1')">Start The Show</button>
   </div>
 
@@ -121,13 +106,13 @@
     <img src="https://i.imgur.com/xSwRvDy.png" alt="Screen1 Image">
     <button class="common-button" 
             style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen2')">Go to Screen 2</button>
+            onclick="showScreen('screen2')"></button>
     <button class="common-button" 
             style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen3')">Go to Screen 3</button>
+            onclick="showScreen('screen3')"></button>
     <button class="common-button" 
             style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
-            onclick="getTickets()">Get Tickets</button>
+            onclick="getTickets()"></button>
   </div>
 
   <!-- SCREEN 2 -->
@@ -135,13 +120,13 @@
     <img src="https://i.imgur.com/ufbqqaS.png" alt="Screen2 Image">
     <button class="common-button" 
             style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen1')">Screen 1</button>
+            onclick="showScreen('screen1')"></button>
     <button class="common-button" 
             style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen3')">Screen 3</button>
+            onclick="showScreen('screen3')"></button>
     <button class="common-button" 
             style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
-            onclick="getTickets()">Get Tickets</button>
+            onclick="getTickets()"></button>
   </div>
 
   <!-- SCREEN 3 -->
@@ -149,22 +134,19 @@
     <img src="https://i.imgur.com/EzXjBEw.png" alt="Screen3 Image">
     <button class="common-button" 
             style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen1')">Screen 1</button>
+            onclick="showScreen('screen1')"></button>
     <button class="common-button" 
             style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen2')">Screen 2</button>
+            onclick="showScreen('screen2')"></button>
     <button class="common-button" 
             style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
-            onclick="getTickets()">Get Tickets</button>
+            onclick="getTickets()"></button>
   </div>
 
   <script>
-    // Global flag to ensure we only scroll to top once 
-    // (when going from landing -> screen1)
     let hasScrolledTop = false;
 
     function showScreen(screenId) {
-      // If user is transitioning to "screen1" for the first time, scroll to top
       if (screenId === 'screen1' && !hasScrolledTop) {
         window.scrollTo(0, 0);
         hasScrolledTop = true;
@@ -180,7 +162,6 @@
       document.getElementById(screenId).style.display = 'block';
     }
 
-    // Checks which screen is visible and navigates accordingly
     function getTickets() {
       if (document.getElementById('screen1').style.display === 'block') {
         window.location.href = "https://example.com/tickets-for-screen-1";
