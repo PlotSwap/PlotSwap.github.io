@@ -14,6 +14,8 @@
       box-sizing: border-box;
     }
 
+    /* Each "screen" (including landing) fills the viewport width, 
+       expands vertically as needed, and can scroll if tall. */
     .screen {
       position: relative; 
       width: 100vw;       
@@ -29,17 +31,18 @@
     /* The image expands to the container width and keeps aspect ratio */
     .screen img {
       display: block;  
-      width: 100%;     /* fill container width */
-      height: auto;    /* keep aspect ratio */
+      width: 100%;    
+      height: auto;   
     }
 
+    /* Invisible “hotspot” buttons */
     .common-button {
       position: absolute;
       background: none;
       color: white;
       border: none;
       cursor: pointer;
-      opacity: 0;  /* invisible “hotspot” */
+      opacity: 0;  /* invisible */
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -52,19 +55,17 @@
       box-shadow: none;
     }
 
-    /* The visible button on the landing page */
-    #landing button {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 5%;
-      background-color: rgba(128,128,128,0.2);
-      padding: 1rem 2rem;
-      font-size: 1rem;
-      cursor: pointer;
+    /* The “hotspot” positions for each screen */
+
+    /* LANDING SCREEN: now has an invisible button that calls showScreen('screen2') */
+    #landing button:nth-of-type(1) {
+      top: 82.5%;
+      left: 18%;
+      width: 63vw;
+      height: 20.5vw;
     }
 
-    /* Positions for the “hotspot” buttons on each screen */
+    /* SCREEN 1 VIP */
     #screen1 button:nth-of-type(1) {
       top: 66.5%;
       left: 18%;
@@ -74,6 +75,7 @@
       left: 18%;
     }
 
+    /* SCREEN 2 DIR */
     #screen2 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -83,6 +85,7 @@
       left: 18%;
     }
 
+    /* SCREEN 3 GAL */
     #screen3 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -97,8 +100,10 @@
 
   <!-- LANDING SCREEN -->
   <div id="landing" class="screen">
-    <img src="https://i.imgur.com/xTDwJFX.png" alt="Landing Screen">
-    <button onclick="showScreen('screen2')">Start The Show</button>
+    <img src="https://i.imgur.com/oPbQ54v.png" alt="Landing Screen">
+    <!-- Invisible hotspot button, placed the same as Screen1's 2nd button -->
+    <button class="common-button" 
+            onclick="showScreen('screen2')"></button>
   </div>
 
   <!-- SCREEN 1 VIP -->
