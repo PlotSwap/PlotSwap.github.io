@@ -3,50 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Plot Swap Theater</title>
-  <!-- Ensures mobile browsers fit the page width to the device -->
+  <!-- Ensures mobile browsers fit page width to the device -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    /* Remove default padding & margin */
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    /* Each "screen" (including landing) fills the viewport width, 
-       expands vertically as needed, and can scroll if tall. */
+    /* 
+       Container for each “screen.” 
+       We position them absolutely so they can overlap.
+    */
     .screen {
-      position: relative; 
-      width: 100vw;       
-      display: none;       
-      overflow: auto;      /* allow scroll if the image is taller than the browser */
-    }
-
-    /* Show the landing screen by default */
-    #landing {
-      display: block;
-    }
-
-    /* The image expands to the container width and keeps aspect ratio */
-    .screen img {
-      display: block;  
-      width: 100%;    
-      height: auto;   
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      min-height: 100vh; /* let it scroll if tall */
+      overflow: auto;
     }
 
     /* Invisible “hotspot” buttons */
     .common-button {
       position: absolute;
       background: none;
-      color: white;
       border: none;
       cursor: pointer;
       opacity: 0;  /* invisible */
-      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color: transparent; /* remove tap highlight on iOS */
     }
-
-    /* Remove pressed/focus states */
     .common-button:hover,
     .common-button:active,
     .common-button:focus {
@@ -55,118 +44,171 @@
       box-shadow: none;
     }
 
-    /* The “hotspot” positions for each screen */
+    /* All images fill screen width, keep aspect ratio */
+    .screen img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-    /* LANDING SCREEN: now has an invisible button that calls showScreen('screen2') */
-    #landing button:nth-of-type(1) {
+    /* ================= LANDING SCREEN ================= */
+    /* On top by default (z-index:2), fully visible (opacity:1), 
+       with a fade transition on opacity. */
+    #landing {
+      z-index: 2;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+
+    /* The button on the landing screen that triggers fade. */
+    #landing button {
       top: 82.5%;
       left: 18%;
       width: 63vw;
       height: 20.5vw;
     }
 
-    /* SCREEN 1 VIP */
+    /* ================= SCREEN 1 ================= */
+    /* Behind landing (z-index:1), shown from start so image is loaded. */
+    #screen1 {
+      z-index: 1;
+      display: block; 
+    }
+
+    /* Positions for Screen 1's hotspot buttons */
     #screen1 button:nth-of-type(1) {
       top: 66.5%;
       left: 18%;
+      width: 63vw;
+      height: 20.5vw;
     }
     #screen1 button:nth-of-type(2) {
       top: 77.5%;
       left: 18%;
+      width: 63vw;
+      height: 20.5vw;
+    }
+    #screen1 button:nth-of-type(3) {
+      top: 87.5%;
+      left: 35%;
+      width: 36vw;
+      height: 20.5vw;
     }
 
-    /* SCREEN 2 DIR */
+    /* ================= SCREEN 2 & SCREEN 3 ================= */
+    /* Hidden initially, but in DOM so images load. */
+    #screen2, #screen3 {
+      z-index: 0;
+      display: none;
+    }
+
+    /* Positions for Screen 2's buttons */
     #screen2 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
+      width: 63vw;
+      height: 20.5vw;
     }
     #screen2 button:nth-of-type(2) {
       top: 77.5%;
       left: 18%;
+      width: 63vw;
+      height: 20.5vw;
+    }
+    #screen2 button:nth-of-type(3) {
+      top: 87.5%;
+      left: 35%;
+      width: 36vw;
+      height: 20.5vw;
     }
 
-    /* SCREEN 3 GAL */
+    /* Positions for Screen 3's buttons */
     #screen3 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
+      width: 63vw;
+      height: 20.5vw;
     }
     #screen3 button:nth-of-type(2) {
       top: 58.5%;
       left: 18%;
+      width: 63vw;
+      height: 20.5vw;
+    }
+    #screen3 button:nth-of-type(3) {
+      top: 87.5%;
+      left: 35%;
+      width: 36vw;
+      height: 20.5vw;
     }
   </style>
 </head>
 <body>
 
-  <!-- LANDING SCREEN -->
+  <!-- LANDING SCREEN (e.g., closed curtains) -->
   <div id="landing" class="screen">
-    <img src="https://i.imgur.com/oPbQ54v.png" alt="Landing Screen">
-    <!-- Invisible hotspot button, placed the same as Screen1's 2nd button -->
-    <button class="common-button" 
-            onclick="showScreen('screen2')"></button>
+    <img src="https://i.imgur.com/oPbQ54v.png" alt="Landing Screen (Closed Curtain)">
+    <!-- Invisible hotspot, triggers fade to screen1 -->
+    <button class="common-button" onclick="fadeLandingToScreen1()"></button>
   </div>
 
-  <!-- SCREEN 1 VIP -->
+  <!-- SCREEN 1 (open curtains / VIP, behind landing) -->
   <div id="screen1" class="screen">
-    <img src="https://i.imgur.com/PcZx7y7.png" alt="Screen1 Image">
-    <button class="common-button" 
-            style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen2')"></button>
-    <button class="common-button" 
-            style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen3')"></button>
-    <button class="common-button" 
-            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
-            onclick="getTickets()"></button>
+    <img src="https://i.imgur.com/PcZx7y7.png" alt="Screen1 Image (VIP)">
+    <button class="common-button" onclick="showScreen('screen2')"></button>
+    <button class="common-button" onclick="showScreen('screen3')"></button>
+    <button class="common-button" onclick="getTickets()"></button>
   </div>
 
-  <!-- SCREEN 2 DIR -->
+  <!-- SCREEN 2 (director) -->
   <div id="screen2" class="screen">
-    <img src="https://i.imgur.com/TRZGBkg.png" alt="Screen2 Image">
-    <button class="common-button" 
-            style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen1')"></button>
-    <button class="common-button" 
-            style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen3')"></button>
-    <button class="common-button" 
-            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
-            onclick="getTickets()"></button>
+    <img src="https://i.imgur.com/TRZGBkg.png" alt="Screen2 Image (Director)">
+    <button class="common-button" onclick="showScreen('screen1')"></button>
+    <button class="common-button" onclick="showScreen('screen3')"></button>
+    <button class="common-button" onclick="getTickets()"></button>
   </div>
 
-  <!-- SCREEN 3 GAL -->
+  <!-- SCREEN 3 (gallery) -->
   <div id="screen3" class="screen">
-    <img src="https://i.imgur.com/v77CDiY.png" alt="Screen3 Image">
-    <button class="common-button" 
-            style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen1')"></button>
-    <button class="common-button" 
-            style="width: 63vw; height: 20.5vw;" 
-            onclick="showScreen('screen2')"></button>
-    <button class="common-button" 
-            style="top: 87.5%; left: 35%; width: 36vw; height: 20.5vw;" 
-            onclick="getTickets()"></button>
+    <img src="https://i.imgur.com/v77CDiY.png" alt="Screen3 Image (Gallery)">
+    <button class="common-button" onclick="showScreen('screen1')"></button>
+    <button class="common-button" onclick="showScreen('screen2')"></button>
+    <button class="common-button" onclick="getTickets()"></button>
   </div>
 
   <script>
+    // Only scroll-to-top once, when going from landing -> screen1
     let hasScrolledTop = false;
 
-    function showScreen(screenId) {
-      if (screenId === 'screen2' && !hasScrolledTop) {
-        window.scrollTo(0, 0);
+    // Fades out #landing, revealing #screen1 behind it
+    function fadeLandingToScreen1() {
+      if (!hasScrolledTop) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         hasScrolledTop = true;
       }
 
-      // Hide them all
-      document.getElementById('landing').style.display = 'none';
+      // Slight delay so user sees the scroll begin
+      setTimeout(() => {
+        const landing = document.getElementById('landing');
+        landing.style.opacity = 0;  // triggers the CSS transition
+      }, 500);
+
+      // After the 1s fade completes, hide landing
+      setTimeout(() => {
+        document.getElementById('landing').style.display = 'none';
+      }, 1700);
+    }
+
+    // For subsequent screen changes, do a simple hide/show
+    function showScreen(screenId) {
       document.getElementById('screen1').style.display = 'none';
       document.getElementById('screen2').style.display = 'none';
       document.getElementById('screen3').style.display = 'none';
 
-      // Show only the requested screen
       document.getElementById(screenId).style.display = 'block';
     }
 
+    // Each screen has a "Get Tickets" button
     function getTickets() {
       if (document.getElementById('screen1').style.display === 'block') {
         window.location.href = "https://example.com/tickets-for-screen-1";
