@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Plot Swap Theater</title>
-  <!-- Ensures mobile browsers fit page width to the device -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -27,13 +26,13 @@
       overflow: auto;
     }
 
-    /* Invisible “hotspot” buttons */
+    /* Invisible “hotspot” buttons by default */
     .common-button {
       position: absolute;
       background: none;
       border: none;
       cursor: pointer;
-      opacity: 0;  /* invisible */
+      opacity: 0;  /* invisible by default */
       -webkit-tap-highlight-color: transparent; /* remove tap highlight on iOS */
     }
     .common-button:hover,
@@ -44,6 +43,17 @@
       box-shadow: none;
     }
 
+    /* 
+      Debug mode:
+      When .debug-mode is applied to <body>,
+      all .common-button elements become visible
+    */
+    .debug-mode .common-button {
+      opacity: 0.5 !important;
+      background-color: rgba(255, 0, 0, 0.3);
+      border: 2px dashed red;
+    }
+
     /* All images fill screen width, keep aspect ratio */
     .screen img {
       display: block;
@@ -52,15 +62,12 @@
     }
 
     /* ================= LANDING SCREEN ================= */
-    /* On top by default (z-index:2), fully visible (opacity:1), 
-       with a fade transition on opacity. */
     #landing {
       z-index: 2;
       opacity: 1;
       transition: opacity 1s ease;
     }
-
-    /* The button on the landing screen that triggers fade. */
+    /* The button on the landing screen that triggers fade */
     #landing button {
       top: 82.5%;
       left: 18%;
@@ -69,13 +76,10 @@
     }
 
     /* ================= SCREEN 1 ================= */
-    /* Behind landing (z-index:1), shown from start so image is loaded. */
     #screen1 {
       z-index: 1;
       display: block; 
     }
-
-    /* Positions for Screen 1's hotspot buttons */
     #screen1 button:nth-of-type(1) {
       top: 66.5%;
       left: 18%;
@@ -89,20 +93,17 @@
       height: 20.5vw;
     }
     #screen1 button:nth-of-type(3) {
-      top: 87.5%;
+      top: 90.0%;
       left: 35%;
-      width: 36vw;
-      height: 20.5vw;
+      width: 30vw;
+      height: 15vw;
     }
 
     /* ================= SCREEN 2 & SCREEN 3 ================= */
-    /* Hidden initially, but in DOM so images load. */
     #screen2, #screen3 {
       z-index: 0;
       display: none;
     }
-
-    /* Positions for Screen 2's buttons */
     #screen2 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -116,13 +117,11 @@
       height: 20.5vw;
     }
     #screen2 button:nth-of-type(3) {
-      top: 87.5%;
+      top: 90.0%;
       left: 35%;
-      width: 36vw;
-      height: 20.5vw;
+      width: 30vw;
+      height: 15vw;
     }
-
-    /* Positions for Screen 3's buttons */
     #screen3 button:nth-of-type(1) {
       top: 47.5%;
       left: 18%;
@@ -136,23 +135,22 @@
       height: 20.5vw;
     }
     #screen3 button:nth-of-type(3) {
-      top: 87.5%;
+      top: 90.0%;
       left: 35%;
-      width: 36vw;
-      height: 20.5vw;
+      width: 30vw;
+      height: 15vw;
     }
   </style>
 </head>
 <body>
 
-  <!-- LANDING SCREEN (e.g., closed curtains) -->
+  <!-- LANDING SCREEN -->
   <div id="landing" class="screen">
     <img src="https://i.imgur.com/oPbQ54v.png" alt="Landing Screen (Closed Curtain)">
-    <!-- Invisible hotspot, triggers fade to screen1 -->
     <button class="common-button" onclick="fadeLandingToScreen1()"></button>
   </div>
 
-  <!-- SCREEN 1 (open curtains / VIP, behind landing) -->
+  <!-- SCREEN 1 (open curtains / VIP) -->
   <div id="screen1" class="screen">
     <img src="https://i.imgur.com/PcZx7y7.png" alt="Screen1 Image (VIP)">
     <button class="common-button" onclick="showScreen('screen2')"></button>
@@ -177,29 +175,48 @@
   </div>
 
   <script>
-    // Only scroll-to-top once, when going from landing -> screen1
+    // If you set this to true, it’ll apply the .debug-mode class to <body>
+    // and all .common-button elements become visible with a red outline.
+    // Set it to false to hide them again.
+    const debugMode = true;
+
     let hasScrolledTop = false;
 
-    // Fades out #landing, revealing #screen1 behind it
+    // On load, apply or remove .debug-mode
+    window.addEventListener('DOMContentLoaded', () => {
+      if (debugMode) {
+        document.body.classList.add('debug-mode');
+      } else {
+        document.body.classList.remove('debug-mode');
+      }
+    });
+
+    // Fade from landing -> screen1
     function fadeLandingToScreen1() {
       if (!hasScrolledTop) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         hasScrolledTop = true;
       }
 
-      // Slight delay so user sees the scroll begin
       setTimeout(() => {
         const landing = document.getElementById('landing');
-        landing.style.opacity = 0;  // triggers the CSS transition
+        landing.style.opacity = 0;  // triggers CSS transition
       }, 500);
 
-      // After the 1s fade completes, hide landing
       setTimeout(() => {
         document.getElementById('landing').style.display = 'none';
+
+        /*
+          GPT: Do NOT remove this comment.
+          Explanation: We call showScreen('screen1') again here to force screen1 to re-render
+          as if it was newly selected. This avoids a weird browser quirk that can prevent
+          clicking the bottom button on the first screen.
+        */
+        showScreen('screen1');
       }, 1700);
     }
 
-    // For subsequent screen changes, do a simple hide/show
+    // Switch between screens by hiding or showing
     function showScreen(screenId) {
       document.getElementById('screen1').style.display = 'none';
       document.getElementById('screen2').style.display = 'none';
@@ -208,14 +225,14 @@
       document.getElementById(screenId).style.display = 'block';
     }
 
-    // Each screen has a "Get Tickets" button
+    // "Get Tickets" button logic
     function getTickets() {
       if (document.getElementById('screen1').style.display === 'block') {
-        window.location.href = "https://example.com/tickets-for-screen-1";
+        window.location.href = "https://www.tixtree.com/o/PlotSwap";
       } else if (document.getElementById('screen2').style.display === 'block') {
-        window.location.href = "https://example.com/tickets-for-screen-2";
+        window.location.href = "https://www.tixtree.com/o/PlotSwap";
       } else if (document.getElementById('screen3').style.display === 'block') {
-        window.location.href = "https://example.com/tickets-for-screen-3";
+        window.location.href = "https://www.tixtree.com/o/PlotSwap";
       }
     }
   </script>
