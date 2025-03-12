@@ -5,12 +5,23 @@
   <title>Plot Swap Theater</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Tells Chrome on Android to color the browser's top bar -->
+  <meta name="theme-color" content="#dcdcdc">
+
   <style>
     /* Reset */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    /*
+      Use a light-gray background so that any
+      areas not covered by an image match #dcdcdc.
+    */
+    html, body {
+      background-color: #dcdcdc;
     }
 
     /* 
@@ -177,7 +188,6 @@
   <script>
     // If you set this to true, it’ll apply the .debug-mode class to <body>
     // and all .common-button elements become visible with a red outline.
-    // Set it to false to hide them again.
     const debugMode = false;
 
     let hasScrolledTop = false;
