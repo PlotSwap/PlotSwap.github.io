@@ -5,8 +5,8 @@
   <title>Plot Swap Theater</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- This meta tag colors the top bar red on Android -->
-  <meta name="theme-color" content="#a31f1f">
+  <!-- Tells Chrome on Android to color the browser's top bar -->
+  <meta name="theme-color" content="#dcdcdc">
 
   <style>
     /* Reset */
@@ -17,8 +17,8 @@
     }
 
     /*
-      Give the entire page a gray background color.
-      iOS and Android will both see #dcdcdc behind your images.
+      Use a light-gray background so that any
+      areas not covered by an image match #dcdcdc.
     */
     html, body {
       background-color: #dcdcdc;
@@ -237,8 +237,13 @@
 
     // "Get Tickets" button logic
     function getTickets() {
-      // Whichever screen is visible, it goes to the same link
-      window.location.href = "https://www.tixtree.com/o/PlotSwap";
+      if (document.getElementById('screen1').style.display === 'block') {
+        window.location.href = "https://www.tixtree.com/o/PlotSwap";
+      } else if (document.getElementById('screen2').style.display === 'block') {
+        window.location.href = "https://www.tixtree.com/o/PlotSwap";
+      } else if (document.getElementById('screen3').style.display === 'block') {
+        window.location.href = "https://www.tixtree.com/o/PlotSwap";
+      }
     }
   </script>
 </body>
