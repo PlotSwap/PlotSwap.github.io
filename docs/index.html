@@ -5,22 +5,23 @@
   <title>Plot Swap Theater</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Make the top bar red on Android -->
+  <!-- This meta tag colors the top bar red on Android -->
   <meta name="theme-color" content="#a31f1f">
 
   <style>
-    /* Give HTML a red background for the top overscroll area */
-    html {
-      background-color: #a31f1f; /* Red */
-      height: 100%;
-    }
-
-    /* Give BODY a gray background so the main page is gray */
-    body {
-      background-color: #dcdcdc; /* Gray */
+    /* Reset */
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
+      box-sizing: border-box;
+    }
+
+    /*
+      Give the entire page a gray background color.
+      iOS and Android will both see #dcdcdc behind your images.
+    */
+    html, body {
+      background-color: #dcdcdc;
     }
 
     /* 
@@ -32,7 +33,7 @@
       top: 0;
       left: 0;
       width: 100vw;
-      min-height: 100vh; /* let each screen fill at least one full viewport */
+      min-height: 100vh; /* let it scroll if tall */
       overflow: auto;
     }
 
@@ -203,7 +204,6 @@
     // Fade from landing -> screen1
     function fadeLandingToScreen1() {
       if (!hasScrolledTop) {
-        // Make sure we’re at top to minimize weird overscroll visuals
         window.scrollTo({ top: 0, behavior: 'smooth' });
         hasScrolledTop = true;
       }
@@ -237,7 +237,7 @@
 
     // "Get Tickets" button logic
     function getTickets() {
-      // Whichever screen is visible, it links to the same place
+      // Whichever screen is visible, it goes to the same link
       window.location.href = "https://www.tixtree.com/o/PlotSwap";
     }
   </script>
