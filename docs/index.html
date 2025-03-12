@@ -5,8 +5,8 @@
   <title>Plot Swap Theater</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Tells Chrome on Android to color the browser's top bar -->
-  <meta name="theme-color" content="#dcdcdc">
+  <!-- Make the browser top bar color #a31f1f on Android -->
+  <meta name="theme-color" content="#a31f1f">
 
   <style>
     /* Reset */
@@ -16,12 +16,19 @@
       box-sizing: border-box;
     }
 
-    /*
-      Use a light-gray background so that any
-      areas not covered by an image match #dcdcdc.
+    /* 
+      Make the top half #a31f1f (red) and the bottom half #dcdcdc (gray).
+      The “50%, 50%” stops ensure there is a hard line rather than a gradual fade.
     */
     html, body {
-      background-color: #dcdcdc;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        #a31f1f 0%,
+        #a31f1f 50%,
+        #dcdcdc 50%,
+        #dcdcdc 100%
+      );
     }
 
     /* 
@@ -237,13 +244,8 @@
 
     // "Get Tickets" button logic
     function getTickets() {
-      if (document.getElementById('screen1').style.display === 'block') {
-        window.location.href = "https://www.tixtree.com/o/PlotSwap";
-      } else if (document.getElementById('screen2').style.display === 'block') {
-        window.location.href = "https://www.tixtree.com/o/PlotSwap";
-      } else if (document.getElementById('screen3').style.display === 'block') {
-        window.location.href = "https://www.tixtree.com/o/PlotSwap";
-      }
+      // Whichever screen is visible, it goes to the same link
+      window.location.href = "https://www.tixtree.com/o/PlotSwap";
     }
   </script>
 </body>
