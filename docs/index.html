@@ -9,13 +9,50 @@
 	</head>
 	<body class="bg-gray-200 min-h-screen">
 		<!-- Splash / Hero Section -->
-		<div
+     
+    <div
+      class="relative w-full h-64 md:h-80 bg-contain bg-repeat bg-center"
+      style="background-image: url('https://i.imgur.com/1wvjekG.png');"
+    >
+      <!-- Fade-out overlay (dark on edges, transparent in middle) -->
+      <div class="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/70 via-transparent to-black/70"></div>
+    
+      <!-- Centered main splash -->
+      <div class="absolute inset-0 flex items-center justify-center z-10">
+        <img
+          src="https://i.imgur.com/ab6UK2w.png"
+          alt="Main Splash"
+          class="h-full object-contain"
+        />
+      </div>
+    </div>
+  
+
+
+    <!-- working with repeating image on sides: -->
+    <!-- <div
+      class="relative w-full h-64 md:h-80 bg-contain bg-repeat bg-center"
+      style="background-image: url('https://i.imgur.com/1wvjekG.png')"
+    > -->
+      <!-- Child absolutely centered with your main splash -->
+      <!-- <div class="absolute inset-0 flex justify-center items-center">
+        <img
+          src="https://i.imgur.com/ab6UK2w.png"
+          alt="Main Splash"
+          class="h-full object-contain"
+        />
+      </div>
+    </div> -->
+
+
+    <!-- working with centered and black bar sides -->
+		<!-- <div
 			class="relative w-full h-64 md:h-80 bg-contain bg-no-repeat bg-center"
 			style="
 				background-image: url('https://i.imgur.com/ab6UK2w.png');
 				background-color: #343434;
 			"
-		>
+		> -->
 			<!-- relative w-full h-64 md:h-80 bg-contain bg-no-repeat bg-center  VS.. bg-cover -->
 
 			<!-- <button
