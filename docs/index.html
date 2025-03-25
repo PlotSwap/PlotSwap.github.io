@@ -1,250 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Plot Swap Theater</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Plot Swap Theater</title>
+		<!-- Tailwind via CDN -->
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-gray-200 min-h-screen">
+		<!-- Splash / Hero Section -->
+		<div
+			class="relative w-full h-64 md:h-80 bg-contain bg-no-repeat bg-center"
+			style="
+				background-image: url('https://i.imgur.com/ab6UK2w.png');
+				background-color: #343434;
+			"
+		>
+			<!-- relative w-full h-64 md:h-80 bg-contain bg-no-repeat bg-center  VS.. bg-cover -->
 
-  <!-- Tells Chrome on Android to color the browser's top bar -->
-  <meta name="theme-color" content="#dcdcdc">
+			<!-- <button
+				class="absolute inset-x-1/2 bottom-4 transform -translate-x-1/2 bg-yellow-500 text-white py-2 px-6 rounded hover:bg-yellow-600"
+				onclick="fadeLandingToScreen1()"
+			>
+				Enter
+			</button> -->
+		</div>
 
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+		<!-- Role Choices -->
+		<div class="max-w-md mx-auto mt-6 px-4">
+			<h2 class="text-center text-2xl font-bold mb-4">
+				Choose Your Role
+			</h2>
+			<div class="space-y-4">
+				<div class="bg-yellow-200 p-4 rounded">
+					<h3 class="font-bold">VIP — $300 × 10</h3>
+					<p class="text-sm">
+						All yours. No strangers. No rush. Play your way.
+					</p>
+				</div>
+				<div class="bg-purple-200 p-4 rounded">
+					<h3 class="font-bold">Director — $100 × 2</h3>
+					<p class="text-sm">Decide the Plot.</p>
+				</div>
+				<div class="bg-green-200 p-4 rounded">
+					<h3 class="font-bold">Gallery — $100 × 4</h3>
+					<p class="text-sm">Watch it all happen.</p>
+				</div>
+			</div>
+			<button
+				class="block w-full mt-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+				onclick="getTickets()"
+			>
+				Get Tickets
+			</button>
+		</div>
 
-    /*
-      Use a light-gray background so that any
-      areas not covered by an image match #dcdcdc.
-    */
-    html, body {
-      background-color: #dcdcdc;
-    }
-
-    /* 
-       Container for each “screen.” 
-       We position them absolutely so they can overlap.
-    */
-    .screen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      min-height: 100vh; /* let it scroll if tall */
-      overflow: auto;
-    }
-
-    /* Invisible “hotspot” buttons by default */
-    .common-button {
-      position: absolute;
-      background: none;
-      border: none;
-      cursor: pointer;
-      opacity: 0;  /* invisible by default */
-      -webkit-tap-highlight-color: transparent; /* remove tap highlight on iOS */
-    }
-    .common-button:hover,
-    .common-button:active,
-    .common-button:focus {
-      outline: none;
-      background-color: transparent;
-      box-shadow: none;
-    }
-
-    /* 
-      Debug mode:
-      When .debug-mode is applied to <body>,
-      all .common-button elements become visible
-    */
-    .debug-mode .common-button {
-      opacity: 0.5 !important;
-      background-color: rgba(255, 0, 0, 0.3);
-      border: 2px dashed red;
-    }
-
-    /* All images fill screen width, keep aspect ratio */
-    .screen img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    /* ================= LANDING SCREEN ================= */
-    #landing {
-      z-index: 2;
-      opacity: 1;
-      transition: opacity 1s ease;
-    }
-    /* The button on the landing screen that triggers fade */
-    #landing button {
-      top: 84.5%;
-      left: 21.25%;
-      width: 57vw;
-      height: 17vw;
-    }
-
-    /* ================= SCREEN 1 ================= */
-    #screen1 {
-      z-index: 1;
-      display: block; 
-    }
-    #screen1 button:nth-of-type(1) {
-      top: 66.5%;
-      left: 18%;
-      width: 63vw;
-      height: 20.5vw;
-    }
-    #screen1 button:nth-of-type(2) {
-      top: 77.5%;
-      left: 18%;
-      width: 63vw;
-      height: 20.5vw;
-    }
-    #screen1 button:nth-of-type(3) {
-      top: 90.0%;
-      left: 35%;
-      width: 30vw;
-      height: 15vw;
-    }
-
-    /* ================= SCREEN 2 & SCREEN 3 ================= */
-    #screen2, #screen3 {
-      z-index: 0;
-      display: none;
-    }
-    #screen2 button:nth-of-type(1) {
-      top: 47.5%;
-      left: 18%;
-      width: 63vw;
-      height: 20.5vw;
-    }
-    #screen2 button:nth-of-type(2) {
-      top: 77.5%;
-      left: 18%;
-      width: 63vw;
-      height: 20.5vw;
-    }
-    #screen2 button:nth-of-type(3) {
-      top: 90.0%;
-      left: 35%;
-      width: 30vw;
-      height: 15vw;
-    }
-    #screen3 button:nth-of-type(1) {
-      top: 47.5%;
-      left: 18%;
-      width: 63vw;
-      height: 20.5vw;
-    }
-    #screen3 button:nth-of-type(2) {
-      top: 58.5%;
-      left: 18%;
-      width: 63vw;
-      height: 20.5vw;
-    }
-    #screen3 button:nth-of-type(3) {
-      top: 90.0%;
-      left: 35%;
-      width: 30vw;
-      height: 15vw;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- LANDING SCREEN -->
-  <div id="landing" class="screen">
-    <img src="https://i.imgur.com/NBoQ2Wk.png" alt="Landing Screen (Closed Curtain)">
-    <button class="common-button" onclick="fadeLandingToScreen1()"></button>
-  </div>
-
-  <!-- SCREEN 1 (open curtains / VIP) -->
-  <div id="screen1" class="screen">
-    <img src="https://i.imgur.com/PcZx7y7.png" alt="Screen1 Image (VIP)">
-    <button class="common-button" onclick="showScreen('screen2')"></button>
-    <button class="common-button" onclick="showScreen('screen3')"></button>
-    <button class="common-button" onclick="getTickets()"></button>
-  </div>
-
-  <!-- SCREEN 2 (director) -->
-  <div id="screen2" class="screen">
-    <img src="https://i.imgur.com/TRZGBkg.png" alt="Screen2 Image (Director)">
-    <button class="common-button" onclick="showScreen('screen1')"></button>
-    <button class="common-button" onclick="showScreen('screen3')"></button>
-    <button class="common-button" onclick="getTickets()"></button>
-  </div>
-
-  <!-- SCREEN 3 (gallery) -->
-  <div id="screen3" class="screen">
-    <img src="https://i.imgur.com/v77CDiY.png" alt="Screen3 Image (Gallery)">
-    <button class="common-button" onclick="showScreen('screen1')"></button>
-    <button class="common-button" onclick="showScreen('screen2')"></button>
-    <button class="common-button" onclick="getTickets()"></button>
-  </div>
-
-  <script>
-    // If you set this to true, it’ll apply the .debug-mode class to <body>
-    // and all .common-button elements become visible with a red outline.
-    const debugMode = false;
-
-    let hasScrolledTop = false;
-
-    // On load, apply or remove .debug-mode
-    window.addEventListener('DOMContentLoaded', () => {
-      if (debugMode) {
-        document.body.classList.add('debug-mode');
-      } else {
-        document.body.classList.remove('debug-mode');
-      }
-    });
-
-    // Fade from landing -> screen1
-    function fadeLandingToScreen1() {
-      if (!hasScrolledTop) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        hasScrolledTop = true;
-      }
-
-      setTimeout(() => {
-        const landing = document.getElementById('landing');
-        landing.style.opacity = 0;  // triggers CSS transition
-      }, 500);
-
-      setTimeout(() => {
-        document.getElementById('landing').style.display = 'none';
-
-        /*
-          GPT: Do NOT remove this comment.
-          Explanation: We call showScreen('screen1') again here to force screen1 to re-render
-          as if it was newly selected. This avoids a weird browser quirk that can prevent
-          clicking the bottom button on the first screen.
-        */
-        showScreen('screen1');
-      }, 1700);
-    }
-
-    // Switch between screens by hiding or showing
-    function showScreen(screenId) {
-      document.getElementById('screen1').style.display = 'none';
-      document.getElementById('screen2').style.display = 'none';
-      document.getElementById('screen3').style.display = 'none';
-
-      document.getElementById(screenId).style.display = 'block';
-    }
-
-    // "Get Tickets" button logic
-    function getTickets() {
-      if (document.getElementById('screen1').style.display === 'block') {
-        window.location.href = "https://www.tixtree.com/o/PlotSwap";
-      } else if (document.getElementById('screen2').style.display === 'block') {
-        window.location.href = "https://www.tixtree.com/o/PlotSwap";
-      } else if (document.getElementById('screen3').style.display === 'block') {
-        window.location.href = "https://www.tixtree.com/o/PlotSwap";
-      }
-    }
-  </script>
-</body>
+		<!-- Scripts, etc. -->
+		<script>
+			function fadeLandingToScreen1() {
+				/* your fade logic here */
+			}
+			function getTickets() {
+				window.location.href = "https://tixtree.com/...";
+			}
+		</script>
+	</body>
 </html>
