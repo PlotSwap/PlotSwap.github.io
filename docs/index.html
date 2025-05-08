@@ -9,17 +9,14 @@
 	</head>
 	<body class="bg-gray-200 min-h-screen">
 		<!-- Splash / Hero Section -->
-
-
-    <div
-    class="
-      relative w-full h-64 md:h-80 
-      bg-center bg-no-repeat 
-      bg-[url('https://i.imgur.com/ab6UK2w.png')]  /* main splash for mobile */
-      bg-cover
-      md:bg-[url('https://i.imgur.com/1wvjekG.png')]  /* side pattern for md+ */
-      md:bg-repeat
-    "
+	<div class="
+		relative w-full h-[clamp(16rem,30vh,24rem)] h-64 md:h-80 
+		bg-[url('https://i.imgur.com/ab6UK2w.png')]
+		bg-cover bg-top
+		md:bg-[url('https://i.imgur.com/1wvjekG.png')]
+		md:bg-cover md:bg-left
+	  ">
+	  
   >
     <!-- Gradient fade only on md+ -->
     <div 
@@ -38,92 +35,95 @@
         z-10
       "
     />
+
   </div>
-  
-
-
-    <!--      
-    <div
-      class="relative w-full h-64 md:h-80 bg-contain bg-repeat bg-center"
-      style="background-image: url('https://i.imgur.com/1wvjekG.png');"
-    > -->
-      <!-- Fade-out overlay (dark on edges, transparent in middle) -->
-      <!-- <div class="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/70 via-transparent to-black/70"></div> -->
-    
-      <!-- Centered main splash -->
-      <!-- <div class="absolute inset-0 flex items-center justify-center z-10">
-        <img
-          src="https://i.imgur.com/ab6UK2w.png"
-          alt="Main Splash"
-          class="h-full object-contain"
-        />
-      </div>
-    </div> -->
-  
-
-
-    <!-- working with repeating image on sides: -->
-    <!-- <div
-      class="relative w-full h-64 md:h-80 bg-contain bg-repeat bg-center"
-      style="background-image: url('https://i.imgur.com/1wvjekG.png')"
-    > -->
-      <!-- Child absolutely centered with your main splash -->
-      <!-- <div class="absolute inset-0 flex justify-center items-center">
-        <img
-          src="https://i.imgur.com/ab6UK2w.png"
-          alt="Main Splash"
-          class="h-full object-contain"
-        />
-      </div>
-    </div> -->
-
-
-    <!-- working with centered and black bar sides -->
-		<!-- <div
-			class="relative w-full h-64 md:h-80 bg-contain bg-no-repeat bg-center"
-			style="
-				background-image: url('https://i.imgur.com/ab6UK2w.png');
-				background-color: #343434;
-			"
-		> -->
-			<!-- relative w-full h-64 md:h-80 bg-contain bg-no-repeat bg-center  VS.. bg-cover -->
-
-			<!-- <button
-				class="absolute inset-x-1/2 bottom-4 transform -translate-x-1/2 bg-yellow-500 text-white py-2 px-6 rounded hover:bg-yellow-600"
-				onclick="fadeLandingToScreen1()"
-			>
-				Enter
-			</button> -->
 		</div>
-
-		<!-- Role Choices -->
 		<div class="max-w-md mx-auto mt-6 px-4">
-			<h2 class="text-center text-2xl font-bold mb-4">
-				Choose Your Role
-			</h2>
-			<div class="space-y-4">
-				<div class="bg-yellow-200 p-4 rounded">
+			<h2 class="text-center text-2xl font-bold mb-4">Choose Your Role</h2>
+			<form id="roleForm" class="space-y-4">
+		  
+				<!-- VIP Option -->
+				<div class="relative">
+					<!-- Radio input -->
+					<input
+					type="radio"
+					name="role"
+					value="vip"
+					id="roleVip"
+					class="sr-only peer"
+					/>
+				
+					<!-- Label (the clickable card) -->
+					<label
+					for="roleVip"
+					class="
+						block w-full h-48 
+						flex flex-col items-start justify-center
+						p-4 rounded cursor-pointer
+						transition duration-200 ease-in-out
+				
+						/* Default background (unchecked) */
+						bg-[url('img/button_vip_unchecked.png')]
+						bg-cover bg-center
+				
+						/* When the radio is checked */
+						peer-checked:bg-[url('img/button_vip_checked.png')]
+						peer-checked:bg-cover
+						peer-checked:bg-center	
+					"
+					>
 					<h3 class="font-bold">VIP — $300 × 10</h3>
-					<p class="text-sm">
-						All yours. No strangers. No rush. Play your way.
-					</p>
+					<p class="text-sm">All yours. No strangers. No rush. Play your way.</p>
+					</label>
 				</div>
-				<div class="bg-purple-200 p-4 rounded">
+
+				<!-- Director Option -->
+				<label class="flex items-center space-x-4 bg-purple-200 p-4 rounded cursor-pointer">
+					<input type="radio" name="role" value="director" class="hidden peer" />
+					<img
+					src="img/button_director_unchecked.png"
+					alt="Director"
+					class="w-6 h-6 peer-checked:hidden"
+					/>
+					<img
+					src="img/button_director_checked.png"
+					alt="Director Checked"
+					class="w-6 h-6 hidden peer-checked:block"
+					/>
+					<div>
 					<h3 class="font-bold">Director — $100 × 2</h3>
 					<p class="text-sm">Decide the Plot.</p>
-				</div>
-				<div class="bg-green-200 p-4 rounded">
+					</div>
+				</label>
+			
+				<!-- Gallery Option -->
+				<label class="flex items-center space-x-4 bg-green-200 p-4 rounded cursor-pointer">
+					<input type="radio" name="role" value="gallery" class="hidden peer" />
+					<img
+					src="img/button_gallery_unchecked.png"
+					alt="Gallery"
+					class="w-6 h-6 peer-checked:hidden"
+					/>
+					<img
+					src="img/button_gallery_checked.png"
+					alt="Gallery Checked"
+					class="w-6 h-6 hidden peer-checked:block"
+					/>
+					<div>
 					<h3 class="font-bold">Gallery — $100 × 4</h3>
 					<p class="text-sm">Watch it all happen.</p>
-				</div>
-			</div>
+					</div>
+				</label>
+		  
+			</form>
+		  
 			<button
-				class="block w-full mt-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-				onclick="getTickets()"
+			  class="block w-full mt-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+			  onclick="getTickets()"
 			>
-				Get Tickets
+			  Get Tickets
 			</button>
-		</div>
+		  </div>
 
 		<!-- Scripts, etc. -->
 		<script>
