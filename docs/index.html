@@ -29,10 +29,10 @@ html,body{background:#dcdcdc;}
 
 /* === LANDING gets special treatment: absolute + z‑index === */
 #landing{
-  position:absolute;          /* overlays everything */
+  position:absolute;
   inset:0;
   width:100%;
-  z-index:3;                  /* on top */
+  z-index:3;
   display:block;              /* visible at start */
   opacity:1;
   transition:opacity 1s ease;
@@ -41,8 +41,8 @@ html,body{background:#dcdcdc;}
   top:67.5%; left:21.25%; width:57%; aspect-ratio:57/17;
 }
 
-/* === SCREEN 1 visible after fade === */
-#screen1{display:block;}      /* first real screen */
+/* === SCREEN 1 (VIP) — still the default real screen === */
+#screen1{display:block;}      /* leave this exactly as before */
 
 #screen1 button:nth-of-type(1){
   top:66.5%; left:18%; width:63%; aspect-ratio:63/20.5;
@@ -97,7 +97,7 @@ html,body{background:#dcdcdc;}
   <!-- LANDING -->
   <div id="landing" class="screen">
     <img src="https://i.imgur.com/bCT6U3o.png" alt="Landing Screen (Closed Curtain)">
-    <button class="common-button" onclick="fadeLandingToScreen1()"></button>
+    <button class="common-button" onclick="fadeLandingToFirstScreen()"></button>
   </div>
 
   <!-- SCREEN 1 (VIP) -->
@@ -105,7 +105,10 @@ html,body{background:#dcdcdc;}
     <img src="https://i.imgur.com/JTo1haE.png" alt="Screen1 Image (VIP)">
     <button class="common-button" onclick="showScreen('screen2')"></button>
     <button class="common-button" onclick="showScreen('screen3')"></button>
-    <button class="common-button" onclick="getTickets()"></button>
+
+    <button class="common-button"
+            data-url="https://www.tixtree.com/e/plot-swap-vip-pheromones-fb00689ab97c"
+            onclick="getTickets(this)"></button>
   </div>
 
   <!-- SCREEN 2 (Director) -->
@@ -113,7 +116,10 @@ html,body{background:#dcdcdc;}
     <img src="https://i.imgur.com/Hl7sl1o.png" alt="Screen2 Image (Director)">
     <button class="common-button" onclick="showScreen('screen1')"></button>
     <button class="common-button" onclick="showScreen('screen3')"></button>
-    <button class="common-button" onclick="getTickets()"></button>
+
+    <button class="common-button"
+            data-url="https://www.tixtree.com/e/plot-swap-theater-pheromones-8e4cd507a13f"
+            onclick="getTickets(this)"></button>
   </div>
 
   <!-- SCREEN 3 (Gallery) -->
@@ -121,30 +127,34 @@ html,body{background:#dcdcdc;}
     <img src="https://i.imgur.com/cvDHuOb.png" alt="Screen3 Image (Gallery)">
     <button class="common-button" onclick="showScreen('screen1')"></button>
     <button class="common-button" onclick="showScreen('screen2')"></button>
-    <button class="common-button" onclick="getTickets()"></button>
+
+    <button class="common-button"
+            data-url="https://www.tixtree.com/e/plot-swap-theater-pheromones-8e4cd507a13f"
+            onclick="getTickets(this)"></button>
   </div>
 
 </div><!-- /WRAPPER -->
 
 <script>
-const debugMode = false;
-let hasScrolledTop = false;
+const debugMode   = false;
+let   hasScrolled = false;
 
 window.addEventListener('DOMContentLoaded',()=>{
   if(debugMode) document.body.classList.add('debug-mode');
 });
 
-/* Landing → Screen 1 fade */
-function fadeLandingToScreen1(){
-  if(!hasScrolledTop){
+/* Fade landing → FIRST real screen.
+   ONLY change: call showScreen('screen2') so Director appears first. */
+function fadeLandingToFirstScreen(){
+  if(!hasScrolled){
     window.scrollTo({top:0,behavior:'smooth'});
-    hasScrolledTop = true;
+    hasScrolled = true;
   }
-  setTimeout(()=>{document.getElementById('landing').style.opacity = 0;},500);
+  setTimeout(()=>{ document.getElementById('landing').style.opacity = 0; }, 500);
   setTimeout(()=>{
     document.getElementById('landing').style.display = 'none';
-    showScreen('screen1');              /* ensure proper initial render */
-  },1700);
+    showScreen('screen2');          // <-- Director screen is now the entry point
+  }, 1700);
 }
 
 /* Show selected screen */
@@ -156,8 +166,8 @@ function showScreen(id){
 }
 
 /* Tickets */
-function getTickets(){
-  window.location.href = 'https://www.tixtree.com/o/PlotSwap';
+function getTickets(btn){
+  window.location.href = btn.dataset.url;
 }
 </script>
 </body>
