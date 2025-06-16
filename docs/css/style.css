@@ -9,8 +9,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 html{
-  /* smooth anchor/link scrolling (optional) */
-  scroll-behavior:smooth;
+  scroll-behavior:smooth;   /* smooth anchor scrolling */
 }
 
 body{
@@ -33,9 +32,7 @@ body{
 }
 
 .container h1,
-.container h2{
-  margin-top:0;
-}
+.container h2{margin-top:0;}
 
 /* -------------------------------------------------
    Initial choice screen
@@ -55,7 +52,6 @@ body{
   cursor:pointer;
   transition:background .3s;
 }
-
 .choice-box:hover{background:#444;}
 
 .or-separator{
@@ -70,7 +66,6 @@ body{
 /* -------------------------------------------------
    Captain screen
 ------------------------------------------------- */
-/* banner */
 .banner{
   display:flex;
   align-items:center;
@@ -80,14 +75,12 @@ body{
   margin:-2rem -2rem 1rem;
   border-radius:8px 8px 0 0;
 }
-
 .banner-title{
   flex:1;
   text-align:center;
   margin:0;
   font-size:1.5em;
 }
-
 .back-button{
   background:none;
   border:none;
@@ -100,10 +93,8 @@ body{
   border-radius:4px;
   transition:background .3s;
 }
-
 .back-button:hover{background:#555;}
 
-/* sub-heading */
 .captain-subtitle{
   text-align:center;
   margin:0 0 1rem;
@@ -111,14 +102,13 @@ body{
   color:#ccc;
 }
 
-/* two-column area */
+/* Two-column area */
 .two-column{
   display:flex;
   flex-wrap:wrap;
   gap:1rem;
   margin-top:1.5rem;
 }
-
 .left-col,
 .right-col{
   flex:1;
@@ -128,18 +118,9 @@ body{
   border-radius:4px;
 }
 
-/* add-on section */
-.addon-title{
-  margin-top:0;
-  color:#ffb74d;
-}
-
-.addon-subtext{
-  margin:.5rem 0 1rem;
-  font-size:.9em;
-  color:#ccc;
-}
-
+/* Add-on */
+.addon-title{margin-top:0;color:#ffb74d;}
+.addon-subtext{margin:.5rem 0 1rem;font-size:.9em;color:#ccc;}
 .upgrade-label{
   display:flex;
   align-items:center;
@@ -147,41 +128,18 @@ body{
   font-weight:bold;
   cursor:pointer;
 }
-
 .upgrade-label input[type="checkbox"]{transform:scale(1.2);}
 
-/* included perks */
-.included-title{
-  margin-top:0;
-  color:#ffb74d;
-}
+/* Included perks */
+.included-title{margin-top:0;color:#ffb74d;}
+.included-list{list-style:none;margin:0;padding:0;}
+.included-list li{margin:.5rem 0;font-size:1em;}
+.crossed-out{text-decoration:line-through;color:#777;}
 
-.included-list{
-  list-style:none;
-  margin:0;
-  padding:0;
-}
-
-.included-list li{
-  margin:.5rem 0;
-  font-size:1em;
-}
-
-.crossed-out{
-  text-decoration:line-through;
-  color:#777;
-}
-
-/* price & buy */
+/* Price & buy */
 .final-price-area{text-align:center;margin-top:1.5rem;}
-
-.price-details{
-  margin-bottom:1rem;
-  font-size:1em;
-}
-
+.price-details{margin-bottom:1rem;font-size:1em;}
 .price-details strong{font-size:1.2em;}
-
 .buy-now-button{
   background:#f1a53d;
   color:#000;
@@ -194,7 +152,6 @@ body{
   font-size:1em;
   transition:background .3s;
 }
-
 .buy-now-button:hover{background:#e08f2f;}
 
 /* -------------------------------------------------
@@ -206,23 +163,20 @@ body{
   max-height:1000px;
   opacity:1;
 }
-
 .hidden{
-  visibility:hidden;     /* keeps element in flow for animation */
+  visibility:hidden;   /* keeps element in flow for smooth fade */
   opacity:0;
   max-height:0;
 }
-
-/* optional utility when you want it gone completely after anim */
 .gone{display:none!important;}
 
 /* -------------------------------------------------
-   Instagram floating button
+   Instagram floating button — TOP-RIGHT
 ------------------------------------------------- */
 #instaBtn{
   position:fixed;
-  top:16px;               /* pinned top-left */
-  left:16px;
+  top:16px;
+  right:16px;            /* anchored to top-right */
   width:56px;
   height:56px;
   display:flex;
@@ -234,11 +188,9 @@ body{
   z-index:5;
   transition:transform .2s ease;
 }
-
 #instaBtn:hover{transform:scale(1.08);}
-
 #instaBtn svg{
   width:28px;
   height:28px;
-  pointer-events:none;    /* ensures click hits the <a> */
+  pointer-events:none;
 }
