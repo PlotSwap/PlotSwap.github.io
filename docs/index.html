@@ -11,83 +11,76 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{background:#dcdcdc;}
 
-/* === PHONE‑SIZED WRAPPER === */
+/* === PHONE-SIZED WRAPPER === */
 .app{
   position:relative;
   width:100%;
-  max-width:415px;            /* design width */
-  margin-inline:auto;         /* centred on wide screens */
+  max-width:415px;
+  margin-inline:auto;
 }
 
 /* === SCREENS (relative by default) === */
 .screen{
-  position:relative;          /* % coords reference the image itself */
+  position:relative;
   width:100%;
-  display:none;               /* JS toggles */
+  display:none;
 }
 .screen img{display:block;width:100%;height:auto;}
 
-/* === LANDING gets special treatment: absolute + z‑index === */
+/* === LANDING === */
 #landing{
-  position:absolute;
-  inset:0;
-  width:100%;
-  z-index:3;
-  display:block;              /* visible at start */
-  opacity:1;
-  transition:opacity 1s ease;
+  position:absolute;inset:0;width:100%;z-index:3;display:block;
+  opacity:1;transition:opacity 1s ease;
 }
-#landing button{
-  top:67.5%; left:21.25%; width:57%; aspect-ratio:57/17;
-}
+#landing button{top:67.5%;left:21.25%;width:57%;aspect-ratio:57/17;}
 
-/* === SCREEN 1 (VIP) — still the default real screen === */
-#screen1{display:block;}      /* leave this exactly as before */
+/* === SCREEN 1 (VIP) === */
+#screen1{display:block;}          /* initial real screen */
+#screen1 button:nth-of-type(1){top:66.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
+#screen1 button:nth-of-type(2){top:77.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
+#screen1 button:nth-of-type(3){top:90%;  left:35%;width:30%;aspect-ratio:30/15;}
 
-#screen1 button:nth-of-type(1){
-  top:66.5%; left:18%; width:63%; aspect-ratio:63/20.5;
-}
-#screen1 button:nth-of-type(2){
-  top:77.5%; left:18%; width:63%; aspect-ratio:63/20.5;
-}
-#screen1 button:nth-of-type(3){
-  top:90%;   left:35%; width:30%; aspect-ratio:30/15;
-}
+/* === SCREEN 2 (Director) === */
+#screen2 button:nth-of-type(1){top:47.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
+#screen2 button:nth-of-type(2){top:77.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
+#screen2 button:nth-of-type(3){top:90%;  left:35%;width:30%;aspect-ratio:30/15;}
 
-/* === SCREEN 2 (Director) === */
-#screen2 button:nth-of-type(1){
-  top:47.5%; left:18%; width:63%; aspect-ratio:63/20.5;
-}
-#screen2 button:nth-of-type(2){
-  top:77.5%; left:18%; width:63%; aspect-ratio:63/20.5;
-}
-#screen2 button:nth-of-type(3){
-  top:90%;   left:35%; width:30%; aspect-ratio:30/15;
-}
+/* === SCREEN 3 (Gallery) === */
+#screen3 button:nth-of-type(1){top:47.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
+#screen3 button:nth-of-type(2){top:58.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
+#screen3 button:nth-of-type(3){top:90%;  left:35%;width:30%;aspect-ratio:30/15;}
 
-/* === SCREEN 3 (Gallery) === */
-#screen3 button:nth-of-type(1){
-  top:47.5%; left:18%; width:63%; aspect-ratio:63/20.5;
-}
-#screen3 button:nth-of-type(2){
-  top:58.5%; left:18%; width:63%; aspect-ratio:63/20.5;
-}
-#screen3 button:nth-of-type(3){
-  top:90%;   left:35%; width:30%; aspect-ratio:30/15;
-}
-
-/* === INVISIBLE BUTTON STYLES === */
+/* === INVISIBLE BUTTONS === */
 .common-button{
-  position:absolute;
-  background:none;border:none;cursor:pointer;
+  position:absolute;background:none;border:none;cursor:pointer;
   opacity:0;-webkit-tap-highlight-color:transparent;
 }
 .common-button:hover,
 .common-button:active,
 .common-button:focus{outline:none;background:transparent;box-shadow:none;}
-
-/* DEBUG helper */
 .debug-mode .common-button{opacity:.5 !important;background:rgba(255,0,0,.3);border:2px dashed red;}
+
+/* === VIP MODAL === */
+#vipModal{
+  position:fixed;inset:0;display:none;justify-content:center;align-items:center;
+  background:rgba(0,0,0,.6);z-index:4;
+}
+.modal-content{
+  background:#fff;padding:1.5rem;border-radius:8px;width:90%;max-width:380px;
+  font-family:sans-serif;
+}
+.modal-content p{margin-bottom:1rem;font-weight:bold;text-align:center;}
+.modal-content label{display:block;margin-bottom:.75rem;font-size:.9rem;}
+.modal-content input,
+.modal-content textarea{
+  width:100%;padding:.45rem;border:1px solid #bbb;border-radius:4px;font:inherit;
+}
+.modal-content .buttons{
+  display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem;
+}
+.modal-content button{
+  padding:.5rem 1rem;border:none;border-radius:4px;cursor:pointer;
+}
 </style>
 </head>
 
@@ -106,9 +99,8 @@ html,body{background:#dcdcdc;}
     <button class="common-button" onclick="showScreen('screen2')"></button>
     <button class="common-button" onclick="showScreen('screen3')"></button>
 
-    <button class="common-button"
-            data-url="https://www.tixtree.com/e/plot-swap-vip-pheromones-fb00689ab97c"
-            onclick="getTickets(this)"></button>
+    <!-- VIP: open enquiry form instead of Tixtree -->
+    <button class="common-button" onclick="openVipModal()"></button>
   </div>
 
   <!-- SCREEN 2 (Director) -->
@@ -135,6 +127,34 @@ html,body{background:#dcdcdc;}
 
 </div><!-- /WRAPPER -->
 
+<!-- === VIP MODAL MARKUP === -->
+<div id="vipModal">
+  <div class="modal-content">
+    <p>All VIP shows sold out.<br>New dates available by request only.</p>
+
+    <form action="mailto:russell@plotswap.org" method="post" enctype="text/plain">
+      <input type="hidden" name="subject" value="I want a VIP show">
+
+      <label>Your name:
+        <input type="text" name="name" required>
+      </label>
+
+      <label>Your email:
+        <input type="email" name="email" required>
+      </label>
+
+      <label>Preferred dates / message:
+        <textarea name="message" rows="4" required></textarea>
+      </label>
+
+      <div class="buttons">
+        <button type="submit">Send</button>
+        <button type="button" onclick="closeVipModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
 const debugMode   = false;
 let   hasScrolled = false;
@@ -143,8 +163,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   if(debugMode) document.body.classList.add('debug-mode');
 });
 
-/* Fade landing → FIRST real screen.
-   ONLY change: call showScreen('screen2') so Director appears first. */
+/* Landing → Director screen */
 function fadeLandingToFirstScreen(){
   if(!hasScrolled){
     window.scrollTo({top:0,behavior:'smooth'});
@@ -153,11 +172,11 @@ function fadeLandingToFirstScreen(){
   setTimeout(()=>{ document.getElementById('landing').style.opacity = 0; }, 500);
   setTimeout(()=>{
     document.getElementById('landing').style.display = 'none';
-    showScreen('screen2');          // <-- Director screen is now the entry point
+    showScreen('screen2');                      // Director appears first
   }, 1700);
 }
 
-/* Show selected screen */
+/* Screen switcher */
 function showScreen(id){
   ['screen1','screen2','screen3'].forEach(s=>{
     document.getElementById(s).style.display = 'none';
@@ -165,9 +184,17 @@ function showScreen(id){
   document.getElementById(id).style.display = 'block';
 }
 
-/* Tickets */
+/* Normal Tixtree links */
 function getTickets(btn){
   window.location.href = btn.dataset.url;
+}
+
+/* VIP modal handlers */
+function openVipModal(){
+  document.getElementById('vipModal').style.display = 'flex';
+}
+function closeVipModal(){
+  document.getElementById('vipModal').style.display = 'none';
 }
 </script>
 </body>
