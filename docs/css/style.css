@@ -1,214 +1,244 @@
-/* Import Roboto font */
+/* -------------------------------------------------
+   Roboto font
+------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
-/* Global Reset & Base Styles */
-html, body {
-  margin: 0;
-  padding: 0;
+/* -------------------------------------------------
+   Global reset & base styles
+------------------------------------------------- */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{
+  /* smooth anchor/link scrolling (optional) */
+  scroll-behavior:smooth;
 }
 
-body {
-  background-color: black;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-  min-height: 100vh;
+body{
+  background:#000;
+  color:#fff;
+  font-family:'Roboto',sans-serif;
+  min-height:100vh;
 }
 
-/* Container for Each Screen */
-.container {
-  max-width: 600px;
-  margin: 4rem auto;
-  background: #222;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+/* -------------------------------------------------
+   Screen container (each “page” / section)
+------------------------------------------------- */
+.container{
+  max-width:600px;
+  margin:4rem auto;
+  background:#222;
+  padding:2rem;
+  border-radius:8px;
+  box-shadow:0 0 10px rgba(0,0,0,.5);
 }
 
 .container h1,
-.container h2 {
-  margin-top: 0;
+.container h2{
+  margin-top:0;
 }
 
-/* ---------- Initial Screen Layout ---------- */
-.choice-grid {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
+/* -------------------------------------------------
+   Initial choice screen
+------------------------------------------------- */
+.choice-grid{
+  display:flex;
+  gap:1rem;
+  margin-top:2rem;
 }
 
-.choice-box {
-  flex: 1;
-  background: #333;
-  border-radius: 8px;
-  padding: 1.5rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.3s;
+.choice-box{
+  flex:1;
+  background:#333;
+  border-radius:8px;
+  padding:1.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition:background .3s;
 }
 
-.choice-box:hover {
-  background: #444;
+.choice-box:hover{background:#444;}
+
+.or-separator{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:1.5em;
+  padding:0 1rem;
 }
 
-.or-separator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.5em;
-  padding: 0 1rem;
+/* -------------------------------------------------
+   Captain screen
+------------------------------------------------- */
+/* banner */
+.banner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:linear-gradient(135deg,#333,#444);
+  padding:1rem;
+  margin:-2rem -2rem 1rem;
+  border-radius:8px 8px 0 0;
 }
 
-/* ---------- Captain Screen Layout ---------- */
-/* BANNER at the top for Back button + Title */
-.banner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #333, #444);
-  padding: 1rem;
-  margin: -2rem -2rem 1rem -2rem; 
-  /* Negative margins to pull the banner out 
-     so it spans edge-to-edge of the container. */
-  border-radius: 8px 8px 0 0;
+.banner-title{
+  flex:1;
+  text-align:center;
+  margin:0;
+  font-size:1.5em;
 }
 
-.banner-title {
-  flex: 1;
-  text-align: center;
-  margin: 0;
-  font-size: 1.5em;
+.back-button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:1em;
+  cursor:pointer;
+  padding:.5rem 1rem;
+  text-transform:uppercase;
+  font-weight:bold;
+  border-radius:4px;
+  transition:background .3s;
 }
 
-.back-button {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1em;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background 0.3s;
+.back-button:hover{background:#555;}
+
+/* sub-heading */
+.captain-subtitle{
+  text-align:center;
+  margin:0 0 1rem;
+  font-size:1.2em;
+  color:#ccc;
 }
 
-.back-button:hover {
-  background: #555;
-}
-
-/* Subheading under the banner */
-.captain-subtitle {
-  text-align: center;
-  margin: 0 0 1rem 0;
-  font-size: 1.2em;
-  color: #ccc;
-}
-
-/* Two-Column Layout for Add-On & What's Included */
-.two-column {
-  display: flex;
-  flex-wrap: wrap; /* columns can wrap on smaller screens */
-  gap: 1rem;
-  margin-top: 1.5rem;
+/* two-column area */
+.two-column{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-top:1.5rem;
 }
 
 .left-col,
-.right-col {
-  flex: 1;
-  min-width: 0;
-  background: #333;
-  padding: 1rem;
-  border-radius: 4px;
+.right-col{
+  flex:1;
+  min-width:0;
+  background:#333;
+  padding:1rem;
+  border-radius:4px;
 }
 
-.addon-title {
-  margin-top: 0;
-  color: #ffb74d;
+/* add-on section */
+.addon-title{
+  margin-top:0;
+  color:#ffb74d;
 }
 
-.addon-subtext {
-  margin: 0.5rem 0 1rem;
-  font-size: 0.9em;
-  color: #ccc;
+.addon-subtext{
+  margin:.5rem 0 1rem;
+  font-size:.9em;
+  color:#ccc;
 }
 
-.upgrade-label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: bold;
-  cursor: pointer;
+.upgrade-label{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.upgrade-label input[type="checkbox"] {
-  transform: scale(1.2);
+.upgrade-label input[type="checkbox"]{transform:scale(1.2);}
+
+/* included perks */
+.included-title{
+  margin-top:0;
+  color:#ffb74d;
 }
 
-/* What's Included */
-.included-title {
-  margin-top: 0;
-  color: #ffb74d;
+.included-list{
+  list-style:none;
+  margin:0;
+  padding:0;
 }
 
-.included-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.included-list li{
+  margin:.5rem 0;
+  font-size:1em;
 }
 
-.included-list li {
-  margin: 0.5rem 0;
-  font-size: 1em;
+.crossed-out{
+  text-decoration:line-through;
+  color:#777;
 }
 
-/* Crossed-Out Class for perks that don't apply if add-on is unchecked */
-.crossed-out {
-  text-decoration: line-through;
-  color: #777;
+/* price & buy */
+.final-price-area{text-align:center;margin-top:1.5rem;}
+
+.price-details{
+  margin-bottom:1rem;
+  font-size:1em;
 }
 
-/* Price & Buy Now at the bottom */
-.final-price-area {
-  text-align: center;
-  margin-top: 1.5rem;
+.price-details strong{font-size:1.2em;}
+
+.buy-now-button{
+  background:#f1a53d;
+  color:#000;
+  font-weight:bold;
+  text-transform:uppercase;
+  border:none;
+  border-radius:4px;
+  padding:.75rem 1.5rem;
+  cursor:pointer;
+  font-size:1em;
+  transition:background .3s;
 }
 
-.price-details {
-  margin-bottom: 1rem;
-  font-size: 1em;
+.buy-now-button:hover{background:#e08f2f;}
+
+/* -------------------------------------------------
+   Fade / visibility helpers
+------------------------------------------------- */
+.fade{
+  transition:opacity .5s ease,max-height .5s ease;
+  overflow:hidden;
+  max-height:1000px;
+  opacity:1;
 }
 
-.price-details strong {
-  font-size: 1.2em;
+.hidden{
+  visibility:hidden;     /* keeps element in flow for animation */
+  opacity:0;
+  max-height:0;
 }
 
-.buy-now-button {
-  background: #f1a53d; /* subdued orange */
-  color: #000;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 4px;
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background 0.3s;
+/* optional utility when you want it gone completely after anim */
+.gone{display:none!important;}
+
+/* -------------------------------------------------
+   Instagram floating button
+------------------------------------------------- */
+#instaBtn{
+  position:fixed;
+  top:16px;               /* pinned top-left */
+  left:16px;
+  width:56px;
+  height:56px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#C13584;
+  border-radius:50%;
+  box-shadow:0 3px 8px rgba(0,0,0,.35);
+  z-index:5;
+  transition:transform .2s ease;
 }
 
-.buy-now-button:hover {
-  background: #e08f2f;
-}
+#instaBtn:hover{transform:scale(1.08);}
 
-/* ---------- Fade/Hidden transitions ---------- */
-.fade {
-  transition: opacity 0.5s ease, max-height 0.5s ease;
-  overflow: hidden;
-  max-height: 1000px;
-}
-
-.hidden {
-  display: none;
-  opacity: 0;
-  max-height: 0;
+#instaBtn svg{
+  width:28px;
+  height:28px;
+  pointer-events:none;    /* ensures click hits the <a> */
 }
