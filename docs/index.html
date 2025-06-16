@@ -19,7 +19,7 @@ html,body{background:#dcdcdc;}
   margin-inline:auto;
 }
 
-/* === SCREENS (relative by default) === */
+/* === SCREENS === */
 .screen{
   position:relative;
   width:100%;
@@ -29,26 +29,26 @@ html,body{background:#dcdcdc;}
 
 /* === LANDING === */
 #landing{
-  position:absolute;inset:0;width:100%;z-index:3;display:block;
-  opacity:1;transition:opacity 1s ease;
+  position:absolute;inset:0;width:100%;z-index:3;
+  display:block;opacity:1;transition:opacity 1s ease;
 }
 #landing button{top:67.5%;left:21.25%;width:57%;aspect-ratio:57/17;}
 
 /* === SCREEN 1 (VIP) === */
-#screen1{display:block;}          /* initial real screen */
+#screen1{display:block;} /* initial real screen */
 #screen1 button:nth-of-type(1){top:66.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
 #screen1 button:nth-of-type(2){top:77.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
-#screen1 button:nth-of-type(3){top:90%;  left:35%;width:30%;aspect-ratio:30/15;}
+#screen1 button:nth-of-type(3){top:90%; left:35%;width:30%;aspect-ratio:30/15;}
 
 /* === SCREEN 2 (Director) === */
 #screen2 button:nth-of-type(1){top:47.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
 #screen2 button:nth-of-type(2){top:77.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
-#screen2 button:nth-of-type(3){top:90%;  left:35%;width:30%;aspect-ratio:30/15;}
+#screen2 button:nth-of-type(3){top:90%; left:35%;width:30%;aspect-ratio:30/15;}
 
 /* === SCREEN 3 (Gallery) === */
 #screen3 button:nth-of-type(1){top:47.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
 #screen3 button:nth-of-type(2){top:58.5%;left:18%;width:63%;aspect-ratio:63/20.5;}
-#screen3 button:nth-of-type(3){top:90%;  left:35%;width:30%;aspect-ratio:30/15;}
+#screen3 button:nth-of-type(3){top:90%; left:35%;width:30%;aspect-ratio:30/15;}
 
 /* === INVISIBLE BUTTONS === */
 .common-button{
@@ -57,7 +57,7 @@ html,body{background:#dcdcdc;}
 }
 .common-button:hover,
 .common-button:active,
-.common-button:focus{outline:none;background:transparent;box-shadow:none;}
+.common-button:focus{outline:none;background:transparent;}
 .debug-mode .common-button{opacity:.5 !important;background:rgba(255,0,0,.3);border:2px dashed red;}
 
 /* === VIP MODAL === */
@@ -67,25 +67,18 @@ html,body{background:#dcdcdc;}
 }
 .modal-content{
   background:#fff;padding:1.5rem;border-radius:8px;width:90%;max-width:380px;
-  font-family:sans-serif;
+  font-family:sans-serif;text-align:center;
 }
-.modal-content p{margin-bottom:1rem;font-weight:bold;text-align:center;}
-.modal-content label{display:block;margin-bottom:.75rem;font-size:.9rem;}
-.modal-content input,
-.modal-content textarea{
-  width:100%;padding:.45rem;border:1px solid #bbb;border-radius:4px;font:inherit;
-}
-.modal-content .buttons{
-  display:flex;justify-content:flex-end;gap:.5rem;margin-top:1rem;
-}
-.modal-content button{
-  padding:.5rem 1rem;border:none;border-radius:4px;cursor:pointer;
+.modal-content p{margin-bottom:1.25rem;font-weight:bold;}
+.buttons{display:flex;justify-content:center;gap:1rem;}
+.buttons button{
+  padding:.6rem 1.2rem;border:none;border-radius:4px;cursor:pointer;font:inherit;
 }
 </style>
 </head>
 
 <body>
-<div class="app"><!-- WRAPPER -->
+<div class="app">
 
   <!-- LANDING -->
   <div id="landing" class="screen">
@@ -98,8 +91,7 @@ html,body{background:#dcdcdc;}
     <img src="https://i.imgur.com/JTo1haE.png" alt="Screen1 Image (VIP)">
     <button class="common-button" onclick="showScreen('screen2')"></button>
     <button class="common-button" onclick="showScreen('screen3')"></button>
-
-    <!-- VIP: open enquiry form instead of Tixtree -->
+    <!-- VIP: open enquiry modal -->
     <button class="common-button" onclick="openVipModal()"></button>
   </div>
 
@@ -108,7 +100,6 @@ html,body{background:#dcdcdc;}
     <img src="https://i.imgur.com/Hl7sl1o.png" alt="Screen2 Image (Director)">
     <button class="common-button" onclick="showScreen('screen1')"></button>
     <button class="common-button" onclick="showScreen('screen3')"></button>
-
     <button class="common-button"
             data-url="https://www.tixtree.com/e/plot-swap-theater-pheromones-8e4cd507a13f"
             onclick="getTickets(this)"></button>
@@ -119,82 +110,65 @@ html,body{background:#dcdcdc;}
     <img src="https://i.imgur.com/cvDHuOb.png" alt="Screen3 Image (Gallery)">
     <button class="common-button" onclick="showScreen('screen1')"></button>
     <button class="common-button" onclick="showScreen('screen2')"></button>
-
     <button class="common-button"
             data-url="https://www.tixtree.com/e/plot-swap-theater-pheromones-8e4cd507a13f"
             onclick="getTickets(this)"></button>
   </div>
 
-</div><!-- /WRAPPER -->
+</div><!-- /app -->
 
-<!-- === VIP MODAL MARKUP === -->
+<!-- VIP MODAL -->
 <div id="vipModal">
   <div class="modal-content">
     <p>All VIP shows sold out.<br>New dates available by request only.</p>
-
-    <form action="mailto:russell@plotswap.org" method="post" enctype="text/plain">
-      <input type="hidden" name="subject" value="I want a VIP show">
-
-      <label>Your name:
-        <input type="text" name="name" required>
-      </label>
-
-      <label>Your email:
-        <input type="email" name="email" required>
-      </label>
-
-      <label>Preferred dates / message:
-        <textarea name="message" rows="4" required></textarea>
-      </label>
-
-      <div class="buttons">
-        <button type="submit">Send</button>
-        <button type="button" onclick="closeVipModal()">Cancel</button>
-      </div>
-    </form>
+    <div class="buttons">
+      <button type="button" onclick="sendVipEmail()">Email request</button>
+      <button type="button" onclick="closeVipModal()">Cancel</button>
+    </div>
   </div>
 </div>
 
 <script>
-const debugMode   = false;
-let   hasScrolled = false;
+const debugMode=false;
+let hasScrolled=false;
 
-window.addEventListener('DOMContentLoaded',()=>{
-  if(debugMode) document.body.classList.add('debug-mode');
-});
+window.addEventListener('DOMContentLoaded',()=>{if(debugMode)document.body.classList.add('debug-mode');});
 
-/* Landing → Director screen */
+/* Landing → first real screen (Director) */
 function fadeLandingToFirstScreen(){
-  if(!hasScrolled){
-    window.scrollTo({top:0,behavior:'smooth'});
-    hasScrolled = true;
-  }
-  setTimeout(()=>{ document.getElementById('landing').style.opacity = 0; }, 500);
+  if(!hasScrolled){window.scrollTo({top:0,behavior:'smooth'});hasScrolled=true;}
+  setTimeout(()=>{document.getElementById('landing').style.opacity=0;},500);
   setTimeout(()=>{
-    document.getElementById('landing').style.display = 'none';
-    showScreen('screen2');                      // Director appears first
-  }, 1700);
+    document.getElementById('landing').style.display='none';
+    showScreen('screen2');            // Director screen first
+  },1700);
 }
 
-/* Screen switcher */
+/* Show selected screen */
 function showScreen(id){
-  ['screen1','screen2','screen3'].forEach(s=>{
-    document.getElementById(s).style.display = 'none';
-  });
-  document.getElementById(id).style.display = 'block';
+  ['screen1','screen2','screen3'].forEach(s=>{document.getElementById(s).style.display='none';});
+  document.getElementById(id).style.display='block';
 }
 
-/* Normal Tixtree links */
-function getTickets(btn){
-  window.location.href = btn.dataset.url;
-}
+/* Tixtree redirects for Director / Gallery */
+function getTickets(btn){window.location.href=btn.dataset.url;}
 
-/* VIP modal handlers */
-function openVipModal(){
-  document.getElementById('vipModal').style.display = 'flex';
-}
-function closeVipModal(){
-  document.getElementById('vipModal').style.display = 'none';
+/* VIP modal control */
+function openVipModal(){document.getElementById('vipModal').style.display='flex';}
+function closeVipModal(){document.getElementById('vipModal').style.display='none';}
+
+/* Launch mail-client with pre-filled subject & body */
+function sendVipEmail(){
+  const addr='russell@plotswap.org';           /* ← replace with real address */
+  const subj=encodeURIComponent('One VIP show, please!');
+  const body=encodeURIComponent(
+`Hi Russell,
+
+Are there any available Thursday's coming up?
+
+Thanks!`
+  );
+  window.location.href=`mailto:${addr}?subject=${subj}&body=${body}`;
 }
 </script>
 </body>
