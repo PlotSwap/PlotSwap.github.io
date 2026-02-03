@@ -1,0 +1,272 @@
+/* === QUIZ SPECIFIC STYLES === */
+
+#quiz-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-bg);
+}
+
+/* Background layers */
+.quiz-background {
+    position: absolute;
+    inset: 0;
+    background-image: url('../assets/landing_clean.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    z-index: -2;
+}
+
+.quiz-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-hero);
+    opacity: 0.7;
+    z-index: -1;
+    animation: gradientShift 15s ease infinite;
+}
+
+/* Logo escape hatch */
+.quiz-logo-escape {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 1000;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.quiz-logo-escape img {
+    height: 50px;
+    width: auto;
+}
+
+.quiz-logo-escape:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Step container */
+.quiz-step {
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.quiz-step.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quiz-step.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+/* Message formatting */
+.quiz-context {
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* Title */
+.quiz-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    animation: heroTitleEntrance 1s ease-out;
+}
+
+/* Message text */
+.quiz-message {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    color: var(--color-text-main);
+    font-weight: 400;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Button container */
+.quiz-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+/* Quiz buttons */
+.quiz-btn {
+    display: inline-block;
+    padding: 1.25rem 2.5rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-family-base);
+    text-decoration: none;
+}
+
+.quiz-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.quiz-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.quiz-btn:hover {
+    background-color: #ff6b81;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4);
+}
+
+.quiz-btn:active {
+    transform: translateY(0) scale(1);
+}
+
+/* Secondary button (outline style) */
+.quiz-btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+}
+
+.quiz-btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Back button */
+.quiz-back-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-text-main);
+    font-size: 0.9rem;
+    opacity: 0.7;
+    transition: opacity var(--transition-fast), background-color var(--transition-fast);
+}
+
+.quiz-back-btn:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.quiz-back-btn::before {
+    content: '← ';
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .quiz-title {
+        font-size: 2.5rem;
+    }
+
+    .quiz-message {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    .quiz-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .quiz-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .quiz-back-btn {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .quiz-step {
+        padding: 1rem;
+    }
+}
+
+/* Email link styling */
+.quiz-email-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.quiz-email-link:hover {
+    color: #ff6b81;
+}
+
+/* Progress bar for "think for a second" step */
+.timer-progress-container {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.timer-progress-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--color-primary), #ff6b81);
+    transition: width 100ms linear;
+    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.quiz-btn {
+    transition: opacity 0.4s ease, transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+}

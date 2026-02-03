@@ -6,14 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plot Swap Theater</title>
     <meta name="theme-color" content="#121212">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=block"
-        rel="stylesheet">
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -23,10 +15,15 @@
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="assets/signpost-logo.png" alt="Plot Swap Logo" class="logo-icon">
-                <span class="logo-text">Plot Swap: Houston</span>
+                <img src="assets/logo.png" alt="Plot Swap Logo">
             </a>
 
+            <!-- STICKERS IN HEADER -->
+            <div class="header-stickers">
+                <img src="assets/sticker1.png" class="sticker-nav" alt="Sticker">
+                <img src="assets/sticker2.png" class="sticker-nav" alt="Sticker">
+                <img src="assets/sticker3.png" class="sticker-nav" alt="Sticker">
+            </div>
 
             <div class="mobile-toggle">
                 <span></span>
@@ -34,9 +31,7 @@
                 <span></span>
             </div>
             <ul class="nav-links">
-                <li><a href="season1.html">Season 1</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="business.html">Host a Show</a></li>
             </ul>
         </div>
     </header>
@@ -44,21 +39,15 @@
     <!-- HERO -->
     <section class="hero">
         <div class="hero-background"></div>
-        <div class="hero-gradient-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title-animated">PLOT SWAP</h1>
-            <p class="tagline-sub">Scripted stories hiding in plain sight.</p>
-            <p class="hero-description">Where will we be next?</p>
+            <h1>PLOT SWAP</h1>
+            <p class="tagline-sub">A Subversive Theater Experience</p>
 
-            <div class="hero-buttons">
-                <div class="hero-btn-group">
-                    <a href="mailto:russell@plotswap.org?subject=Get%20Invited%20to%20Plot%20Swap" class="btn">Get
-                        Invited</a>
-                    <span class="btn-caption">Join the droplist</span>
-                </div>
-                <div class="hero-btn-group">
-                    <a href="business.html" class="btn btn-outline">Host A Story</a>
-                    <span class="btn-caption">First pilot is free</span>
+            <div class="adventure-controls">
+                <p>Choose your adventure</p>
+                <div class="hero-buttons">
+                    <button id="btn-pheromones" class="btn active-adventure">Irresistible<br>Pheromones</button>
+                    <button id="btn-hairbae" class="btn btn-outline">'Hair Bae'<br>Barbershop</button>
                 </div>
             </div>
         </div>
@@ -70,7 +59,7 @@
         <!-- === VIEW: PHEROMONES (Existing Content) === -->
         <div id="view-pheromones" class="view-section">
             <!-- PHEROMONES SHOW -->
-            <section id="director" class="section scroll-animate">
+            <section id="director" class="section">
                 <div class="container">
                     <div class="show-card">
                         <div class="show-image">
@@ -87,7 +76,7 @@
             </section>
 
             <!-- GALLERY -->
-            <section id="gallery" class="section scroll-animate">
+            <section id="gallery" class="section">
                 <div class="container">
                     <div class="show-card reversed">
                         <div class="show-image">
@@ -104,7 +93,7 @@
             </section>
 
             <!-- VIP -->
-            <section id="vip" class="section scroll-animate">
+            <section id="vip" class="section">
                 <div class="container">
                     <div class="show-card">
                         <div class="show-image">
@@ -139,14 +128,10 @@
                                 <img src="assets/floorplan.png" alt="Barbershop Floorplan">
 
                                 <!-- INTERACTIVE ZONES -->
-                                <div class="zone zone-barber" data-zone="barber" role="button" tabindex="0"
-                                    aria-label="Barber chairs area"></div>
-                                <div class="zone zone-wash" data-zone="wash" role="button" tabindex="0"
-                                    aria-label="Wash stations area"></div>
-                                <div class="zone zone-waiting-main" data-zone="waiting-main" role="button" tabindex="0"
-                                    aria-label="Main waiting area"></div>
-                                <div class="zone zone-waiting-corner" data-zone="waiting-corner" role="button"
-                                    tabindex="0" aria-label="Corner waiting area"></div>
+                                <div class="zone zone-barber" data-zone="barber"></div>
+                                <div class="zone zone-wash" data-zone="wash"></div>
+                                <div class="zone zone-waiting-main" data-zone="waiting-main"></div>
+                                <div class="zone zone-waiting-corner" data-zone="waiting-corner"></div>
                             </div>
                         </div>
 

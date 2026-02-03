@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host a Show - Plot Swap Theater</title>
+    <meta name="theme-color" content="#121212">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=block"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/business.css">
+    <style>
+        /* Initial fade-in for eyebrow and headline */
+        .initial-reveal {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Staggered reveals for hero content with cascading speeds */
+        .reveal-1 {
+            opacity: 0 !important;
+            transition: opacity 0.8s ease-in;
+        }
+
+        .reveal-2 {
+            opacity: 0 !important;
+            transition: opacity 1s ease-in;
+        }
+
+        .reveal-3 {
+            opacity: 0 !important;
+            transition: opacity 4s ease-in;
+        }
+
+        .reveal-1.revealed,
+        .reveal-2.revealed,
+        .reveal-3.revealed {
+            opacity: 1 !important;
+        }
+
+        /* Delayed reveal for page sections with slower fade */
+        .delayed-reveal {
+            opacity: 0 !important;
+            transition: opacity 1s ease-in;
+        }
+
+        .delayed-reveal.revealed {
+            opacity: 1 !important;
+        }
+
+        /* Inline text emphasis */
+        .highlight-text-inline {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+
+        /* Button state transition */
+        .cta-button-filled {
+            /* Initial outline state */
+            background: transparent !important;
+            border: 2px solid var(--color-primary) !important;
+            color: var(--color-primary) !important;
+            transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 0 rgba(255, 77, 109, 0);
+        }
+
+        /* Hover state for outline button */
+        .cta-button-filled:not(.filled):hover {
+            background: rgba(255, 77, 109, 0.1) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 77, 109, 0.2);
+        }
+
+        .cta-button-filled.filled {
+            /* Filled state after delay */
+            background: var(--color-primary) !important;
+            color: white !important;
+            border-color: var(--color-primary) !important;
+            box-shadow: 0 4px 20px rgba(255, 77, 109, 0.3);
+        }
+
+        /* Hover state for filled button */
+        .cta-button-filled.filled:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255, 77, 109, 0.5);
+        }
+
+        /* Tighter spacing for marquee section */
+        .samples-section {
+            padding-bottom: 2rem !important;
+        }
+
+        .samples-section .marquee {
+            margin-top: 2rem !important;
+            margin-bottom: 0 !important;
+        }
+
+
+        /* Sticky CTA scroll behavior */
+        .sticky-cta {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .sticky-cta.visible {
+            opacity: 0.4;
+            visibility: visible;
+        }
+
+        .sticky-cta.visible.scrolled {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/signpost-logo.png" alt="Plot Swap Logo" class="logo-icon">
+                <span class="logo-text">Plot Swap: Houston</span>
+            </a>
+
+
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="season1.html">Season 1</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="business.html" class="active">Host a Show</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="business-page">
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-eyebrow initial-reveal">We won't waste your time.</div>
+                <h1 class="hero-headline initial-reveal">Give us 15 seconds.</h1>
+
+                <p class="hero-thesis reveal-1">People don't remember normal. They remember moments.</p>
+
+                <p class="hero-description reveal-2">We bring professional actors <span
+                        class="highlight-text-inline">into your venue</span> and stage a surprising <u>scripted</u>
+                    moment that guests will tell their friends about.</p>
+
+                <p class="hero-reassurance reveal-2">Customized for your space. It happens fast. Then it's back to
+                    business as
+                    usual.</p>
+
+
+                <div class="hero-cta reveal-2">
+                    <p class="cta-subtext">Pilot show is free.</p>
+                    <a href="https://calendly.com/plotswap" target="_blank" rel="noopener noreferrer"
+                        class="cta-button-filled">Book a 10-minute call</a>
+                    <a href="mailto:contact@plotswap.com" class="cta-email-link">Prefer email instead?</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAMPLES SECTION -->
+        <section class="samples-section reveal-2">
+            <div class="container">
+                <div class="sample-card">
+                    <div class="sample-label">Sample: Restaurant</div>
+                    <div class="sample-story">
+                        <p>"Last night at Gino's, this guy walked in and confessed his love to a woman who was clearly
+                            on a date. He gave this whole speech and proposed to her. Like, down on one knee and
+                            everything. The whole place was silent for like… ten seconds until she finally said no. He
+                            stood up, apologized to everyone, and walked out. She sat there for a sec but then ran out
+                            after him. It was bonkers."</p>
+                    </div>
+                </div>
+
+                <div class="sample-card">
+                    <div class="sample-label">Sample: Trivia Night</div>
+                    <div class="sample-story">
+                        <p>"Trivia night kind of went off the rails last week. A guy got in trouble for using his phone
+                            and got kicked off his team. Then a few rounds later someone on that same team got in
+                            trouble for using their phone and it was the same guy literally wearing a disguise!
+                            Sunglasses and a FAKE MUSTACHE! The host disqualified the whole team. They were like, "We
+                            didn't know it was him!" It was hilarious."</p>
+                    </div>
+                </div>
+
+                <div class="sample-card">
+                    <div class="sample-label">Sample: Painting Class</div>
+                    <div class="sample-story">
+                        <p>"I was at Twisted Painting and one of the other painters had like the biggest crush on the
+                            instructor. Apparently, she comes EVERY WEEK! She kept trying to get his attention with
+                            these saucy jokes. We were dying! She even painted the instructor into her painting with
+                            like a big heart around it. We all thought he was over it but as we were all leaving, I
+                            heard him ASK HER TO STAY AFTER CLASS!!!"</p>
+                    </div>
+                </div>
+
+                <!-- SCROLLING CHYRON -->
+                <div class="marquee">
+                    <div class="marquee-content">
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                        <span>Any space can hold a story.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
+        <section class="how-it-works-section reveal-2">
+            <div class="container">
+                <h2 class="section-title-simple">How it works</h2>
+
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">10-minute call</h3>
+                            <p class="step-description">Goals, crowd, boundaries.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">On-site walkthrough</h3>
+                            <p class="step-description">We meet in person, choose placement, pick the right story, and
+                                lock the plan.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Cast walkthrough</h3>
+                            <p class="step-description">Actors walk the space and rehearse timing, entrances, and exits.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Performance</h3>
+                            <p class="step-description">A scripted moment that blends in. Clean start and stop. Then
+                                it's back to business as usual.</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Recap</h3>
+                            <p class="step-description">Quick debrief and next steps if you want another one.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="minimum-lift"><strong>Minimum lift:</strong> a point of contact, a walkthrough, and approval
+                    of the plan.</p>
+
+                <div class="cta-section">
+                    <a href="https://calendly.com/plotswap" target="_blank" rel="noopener noreferrer"
+                        class="cta-button">Book a 10-minute call</a>
+                    <div class="cta-divider">Or</div>
+                    <a href="mailto:contact@plotswap.com" class="cta-button cta-button-secondary">Email us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Plot Swap Theater. All rights reserved. <a href="business-old.html"
+                    class="legacy-link"><sup>1</sup></a></p>
+        </div>
+    </footer>
+
+    <!-- STICKY CTA BUTTON -->
+    <button class="sticky-cta" id="ctaButton">
+        Let's Begin
+    </button>
+
+    <!-- CONTACT MODAL -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 class="modal-title">Let's Get Started</h2>
+            <p class="modal-subtitle">Choose how you'd like to connect:</p>
+
+            <div class="modal-options">
+                <a href="https://calendly.com/plotswap" target="_blank" rel="noopener noreferrer" class="modal-option">
+                    <div class="modal-option-icon">📅</div>
+                    <div class="modal-option-content">
+                        <h3>Book a 10-minute call</h3>
+                        <p>Quick chat to see if we're a fit</p>
+                    </div>
+                </a>
+
+                <a href="mailto:contact@plotswap.com" class="modal-option">
+                    <div class="modal-option-icon">✉️</div>
+                    <div class="modal-option-content">
+                        <h3>Send us an email</h3>
+                        <p>We'll get back to you within 24 hours</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/business.js"></script>
+    <script>
+        // Staggered reveal sequence with cascading fade
+        window.addEventListener('DOMContentLoaded', () => {
+            // Check if user is already scrolled down (e.g., after refresh)
+            const isScrolledDown = window.scrollY > 50;
+            let revealComplete = false;
+            let timeouts = [];
+
+            // Function to instantly reveal all content
+            function revealAllContent() {
+                if (revealComplete) return;
+                revealComplete = true;
+
+                // Clear all pending timeouts
+                timeouts.forEach(timeout => clearTimeout(timeout));
+                timeouts = [];
+
+                // Instantly show all content
+                document.querySelectorAll('.initial-reveal, .reveal-1, .reveal-2, .reveal-3, .delayed-reveal').forEach(el => {
+                    el.classList.add('revealed');
+                    el.style.opacity = '1';
+                });
+
+                // Instantly fill the button
+                const ctaButton = document.querySelector('.cta-button-filled');
+                if (ctaButton) {
+                    ctaButton.classList.add('filled');
+                }
+
+                // Remove scroll listener
+                window.removeEventListener('scroll', handleScrollDuringReveal);
+            }
+
+            // Scroll handler to detect user interaction during reveal
+            function handleScrollDuringReveal() {
+                if (window.scrollY > 10) {
+                    revealAllContent();
+                }
+            }
+
+            if (isScrolledDown) {
+                // Instantly show all content without animations
+                revealAllContent();
+            } else {
+                // Add scroll listener to interrupt reveal sequence
+                window.addEventListener('scroll', handleScrollDuringReveal, { passive: true });
+
+                // New unified reveal sequence
+                // Stage 1: "People don't remember..." (after initial 1s fade + 1s delay)
+                timeouts.push(setTimeout(() => {
+                    if (!revealComplete) {
+                        document.querySelectorAll('.reveal-1').forEach(el => el.classList.add('revealed'));
+                    }
+                }, 2000));
+
+                // Stage 2: Everything else fades together (professional actors, CTA, samples, how it works)
+                timeouts.push(setTimeout(() => {
+                    if (!revealComplete) {
+                        // reveal-2 has 1s transition (everything from professional actors down)
+                        document.querySelectorAll('.reveal-2').forEach(el => {
+                            el.classList.add('revealed');
+                        });
+                    }
+                }, 3000));
+
+                // Stage 3: Button fills 5 seconds after reveal-2 completes (3s + 1s + 5s = 9s)
+                timeouts.push(setTimeout(() => {
+                    if (!revealComplete) {
+                        const ctaButton = document.querySelector('.cta-button-filled');
+                        if (ctaButton) {
+                            ctaButton.classList.add('filled');
+                        }
+                    }
+                }, 9000));
+
+                // Mark as complete after button fills
+                timeouts.push(setTimeout(() => {
+                    if (!revealComplete) {
+                        revealComplete = true;
+                        window.removeEventListener('scroll', handleScrollDuringReveal);
+                    }
+                }, 9500));
+            }
+        });
+    </script>
+</body>
