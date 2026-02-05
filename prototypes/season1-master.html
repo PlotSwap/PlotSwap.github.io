@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1: Pheromones | MASTER | Plot Swap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #111111;
+            --text: #F0F0F0;
+            --accent: #D4AF37;
+            /* Gold */
+            --primary: #5A0606;
+            /* Sharper Burgundy */
+            --font-display: 'Oswald', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.1;
+            overflow-x: hidden;
+            perspective: 2000px;
+        }
+
+        /* Noise Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 10000;
+        }
+
+        /* 90/10 Brutalist Layout */
+        .layout {
+            display: grid;
+            grid-template-columns: 90% 10%;
+            min-height: 100vh;
+        }
+
+        .main {
+            border-right: 1px solid var(--primary);
+            position: relative;
+        }
+
+        .gutter {
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            letter-spacing: 5px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Parallax Background Fragments */
+        .fragment {
+            position: absolute;
+            background: var(--primary);
+            z-index: -1;
+            opacity: 0.2;
+            transition: 0.1s linear;
+        }
+
+        .f1 {
+            top: 15%;
+            right: -5%;
+            width: 30vw;
+            height: 40vh;
+            transform: rotate(15deg) translateZ(-500px);
+        }
+
+        .f2 {
+            top: 45%;
+            left: -10%;
+            width: 40vw;
+            height: 25vh;
+            transform: rotate(-10deg) translateZ(-800px);
+        }
+
+        .f3 {
+            top: 80%;
+            right: 10%;
+            width: 20vw;
+            height: 50vh;
+            transform: rotate(5deg) translateZ(-300px);
+        }
+
+        /* iMessage Styling */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 4rem 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .bubble {
+            padding: 10px 16px;
+            border-radius: 20px;
+            font-size: 1rem;
+            line-height: 1.35;
+            max-width: 80%;
+            position: relative;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin-bottom: 2px;
+        }
+
+        .bubble.venue {
+            align-self: flex-start;
+            background-color: #3b3b3b;
+            color: white;
+            border-bottom-left-radius: 4px;
+        }
+
+        .bubble.plotswap {
+            align-self: flex-end;
+            background-color: #007aff;
+            /* iMessage Blue */
+            color: white;
+            border-bottom-right-radius: 4px;
+            text-align: left;
+        }
+
+        /* Tail simulation */
+        .bubble::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 10px;
+            height: 10px;
+            z-index: -1;
+        }
+
+        .bubble.venue::after {
+            left: -5px;
+            background-color: #3b3b3b;
+            border-bottom-right-radius: 10px;
+        }
+
+        .bubble.plotswap::after {
+            right: -5px;
+            background-color: #007aff;
+            border-bottom-left-radius: 10px;
+        }
+
+        /* Hero / Reveal Flow */
+        .hero {
+            height: 120vh;
+            /* Extra height for scroll reveal */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5vw;
+            position: relative;
+            margin-top: -2rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 15vw, 15rem);
+            text-transform: uppercase;
+            line-height: 0.8;
+            opacity: 0;
+            transform: scale(0.8) translateZ(0);
+            transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            margin-top: 5rem;
+        }
+
+        .hero-title.revealed {
+            opacity: 1;
+            transform: scale(1) translateZ(100px);
+        }
+
+        .hero-sub {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            color: var(--accent);
+            margin-top: 2rem;
+            transform: translateZ(100px);
+        }
+
+        /* Sections with 3D Unfold */
+        .section {
+            padding: 8rem 5vw;
+            transform-style: preserve-3d;
+        }
+
+        .box-3d {
+            background: var(--surface);
+            padding: 3rem;
+            border: 1px solid var(--primary);
+            transform: rotateX(15deg) translateY(100px);
+            opacity: 0;
+            transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-width: 1000px;
+        }
+
+        .section.visible .box-3d {
+            transform: rotateX(0) translateY(0);
+            opacity: 1;
+        }
+
+        .label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            margin-bottom: 2rem;
+            line-height: 1;
+            text-transform: none;
+        }
+
+        .body-text {
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.5;
+            max-width: 700px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--primary);
+            padding-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: 5vw;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Proof Cards */
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+
+        .proof-card {
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            padding: 2rem;
+            transition: 0.5s;
+            transform: translateZ(20px);
+        }
+
+        .proof-card:hover {
+            transform: translateZ(80px) translateY(-10px);
+            background: #1a1a1a;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .proof-thumb {
+            width: 100%;
+            height: 200px;
+            background: #222;
+            margin-bottom: 2rem;
+            border: 1px solid var(--primary);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .proof-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: 0.5s;
+        }
+
+        .proof-card:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Branching Tree Diagram (Brutalist style) */
+        .tree-viz {
+            width: 100%;
+            max-width: 600px;
+            margin: 4rem 0;
+            border: 1px solid var(--accent);
+            padding: 2rem;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 0 var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 100%;
+            }
+
+            .gutter {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <main class="main">
+            <!-- Background shapes -->
+            <div class="fragment f1" data-speed="3"></div>
+            <div class="fragment f2" data-speed="6"></div>
+            <div class="fragment f3" data-speed="4"></div>
+
+            <div class="chat-container">
+                <div class="bubble venue">Thursdays 6–7 is slow. Got anything for us?</div>
+                <div class="bubble plotswap">Yes. But it won't look like a normal show.</div>
+                <div class="bubble venue">You? Normal? Let's hear it…</div>
+            </div>
+
+            <section class="hero">
+                <h1 class="hero-title" id="title-p">PHEROMONES</h1>
+                <div class="hero-sub">A live performance controlled like a video game.</div>
+            </section>
+
+            <section class="section">
+                <div class="box-3d">
+                    <span class="label">S1 // THE STATS</span>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num">15</span>
+                            <span class="stat-label">Scripted Scenes</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">8</span>
+                            <span class="stat-label">Direct Endings</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num">0%</span>
+                            <span class="stat-label">Improvisation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="box-3d" style="margin-left: auto;">
+                    <span class="label">S1 // THE SYSTEM</span>
+                    <h2 onmouseover="scramble(this, 'Infinite Branching')">Infinite Branching.</h2>
+                    <div class="body-text">
+                        <p>Fully scripted branching show performed live. Actors move based on audience input with zero
+                            improvisation. The location is the set. The context is the stage.</p>
+                    </div>
+
+                    <div class="tree-viz">
+                        <!-- Placeholder for the SVG from season1.html, styled for Brutalism -->
+                        <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="200" cy="20" r="8" fill="var(--accent)" />
+                            <line x1="200" y1="28" x2="200" y2="50" stroke="var(--primary)" stroke-width="2" />
+                            <line x1="200" y1="50" x2="120" y2="80" stroke="var(--accent)" stroke-width="2" />
+                            <line x1="200" y1="50" x2="280" y2="80" stroke="var(--primary)" stroke-width="2" />
+                            <circle cx="120" cy="80" r="6" fill="var(--accent)" />
+                            <circle cx="280" cy="80" r="6" fill="var(--primary)" />
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="box-3d">
+                    <span class="label">S1 // PROOF OF REALITY</span>
+                    <h2>Immersive Proof.</h2>
+                    <div class="proof-grid">
+                        <div class="proof-card">
+                            <div class="proof-thumb"><img src="../docs/assets/culturemap-feature.png"></div>
+                            <span class="label" style="font-size: 0.6rem;">CultureMap</span>
+                            <h3 style="font-family: var(--font-display); font-size: 1.2rem; text-transform: uppercase;">
+                                Public Listing</h3>
+                            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.7;">June 2025 event detail
+                                verification.</p>
+                        </div>
+                        <div class="proof-card">
+                            <div class="proof-thumb"><img src="../docs/assets/backstage-cue-light.jpg"></div>
+                            <span class="label" style="font-size: 0.6rem;">House of Blues</span>
+                            <h3 style="font-family: var(--font-display); font-size: 1.2rem; text-transform: uppercase;">
+                                The Window</h3>
+                            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.7;">15x15 room. 6 to 8pm window
+                                constraints.</p>
+                        </div>
+                        <div class="proof-card">
+                            <div class="proof-thumb"><img src="../docs/assets/story-tree-final.png"></div>
+                            <span class="label" style="font-size: 0.6rem;">Architecture</span>
+                            <h3 style="font-family: var(--font-display); font-size: 1.2rem; text-transform: uppercase;">
+                                Full Script</h3>
+                            <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.7;">15 scenes. No improv. Seamless
+                                transition logic.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="padding-bottom: 15rem; text-align: center;">
+                <div class="box-3d" style="display: inline-block;">
+                    <h2 style="margin-bottom: 3rem;">Ready for Season 2?</h2>
+                    <div style="display: flex; gap: 2rem; justify-content: center;">
+                        <a href="#" class="btn" onmouseover="scramble(this, 'BOOK CALL')">Book a call</a>
+                        <a href="#" class="btn" style="border-color: var(--text); color: var(--text);"
+                            onmouseover="scramble(this, 'THE BUSINESS')">The Business</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <aside class="gutter">
+            SEASON 1 // ARCHIVE // CASE STUDY // PHEROMONES
+        </aside>
+    </div>
+
+    <script>
+        // Scroll Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('hero')) {
+                        document.getElementById('title-p').classList.add('revealed');
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.section, .hero').forEach(s => observer.observe(s));
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            document.querySelectorAll('.fragment').forEach(f => {
+                const speed = f.getAttribute('data-speed');
+                f.style.top = (15 + (y / speed) * 0.15) + '%';
+            });
+
+            // 3D Title Tilt
+            const title = document.getElementById('title-p');
+            const scrollPercent = y / (document.body.scrollHeight - window.innerHeight);
+            title.style.transform = `rotateX(${-10 + scrollPercent * 20}deg) rotateY(${scrollPercent * 10}deg) translateZ(${scrollPercent * 100}px)`;
+        });
+
+        // Text Scramble Effect
+        function scramble(el, originalText) {
+            const chars = "!<>-_\\/[]{}—=+*^?#________";
+            let iteration = 0;
+            const interval = setInterval(() => {
+                el.innerText = originalText.split("").map((letter, index) => {
+                    if (index < iteration) return originalText[index];
+                    return chars[Math.floor(Math.random() * chars.length)];
+                }).join("");
+                if (iteration >= originalText.length) clearInterval(interval);
+                iteration += 1 / 3;
+            }, 30);
+        }
+
+        // Initial Theme Scramble
+        scramble(document.getElementById('title-p'), 'PHEROMONES');
+    </script>
+</body>
+
+</html>

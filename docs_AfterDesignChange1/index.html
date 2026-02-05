@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plot Swap Theater</title>
+    <meta name="theme-color" content="#050505">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=block"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--gradient-cinematic);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title-animated {
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 0.8;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        @keyframes heroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tagline-sub {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .show-card {
+            background: var(--color-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .show-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+        }
+
+        .show-image img {
+            width: 300px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .show-card {
+                flex-direction: column;
+            }
+
+            .show-image img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/signpost-logo.png" alt="Plot Swap Logo" class="logo-icon">
+                <span class="logo-text">Plot Swap: Houston</span>
+            </a>
+
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="season1.html">Season 1</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="business.html">Host a Show</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="layout-90-10">
+        <main class="main-content">
+            <!-- HERO -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title-animated">PLOT SWAP</h1>
+                    <p class="tagline-sub">Scripted stories hiding in plain sight.</p>
+                    <p class="hero-description"
+                        style="font-weight: 700; color: #fff; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 5px;">
+                        Where will we be next?</p>
+
+                    <div class="hero-buttons" style="display: flex; justify-content: center; gap: 2rem;">
+                        <a href="mailto:russell@plotswap.org?subject=Get%20Invited%20to%20Plot%20Swap" class="btn">Get
+                            Invited</a>
+                        <a href="business.html" class="btn btn-outline">Host A Story</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN CONTENT AREA -->
+            <section class="section section-cinematic">
+                <div class="container">
+                    <!-- PHEROMONES SHOW -->
+                    <div class="show-card">
+                        <div class="show-image">
+                            <img src="assets/media_1.jpg" alt="Pheromones Show Poster">
+                        </div>
+                        <div class="show-info">
+                            <p style="color: var(--color-accent); font-weight: 700; margin-bottom: 0.5rem;">[ SEASON 1 ]
+                            </p>
+                            <h2 style="font-family: var(--font-display); font-size: 2.5rem; text-transform: uppercase;">
+                                Pheromones</h2>
+                            <p style="margin: 1.5rem 0;">Experience the original branching immersive show. Where every
+                                table has a story, and you decide where it goes.</p>
+                            <a href="season1.html" class="btn">View Case Study</a>
+                        </div>
+                    </div>
+
+                    <!-- HAIR BAE SHOW -->
+                    <div class="show-card" style="border-right: 4px solid var(--color-primary);">
+                        <div class="show-image">
+                            <img src="assets/media_2.jpg" alt="Hair Bae Show Poster">
+                        </div>
+                        <div class="show-info">
+                            <p style="color: var(--color-primary); font-weight: 700; margin-bottom: 0.5rem;">[ CURRENTLY
+                                ACTIVE ]</p>
+                            <h2 style="font-family: var(--font-display); font-size: 2.5rem; text-transform: uppercase;">
+                                Hair Bae</h2>
+                            <p style="margin: 1.5rem 0;">Staged in active barbershops across Houston. A story about
+                                vanity, secrets, and the lies we tell ourselves in the mirror.</p>
+                            <a href="business.html" class="btn">Host this show</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="gutter">
+            HOME // HOUSTON // IMMERSIVE // PLOT SWAP
+        </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Plot Swap Theater. All rights reserved.</p>
+            <a href="legacy/index.html" class="legacy-link">View Legacy Site</a>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Reveal logic
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-cinematic').forEach(s => revealObserver.observe(s));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Interactive | Plot Swap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #5f27cd;
+            /* Vivid Violet (Using purple intentionally here for 'interactive' feel, but keeping it restrained) */
+            --path: #341f97;
+            --font-display: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 50% 50%, rgba(95, 39, 205, 0.05) 0%, transparent 70%);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10vh 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--accent);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Choice Tree System */
+        .choice-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .choice-node {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            width: 100%;
+            margin-bottom: 4rem;
+            position: relative;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .choice-node.hidden {
+            display: none;
+        }
+
+        .options {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .option-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .option-btn:hover {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .option-btn.selected {
+            background: var(--accent);
+            color: #fff;
+            pointer-events: none;
+        }
+
+        .path-line {
+            width: 2px;
+            height: 4rem;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            margin-top: -4rem;
+        }
+
+        /* Content Styles */
+        h2 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .lead {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .story-map-viz {
+            margin: 2rem 0;
+            opacity: 0.5;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            color: var(--accent);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">PLOT SWAP INTERACTIVE</div>
+        </header>
+
+        <div class="choice-container" id="tree">
+            <!-- Starting Node -->
+            <div class="choice-node" id="node-start">
+                <p class="lead">Select your starting path.</p>
+                <h2>What is Plot Swap?</h2>
+                <div class="options">
+                    <button class="option-btn" onclick="makeChoice('start', 'concept')">The Concept</button>
+                    <button class="option-btn" onclick="makeChoice('start', 'mission')">The Mission</button>
+                </div>
+            </div>
+
+            <!-- Branch: Concept -->
+            <div class="choice-node hidden" id="node-concept">
+                <div class="path-line"></div>
+                <h2>Immersive Scriping</h2>
+                <p>We build location-made shows from scratch. Story, blocking, cues, and choice systems. <strong>No
+                        improv.</strong></p>
+                <div class="options">
+                    <button class="option-btn" onclick="makeChoice('concept', 'design')">Design Process</button>
+                    <button class="option-btn" onclick="makeChoice('concept', 'founder')">Who made this?</button>
+                </div>
+            </div>
+
+            <!-- Branch: Mission -->
+            <div class="choice-node hidden" id="node-mission">
+                <div class="path-line"></div>
+                <h2>Punch Up Real Life</h2>
+                <p>To reward the curious and prove magic still exists in the ordinary. We hide in plain sight.</p>
+                <div class="options">
+                    <button class="option-btn" onclick="makeChoice('mission', 'secrets')">Why secrets?</button>
+                    <button class="option-btn" onclick="makeChoice('mission', 'support')">Support Us</button>
+                </div>
+            </div>
+
+            <!-- Branch: Design -->
+            <div class="choice-node hidden" id="node-design">
+                <div class="path-line"></div>
+                <h2>Branching Integrity</h2>
+                <p>Narrative arcs that multiply without breaking. We solved choice transmission with physical cue lights
+                    and zero-pause resets.</p>
+                <div class="options">
+                    <button class="option-btn" onclick="makeChoice('design', 'support')">Support the mission</button>
+                </div>
+            </div>
+
+            <!-- Branch: Founder -->
+            <div class="choice-node hidden" id="node-founder">
+                <div class="path-line"></div>
+                <h2>Russell Varner</h2>
+                <p>Universal Designer. Storyteller. Reality-warper. Turning markets into theater and parties into core
+                    memories.</p>
+                <div class="options">
+                    <button class="option-btn" onclick="makeChoice('founder', 'mission')">View the mission</button>
+                </div>
+            </div>
+
+            <!-- Branch: Secrets -->
+            <div class="choice-node hidden" id="node-secrets">
+                <div class="path-line"></div>
+                <h2>Analog Secrets</h2>
+                <p>No spoilers. No algorithms. You discover us through a friend, a flyer, or sheer audacity.</p>
+                <div class="options">
+                    <button class="option-btn" onclick="makeChoice('secrets', 'support')">Patreon</button>
+                </div>
+            </div>
+
+            <!-- Branch: Support -->
+            <div class="choice-node hidden" id="node-support">
+                <div class="path-line"></div>
+                <h2>Keep the Story Alive</h2>
+                <p>Every performance is an experiment. Join the patrons who make the impossible happen.</p>
+                <a href="#" class="option-btn"
+                    style="display: block; text-align: center; margin-top: 1rem; text-decoration: none;">SUPPORT ON
+                    PATREON</a>
+            </div>
+        </div>
+
+        <div class="status-bar" id="status">Current Path: Origin</div>
+    </div>
+
+    <script>
+        const paths = ['Origin'];
+
+        function makeChoice(fromNodeId, toNodeId) {
+            // Disable original buttons
+            const buttons = document.getElementById(`node-${fromNodeId}`).querySelectorAll('.option-btn');
+            buttons.forEach(btn => btn.classList.add('selected'));
+
+            // Show new node
+            const nextNode = document.getElementById(`node-${toNodeId}`);
+            nextNode.classList.remove('hidden');
+
+            // Update status
+            paths.push(toNodeId.toUpperCase());
+            document.getElementById('status').innerText = `Path: ${paths.join(' > ')}`;
+
+            // Scroll to bottom
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+
+</html>

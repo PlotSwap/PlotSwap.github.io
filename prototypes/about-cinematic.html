@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Cinematic | Plot Swap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #121212;
+            --text: #f0f0f0;
+            --accent: #D4AF37;
+            /* Warm Gold */
+            --secondary: #4A0404;
+            /* Deep Burgundy */
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Cinematic Letterbox effect */
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: #000;
+            z-index: 1000;
+        }
+
+        body::before {
+            top: 0;
+        }
+
+        body::after {
+            bottom: 0;
+        }
+
+        /* Film Grain Overlay */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .hero-vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(0, 0, 0, 0.8) 80%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            margin-bottom: 6rem;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-style: italic;
+            margin-bottom: 1rem;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            animation: fadeIn 3s ease-out;
+        }
+
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+            margin-bottom: 15rem;
+        }
+
+        .reveal-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-block {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 700px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(to right, var(--secondary), transparent);
+            padding: 3rem;
+            border-left: 4px solid var(--accent);
+            margin: 4rem 0;
+        }
+
+        .photo-reveal {
+            width: 100%;
+            height: 400px;
+            background-color: #333;
+            /* Placeholder */
+            background-image: linear-gradient(45deg, var(--secondary), var(--bg));
+            position: relative;
+            margin: 4rem 0;
+            overflow: hidden;
+        }
+
+        .photo-reveal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 100px #000;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: 0.4s;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 0.8rem;
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grain"></div>
+    <div class="hero-vignette"></div>
+
+    <div class="container">
+        <header>
+            <a href="#" class="logo">PLOT SWAP</a>
+            <ul class="nav-links">
+                <li><a href="#">THE SHOWS</a></li>
+                <li><a href="#">THE STORY</a></li>
+                <li><a href="#">PARTNERS</a></li>
+            </ul>
+        </header>
+
+        <section class="hero">
+            <span class="section-label" style="animation: fadeIn 2s ease-out;">EST. HOUSTON</span>
+            <h1>The Noir Side of Story</h1>
+            <div class="subtitle">Scripted stories hiding in public</div>
+        </section>
+
+        <section class="reveal-section section">
+            <span class="section-label">THE PREMISE</span>
+            <h2 class="section-title">Theater without a stage.</h2>
+            <div class="content-block">
+                <p>We create immersive theater performances that hide in plain sight. Real actors. Real locations.
+                    Unsuspecting audiences who stumble into a story already in progress.</p>
+            </div>
+            <div class="highlight-box">
+                <p>To reward the curious. To prove that magic still exists. You just have to pay attention.</p>
+            </div>
+        </section>
+
+        <section class="reveal-section section">
+            <span class="section-label">THE ARCHITECT</span>
+            <h2 class="section-title">Designed for Immersion.</h2>
+            <div class="photo-reveal"></div>
+            <div class="content-block">
+                <p><strong>Russell Varner</strong> is a Universal Designer who sees potential where others see the
+                    ordinary. Whether building social experiments or crafting immersive performances, the question
+                    remains: <em>What if this could be more?</em></p>
+                <p style="margin-top: 2rem; font-style: italic; color: var(--accent);">"Punch Up Real Life."</p>
+            </div>
+        </section>
+
+        <section class="reveal-section section" style="text-align: center;">
+            <span class="section-label">THE COVENANT</span>
+            <h2 class="section-title" style="font-size: 2.5rem;">The best experiences can't be explained.</h2>
+            <p style="margin-bottom: 3rem; opacity: 0.8;">They have to be felt. No spoilers. No hype. No algorithm.</p>
+            <a href="#" class="btn">JOIN THE INNER CIRCLE</a>
+        </section>
+
+        <footer>
+            &copy; 2026 PLOT SWAP THEATER. PRIVATE PROPERTY OF THE IMAGINATIVE.
+        </footer>
+    </div>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>

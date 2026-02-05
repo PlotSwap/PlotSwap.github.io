@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | MASTER | Plot Swap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #121212;
+            --text: #F0F0F0;
+            --accent: #D4AF37;
+            /* Gold */
+            --primary: #4A0404;
+            /* Burgundy */
+            --font-display: 'Oswald', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --perspective: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.1;
+            overflow-x: hidden;
+            perspective: var(--perspective);
+        }
+
+        /* Noise Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* 90/10 Brutalist Grid */
+        .master-layout {
+            display: grid;
+            grid-template-columns: 90% 10%;
+            min-height: 100vh;
+        }
+
+        .main-stage {
+            border-right: 1px solid var(--primary);
+            position: relative;
+        }
+
+        .side-gutter {
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Section - The "Assemble" effect */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 5vw;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-fragment {
+            position: absolute;
+            top: 20%;
+            right: 0;
+            width: 40%;
+            height: 60%;
+            background: linear-gradient(135deg, var(--primary), var(--bg));
+            z-index: -1;
+            transform: rotateY(-45deg) translateZ(-200px);
+            opacity: 0;
+            transition: 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .hero.visible .hero-bg-fragment {
+            opacity: 0.3;
+            transform: rotateY(-20deg) translateZ(0);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: 18vw;
+            line-height: 0.85;
+            text-transform: uppercase;
+        }
+
+        .hero-title .char {
+            display: inline-block;
+            transform: rotateX(90deg) translateZ(100px);
+            opacity: 0;
+            transition: 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .hero.visible .hero-title .char {
+            transform: rotateX(0) translateZ(0);
+            opacity: 1;
+        }
+
+        /* Section Unfolding Styles */
+        .fold-section {
+            padding: 15rem 5vw;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .fold-box {
+            background: var(--surface);
+            padding: 4rem;
+            border: 1px solid var(--primary);
+            transform: rotateX(-30deg) rotateY(10deg) translateZ(-100px);
+            opacity: 0;
+            transition: 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+            will-change: transform, opacity;
+        }
+
+        .fold-section.visible .fold-box {
+            transform: rotateX(0) rotateY(0) translateZ(0);
+            opacity: 1;
+        }
+
+        .big-number {
+            font-family: var(--font-display);
+            font-size: 10rem;
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            color: var(--primary);
+            z-index: -1;
+            -webkit-text-stroke: 1px var(--accent);
+            opacity: 0.2;
+        }
+
+        .label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 3rem;
+            font-weight: 900;
+        }
+
+        .copy {
+            font-size: 1.5rem;
+            max-width: 600px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* Overlapping Brutalist elements */
+        .founder-reveal {
+            position: relative;
+            margin-top: 10rem;
+        }
+
+        .photo-pane {
+            width: 400px;
+            height: 500px;
+            background: var(--primary);
+            border: 5px solid var(--accent);
+            transform: rotate(-5deg);
+        }
+
+        .info-pane {
+            position: absolute;
+            top: 50%;
+            left: 300px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 3rem;
+            width: 500px;
+            transform: translateZ(100px) rotate(2deg);
+            box-shadow: 20px 20px 0 var(--primary);
+        }
+
+        /* Interactive Choice Mechanism */
+        .choices-block {
+            border-top: 2px solid var(--accent);
+            padding: 5rem 0;
+            margin-top: 5rem;
+        }
+
+        .choice-btn {
+            background: transparent;
+            border: 2px solid var(--text);
+            color: var(--text);
+            padding: 2rem 4rem;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .choice-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+
+        .choice-btn:hover::after {
+            left: 0;
+        }
+
+        .choice-btn:hover {
+            color: var(--bg);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .master-layout {
+                grid-template-columns: 100%;
+            }
+
+            .side-gutter {
+                display: none;
+            }
+
+            .info-pane {
+                position: static;
+                width: 100%;
+                margin-top: -50px;
+            }
+
+            .photo-pane {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="master-layout">
+        <main class="main-stage">
+
+            <section class="hero" id="hero">
+                <div class="hero-bg-fragment"></div>
+                <h1 class="hero-title">
+                    <span class="char" style="transition-delay: 0.1s">P</span>
+                    <span class="char" style="transition-delay: 0.2s">L</span>
+                    <span class="char" style="transition-delay: 0.3s">O</span>
+                    <span class="char" style="transition-delay: 0.4s">T</span>
+                    <br>
+                    <span class="char" style="transition-delay: 0.5s">S</span>
+                    <span class="char" style="transition-delay: 0.6s">W</span>
+                    <span class="char" style="transition-delay: 0.7s">A</span>
+                    <span class="char" style="transition-delay: 0.8s">P</span>
+                </h1>
+            </section>
+
+            <section class="fold-section">
+                <div class="big-number">01</div>
+                <div class="fold-box">
+                    <span class="label">The Philosophy</span>
+                    <h2>Theater is a trap.</h2>
+                    <div class="copy">
+                        <p>We break the trap. Immersive performances hiding in public. Unsuspecting audiences stumbling
+                            into a reality rewrite.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fold-section">
+                <div class="big-number">02</div>
+                <div class="fold-box">
+                    <span class="label">The Mission</span>
+                    <h2>Punch Up Real Life.</h2>
+                    <div class="copy">
+                        <p>To reward the curious. To prove that magic still exists in the mundane. You just have to pay
+                            attention.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fold-section founder-reveal">
+                <div class="photo-pane"></div>
+                <div class="info-pane">
+                    <span class="label" style="color: var(--primary)">Architect</span>
+                    <h3 style="font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1rem;">Russell Varner
+                    </h3>
+                    <p>Universal Designer. Reimagining the ordinary. Making the world feel a little less predictable one
+                        show at a time.</p>
+                </div>
+            </section>
+
+            <section class="fold-section" style="text-align: center;">
+                <div class="choices-block">
+                    <h2>Choose Your Entrance</h2>
+                    <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 4rem;">
+                        <button class="choice-btn">THE PRIVATE ROOM</button>
+                        <button class="choice-btn" style="border-color: var(--accent); color: var(--accent);">THE
+                            BARBERSHOP</button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        <aside class="side-gutter">
+            SCRIPTED STORIES HIDING IN PLAIN SIGHT — HOUSTON TX
+        </aside>
+    </div>
+
+    <script>
+        // Unfolding Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fold-section, .hero').forEach(el => observer.observe(el));
+
+        // Interaction for "Unfolding" feel
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            document.querySelectorAll('.fold-box').forEach(box => {
+                const speed = 0.05;
+                const rotation = scroll * speed;
+                // Subtle dynamic rotation as you scroll for that "unstable/fragmented" feel
+                // But we only want to nudge the existing transform a bit
+            });
+        });
+    </script>
+</body>
+
+</html>

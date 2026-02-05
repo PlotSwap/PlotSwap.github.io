@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Prototypes | Plot Swap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #121212;
+            --card: #1e1e1e;
+            --text: #fff;
+            --accent: #ff4757;
+            --font-display: 'Oswald', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 4rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card h2 {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 8px;
+            background: #333;
+            color: #fff;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .brutalist {
+            border-left: 5px solid #FF0000;
+        }
+
+        .cinematic {
+            border-left: 5px solid #D4AF37;
+        }
+
+        .interactive {
+            border-left: 5px solid #5f27cd;
+        }
+
+        .minimalist {
+            border-left: 5px solid #800000;
+        }
+
+        .master {
+            border-left: 5px solid #D4AF37;
+        }
+
+        .master-v2 {
+            border-left: 5px solid #D4AF37;
+            background: linear-gradient(135deg, #222, #050505);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .btn-view {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .original {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed #444;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Style Prototypes</h1>
+    <p class="subtitle">Exploring seven distinct directions for the Plot Swap redesign.</p>
+
+    <div class="grid">
+        <a href="about-brutalist.html" class="card brutalist">
+            <div class="tag">High Risk</div>
+            <h2>Radical Brutalist</h2>
+            <p>Stark black/white/red palette. Asymmetric 90/10 layout. Massive overlapping typography.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+
+        <a href="about-cinematic.html" class="card cinematic">
+            <div class="tag">Premium</div>
+            <h2>Cinematic Storytelling</h2>
+            <p>Deep burgundy and warm gold. Film noir aesthetic with letterboxing and film grain.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+
+        <a href="about-interactive.html" class="card interactive">
+            <div class="tag">Gamified</div>
+            <h2>Interactive Journey</h2>
+            <p>Choice-based system mirroring the show format. Content revealed through decisions.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+
+        <a href="about-minimalist.html" class="card minimalist">
+            <div class="tag">Editorial</div>
+            <h2>Minimalist "Anti-Theater"</h2>
+            <p>Cream and crimson. editorial layout with generous whitespace and high-end typography.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+
+        <a href="about-master.html" class="card master">
+            <div class="tag">Hybrid V1</div>
+            <h2>About Master V1</h2>
+            <p>The first "Cinematic Brutalist" hybrid. Simple 3D unfolding section reveals.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+
+        <a href="about-master-v2.html" class="card master-v2">
+            <div class="tag">The Alpha</div>
+            <h2>About Master V2</h2>
+            <p>Extreme technical vision. Scroll-driven 3D tilt, parallax depth, and text-scramble.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+
+        <a href="season1-master.html" class="card master-v2" style="border-left-color: #ff4757;">
+            <div class="tag">The Case Study</div>
+            <h2>Season 1 Master</h2>
+            <p>Applying the Alpha aesthetic to the Pheromones case study. Immersive archive feel.</p>
+            <div class="btn-view">View Prototype &rarr;</div>
+        </a>
+    </div>
+
+    <div class="original">
+        <p>Want to see the current design for comparison?</p>
+        <a href="../docs/about.html" style="color: #666; font-size: 0.9rem;">View Original About Page</a>
+    </div>
+</body>
+
+</html>

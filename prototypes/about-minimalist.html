@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Minimalist | Plot Swap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FDFBFA;
+            /* Near-white cream */
+            --text: #1a1a1a;
+            --accent: #800000;
+            /* Deep Crimson */
+            --muted: #666666;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10vh 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 8rem;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .navbar {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 10rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero .tagline-label {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 12rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .content {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .content p {
+            margin-bottom: 2rem;
+        }
+
+        .content blockquote {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-style: italic;
+            text-align: center;
+            margin: 4rem 0;
+            padding: 2rem;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .fine-line {
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
+            margin: 2rem auto;
+        }
+
+        .founder-block {
+            text-align: center;
+        }
+
+        .founder-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+
+        .btn-minimal {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: var(--text);
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-minimal:hover {
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 5rem;
+            margin-top: 5rem;
+            border-top: 1px solid #eee;
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="logo">Plot Swap</a>
+            <nav class="navbar">
+                <a href="#">The Work</a>
+                <a href="#">The Story</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <span class="tagline-label">HOUSTON, TEXAS</span>
+            <h1>Art that blends in.</h1>
+            <p style="color: var(--muted); font-size: 1rem; letter-spacing: 1px;">Scripted stories hiding in public.</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">The Foundation</h2>
+            <div class="content">
+                <p>We create immersive theater performances that hide in plain sight. Real actors. Real locations.
+                    Unsuspecting audiences who stumble into a story already in progress.</p>
+                <blockquote>"The goal is to make the world feel a little less predictable."</blockquote>
+                <p>To reward the curious. To prove that magic still exists. You just have to pay attention.</p>
+            </div>
+        </section>
+
+        <section class="section founder-block">
+            <h2 class="section-title">The Architect</h2>
+            <div class="founder-name">Russell Varner</div>
+            <div class="founder-role">Universal Designer</div>
+            <div class="content" style="text-align: left;">
+                <p>Russell sees potential where others see the ordinary. Turning a farmer's market stall into theater, a
+                    wedding into an experience, a simple party into a memory people talk about for years.</p>
+                <div class="fine-line"></div>
+                <p style="text-align: center; font-style: italic;">Punch Up Real Life.</p>
+            </div>
+        </section>
+
+        <section class="section" style="text-align: center;">
+            <h2 class="section-title">Privacy</h2>
+            <div class="content">
+                <p>The best experiences can't be explained. They have to be felt. No spoilers. No hype. No algorithm.
+                </p>
+                <a href="#" class="btn-minimal">Support via Patreon</a>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 PLOT SWAP THEATER. RESTRAINT IS LUXURY.
+        </footer>
+    </div>
+</body>
+
+</html>

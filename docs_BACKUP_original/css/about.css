@@ -1,0 +1,252 @@
+/* === ABOUT PAGE STYLES === */
+
+/* Main container offset for fixed header */
+.about-page {
+    margin-top: var(--header-height);
+}
+
+/* Page label (small text above title) */
+.page-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Hero Section */
+.about-page .hero-section {
+    padding: 6rem 0 3rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+    position: relative;
+}
+
+.about-page .hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    opacity: 0.5;
+}
+
+.philosophical-question {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+.origin-text {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+/* Section Styling */
+.about-page .section {
+    padding: 3rem 0;
+}
+
+.about-page .section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.about-page .content-block {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-page .content-block p {
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-page .lead {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--color-text-main);
+    line-height: 1.8;
+}
+
+/* What We Do Section - Subtle background */
+.what-we-do-section {
+    background: var(--color-surface);
+    position: relative;
+}
+
+.what-we-do-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 71, 87, 0.2), transparent);
+}
+
+/* Founder Section - Gradient background */
+.founder-section {
+    background: linear-gradient(135deg, rgba(255, 71, 87, 0.08) 0%, rgba(102, 126, 234, 0.08) 100%);
+    position: relative;
+}
+
+.founder-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    opacity: 0.3;
+}
+
+/* Anti-Marketing Section */
+.anti-marketing-section {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.12) 100%);
+    border-top: 2px solid rgba(255, 71, 87, 0.3);
+    border-bottom: 2px solid rgba(255, 71, 87, 0.3);
+}
+
+.manifesto-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Founder Section */
+.founder-subtitle {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.slogan-text {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--color-text-main);
+}
+
+.slogan-text strong {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* Support Section */
+.support-section {
+    background: var(--color-surface);
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+.support-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.support-btn {
+    background: var(--color-primary);
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.support-btn:hover {
+    background: #ff6b7a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4);
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-main);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--color-text-muted);
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.social-link svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-page .hero-section {
+        padding: 3rem 0 2rem;
+    }
+
+    .philosophical-question {
+        font-size: 1.1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .about-page .section-title {
+        font-size: 2rem;
+    }
+
+    .about-page .lead {
+        font-size: 1.15rem;
+    }
+
+    .manifesto-text {
+        font-size: 1.2rem;
+    }
+
+    .support-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .support-btn,
+    .social-link {
+        width: 100%;
+        justify-content: center;
+    }
+}
