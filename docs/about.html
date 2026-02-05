@@ -4,243 +4,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Plot Swap Archive</title>
-    <meta name="theme-color" content="#050505">
+    <title>About | Plot Swap</title>
+    <meta name="description" content="The mission and people behind Plot Swap. Houston's secret theater company.">
+    <meta name="theme-color" content="#0A0A0A">
+    <link rel="icon" type="image/png" href="assets/logo.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/redesign.css">
     <style>
-        .dossier-grid {
+        .profile-section {
             display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 6rem;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--space-12);
             align-items: start;
-            margin-top: 4rem;
+            margin-top: var(--space-8);
         }
 
         .profile-photo {
             width: 100%;
-            height: 450px;
+            aspect-ratio: 3/4;
             background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.5);
+            border-radius: var(--radius-lg);
             background-image: url('assets/founder.jpg');
             background-size: cover;
             background-position: center;
-            filter: grayscale(1) contrast(1.1) brightness(0.8);
+            filter: grayscale(1) contrast(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow-lg);
         }
 
-        .profile-photo::after {
-            content: "ID_IMG_CONFIRMED";
-            position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            font-family: var(--font-ledger);
-            font-size: 0.6rem;
-            color: var(--color-primary);
-        }
-
-        .content-block {
-            line-height: 1.8;
-            font-size: 1.15rem;
-            color: var(--color-text-muted);
-        }
-
-        .content-block p {
-            margin-bottom: 2rem;
-        }
-
-        .content-block em {
-            color: var(--color-accent);
-            font-family: var(--font-serif);
-        }
-
-        .mission-callout {
-            font-family: var(--font-serif);
+        .quote-box {
+            font-family: var(--font-accent);
             font-style: italic;
-            font-size: 1.5rem;
+            font-size: var(--text-xl);
             color: var(--color-accent);
-            border-left: 4px solid var(--color-primary);
-            padding-left: 2rem;
-            margin: 4rem 0;
+            border-left: 3px solid var(--color-accent);
+            padding-left: var(--space-6);
+            margin: var(--space-8) 0;
         }
 
-        @media (max-width: 1024px) {
-            .dossier-grid {
+        @media (max-width: 768px) {
+            .profile-section {
                 grid-template-columns: 1fr;
+                gap: var(--space-8);
             }
         }
     </style>
 </head>
 
-<body>
+<body class="page-about">
 
-    <div class="layout-90-10">
-        <main class="main-content">
-            <header style="position: absolute; top: 0; left: 0; width: 100%; padding: 2rem 5%; z-index: 100;">
-                <div class="logo">
-                    <a href="index.html"
-                        style="font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; color: var(--color-text-muted);">←
-                        BACK_TO_INDEX</a>
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">PLOT SWAP</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="business.html" class="nav-link">Host a Show</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content fade-in-up">
+            <span class="text-uppercase text-accent">PERSONNEL BIO</span>
+            <h1 class="hero-title" style="margin-top: var(--space-4);">The Mission</h1>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO SECTION -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <h2 class="section-title">What We Do</h2>
+                <div class="section-description">
+                    <p>
+                        We perform <strong class="text-accent">scripted theater disguised as real life</strong>. You
+                        might witness a breakup at a coffee shop, a mysterious conversation at a barbershop, or a
+                        stranger's confession at a bar. It's all scripted, but it feels real.
+                    </p>
+                    <p>
+                        <strong>People deserve stories.</strong> Not just to watch, but to be part of. When theater
+                        hides in plain sight, it becomes a memory you carry with you. Something that happened to
+                        <em>you</em>, not something you paid to see.
+                    </p>
+                    <p
+                        style="margin-top: var(--space-8); font-size: var(--text-base); opacity: 0.8; border-top: 1px solid rgba(0,0,0,0.05); padding-top: var(--space-4);">
+                        We started with interactive theater (<a href="season1.html" class="text-accent"
+                            style="text-decoration: underline;">Pheromones, 2025</a>), learned what resonated, and
+                        evolved into hidden performances that feel like real life.
+                    </p>
                 </div>
-            </header>
+            </div>
+        </div>
+    </section>
 
-            <section class="section">
-                <div class="container">
-                    <div style="margin-bottom: 6rem;">
-                        <span class="ink-stamp" style="margin-bottom: 2rem;">PERSONNEL_BIO</span>
-                        <h1 class="title-stamp" style="margin-top: 2rem;">The Mission.</h1>
-                    </div>
-
-                    <!-- WHAT WE DO -->
-                    <div class="section-cinematic" style="margin-bottom: 8rem;">
-                        <h2 style="margin-bottom: 3rem;">What We Do.</h2>
-                        <div class="content-block" style="max-width: 800px;">
-                            <p>We perform <strong style="color: var(--color-accent);">scripted theater disguised as real
-                                    life</strong>. You might witness a breakup at a coffee shop, a mysterious
-                                conversation at a barbershop, or a stranger's confession at a bar. It's all scripted,
-                                but it feels real.</p>
-                            <p><strong>People deserve stories.</strong> Not just to watch, but to be part of. When
-                                theater hides in plain sight, it becomes a memory you carry with you—something that
-                                happened to <em>you</em>, not something you paid to see.</p>
-                            <p
-                                style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(138, 29, 29, 0.1); font-size: 1rem; opacity: 0.8;">
-                                We started with interactive theater (<a href="season1.html"
-                                    style="color: var(--color-primary); text-decoration: none; border-bottom: 1px dotted var(--color-primary);">Pheromones,
-                                    2025</a>), learned what resonated, and evolved into hidden performances that feel
-                                like real life.</p>
-                        </div>
-                    </div>
-
-                    <div class="dossier-grid">
-                        <aside class="section-cinematic">
-                            <div class="profile-photo"></div>
-                            <div class="mission-callout">
-                                "Analog entertainment deserves another chance."
-                            </div>
-                        </aside>
-
-                        <article class="section-cinematic">
-                            <div
-                                style="font-family: var(--font-ledger); font-size: 0.8rem; color: var(--color-primary); margin-bottom: 3rem; letter-spacing: 2px;">
-                                SUBJECT: VARNER, RUSSELL // HOUSTON_SECTOR
-                            </div>
-
-                            <h2 style="margin-bottom: 3rem; font-family: var(--font-display); letter-spacing: 2px;">Meet
-                                Russell Varner</h2>
-
-                            <div class="content-block">
-                                <p
-                                    style="font-size: 1.4rem; color: var(--color-text-main); font-family: var(--font-serif); border-bottom: 1px solid rgba(138, 29, 29, 0.1); padding-bottom: 2rem;">
-                                    I'm a Universal Designer who sees potential where others see the ordinary. As a kid,
-                                    my storytelling got me in trouble. As an adult, it became my superpower.
-                                </p>
-
-                                <p>I can't help but reimagine everything. Turning a farmer's market stall into theater,
-                                    a wedding into an experience, a simple party into a memory people talk about for
-                                    years. Whether I'm designing countless video games, crafting immersive performances,
-                                    or building social experiments that blur the line between art and life, I'm always
-                                    asking the same question: <em>What if this could be more?</em></p>
-
-                                <p
-                                    style="font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 3px;">
-                                    My slogan: Punch Up Real Life.</p>
-                            </div>
-
-                            <!-- WHY WORD OF MOUTH -->
-                            <div class="artifact-card" style="margin-top: 6rem; margin-bottom: 6rem;">
-                                <h3 style="margin-bottom: 2rem; font-family: var(--font-display); letter-spacing: 2px;">
-                                    Why Word of Mouth Matters</h3>
-                                <div class="content-block" style="font-size: 1rem;">
-                                    <p>We're transparent about <strong>what</strong> we do. But <strong>how</strong> you
-                                        discover us is part of the experience. The best stories spread through friends,
-                                        curiosity, and chance encounters—not algorithms.</p>
-                                    <p>You'll find us the old-fashioned way: through a friend who saw something strange,
-                                        a flyer in an unexpected place, or sheer luck. Because analog entertainment
-                                        deserves another chance.</p>
-                                </div>
-                            </div>
-
-                            <!-- SUPPORT -->
-                            <div
-                                style="padding: 4rem; border: 1px dashed rgba(212, 175, 55, 0.2); background: rgba(212, 175, 55, 0.02);">
-                                <h3
-                                    style="font-family: var(--font-display); letter-spacing: 2px; margin-bottom: 1.5rem; color: var(--color-accent);">
-                                    Support the Mission</h3>
-                                <p
-                                    style="font-family: var(--font-ledger); font-size: 0.8rem; color: var(--color-text-muted); margin-bottom: 2.5rem;">
-                                    Every performance loses money, but the mission must go on. If you like what we're
-                                    doing, consider supporting our Patreon.</p>
-                                <div style="display: flex; gap: 2rem; align-items: center;">
-                                    <a href="https://www.patreon.com/plotswap" target="_blank" class="btn">Support on
-                                        Patreon</a>
-                                    <a href="https://www.instagram.com/plotswaptheater" target="_blank"
-                                        style="color: var(--color-primary); font-family: var(--font-display); text-decoration: none; font-size: 0.8rem; letter-spacing: 1px;">FOLLOW
-                                        ON INSTAGRAM</a>
-                                </div>
-                            </div>
-                        </article>
+    <!-- FOUNDER SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="profile-section">
+                <div class="scroll-reveal">
+                    <div class="profile-photo"></div>
+                    <div class="quote-box">
+                        "Analog entertainment deserves another chance."
                     </div>
                 </div>
-            </section>
 
-            <footer>
-                <p>&copy; 2026 PLOT SWAP THEATER</p>
-                <a href="season1.html"
-                    style="color: var(--color-primary); margin-top: 1rem; display: inline-block; font-size: 0.7rem; border-bottom: 1px dotted rgba(138, 29, 29, 0.4);">SEASON_1_ARCHIVE</a>
-            </footer>
-        </main>
+                <div class="scroll-reveal">
+                    <span class="text-uppercase text-accent">RUSSELL VARNER // HOUSTON</span>
+                    <h2 style="margin: var(--space-4) 0 var(--space-6);">Meet Russell Varner</h2>
 
-        <aside class="gutter">
-            <div class="nav-tabs">
-                <a href="index.html" class="folder-tab">
-                    <span class="tab-id">00</span>
-                    HOME
-                </a>
-                <a href="about.html" class="folder-tab active">
-                    <span class="tab-id">01</span>
-                    ABOUT
-                </a>
-                <a href="business.html" class="folder-tab">
-                    <span class="tab-id">02</span>
-                    HOST A SHOW
-                </a>
+                    <div class="section-description" style="color: var(--color-text-dark);">
+                        <p
+                            style="font-family: var(--font-accent); font-size: var(--text-xl); font-style: italic; margin-bottom: var(--space-8); color: var(--color-black);">
+                            I'm a Universal Designer who sees potential where others see the ordinary. As a kid, my
+                            storytelling got me in trouble. As an adult, it became my superpower.
+                        </p>
+                        <p style="font-size: var(--text-base); color: var(--color-text-muted);">
+                            I can't help but reimagine everything. Turning a farmer's market stall into theater, a
+                            wedding into an experience, a simple party into a memory people talk about for years.
+                            Whether I'm designing countless video games, crafting immersive performances, or building
+                            social experiments that blur the line between art and life, I'm always asking the same
+                            question: <em>What if this could be more?</em>
+                        </p>
+                        <p
+                            style="font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-top: var(--space-8);">
+                            My slogan: Punch Up Real Life.
+                        </p>
+                    </div>
+
+                    <!-- WHY WORD OF MOUTH -->
+                    <div class="card" style="margin-top: var(--space-12);">
+                        <h3 class="card-title">Why Word of Mouth Matters</h3>
+                        <p class="card-description">
+                            We're transparent about <strong>what</strong> we do. But <strong>how</strong> you discover
+                            us is part of the experience. The best stories spread through friends, curiosity, and chance
+                            encounters, not algorithms.
+                        </p>
+                        <p class="card-description" style="margin-top: var(--space-4);">
+                            You'll find us the old-fashioned way: through a friend who saw something strange, a flyer in
+                            an unexpected place, or sheer luck. Because analog entertainment deserves another chance.
+                        </p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div style="margin-top: auto; padding: 2.5rem; border-top: 1px solid rgba(138, 29, 29, 0.1);">
-                <div
-                    style="font-family: var(--font-display); font-size: 0.7rem; color: var(--color-primary); letter-spacing: 3px; margin-bottom: 2rem;">
-                    PHILOSOPHY</div>
-                <div
-                    style="font-family: var(--font-ledger); font-size: 0.7rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1.5rem; border-left: 2px solid rgba(138, 29, 29, 0.2); padding-left: 1rem;">
-                    No spoilers. No hype. Reward the attentive. Discovery through friction.</div>
-                <div
-                    style="font-family: var(--font-ledger); font-size: 0.7rem; color: var(--color-text-muted); line-height: 1.6; margin-bottom: 1.5rem; border-left: 2px solid rgba(138, 29, 29, 0.2); padding-left: 1rem;">
-                    Reality is the stage. The performance is the truth.</div>
+    <!-- SUPPORT SECTION -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section"
+                style="text-align: center; border: 2px dashed rgba(212, 175, 55, 0.2); padding: var(--space-12); border-radius: var(--radius-lg);">
+                <h2 class="section-title">Support the Mission</h2>
+                <p class="section-description">
+                    Every performance loses money, but the mission must go on. If you like what we're doing, consider
+                    supporting our Patreon.
+                </p>
+                <div class="hero-cta" style="margin-top: var(--space-8);">
+                    <a href="https://www.patreon.com/plotswap" target="_blank" class="btn btn-primary">Support on
+                        Patreon</a>
+                    <a href="https://www.instagram.com/plotswaptheater" target="_blank" class="btn btn-outline">Follow
+                        on Instagram</a>
+                </div>
             </div>
-        </aside>
-    </div>
+        </div>
+    </section>
 
-    <script src="js/app.js"></script>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 PLOT SWAP THEATER</p>
+            <a href="season1-redesign.html" class="footer-link">Season 1 Archive</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
     <script>
-        const scrollObserver = new IntersectionObserver((entries) => {
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.section-cinematic').forEach(s => scrollObserver.observe(s));
+        document.querySelectorAll('.scroll-reveal, .card, .section-description').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     </script>
+
 </body>
 
 </html>

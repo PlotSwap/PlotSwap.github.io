@@ -5,206 +5,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plot Swap | Scripted Stories Hiding in Plain Sight</title>
-    <meta name="theme-color" content="#050505">
+    <meta name="description"
+        content="Houston's secret theater company. Scripted stories hiding in plain sight. No stage. No tickets. Just stories.">
+    <meta name="theme-color" content="#0A0A0A">
+    <link rel="icon" type="image/png" href="assets/logo.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: #000;
-        }
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
 
-        .hero-background {
+<body class="page-home">
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">PLOT SWAP</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="business.html" class="nav-link">Host a Show</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <style>
+        .hero::before {
+            content: '';
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: url('assets/landing_clean.png');
             background-size: cover;
             background-position: center;
-            opacity: 0.4;
-            filter: grayscale(1) contrast(1.2);
+            filter: grayscale(1) contrast(1.1) brightness(0.4);
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
-            z-index: 10;
-            transform: translateY(-5vh);
-        }
-
-        .tagline-sub {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            color: var(--color-accent);
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .btn-caption {
-            display: block;
-            margin-top: 1rem;
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-primary);
-            font-weight: 700;
+            z-index: 2;
         }
     </style>
-</head>
 
-<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="spotlight-container">
+            <div class="spotlight spotlight-1"></div>
+            <div class="spotlight spotlight-2"></div>
+            <div class="spotlight spotlight-3"></div>
+        </div>
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title">PLOT SWAP</h1>
+            <p class="hero-subtitle">Houston's secret theater company</p>
+            <p class="hero-description" style="margin-bottom: var(--space-12);">
+                SCRIPTED STORIES HIDING IN PLAIN SIGHT<br>
+                No Stage. Professional Actors.
+            </p>
 
-    <div class="layout-90-10">
-        <main class="main-content">
-            <header style="position: absolute; top: 0; left: 0; width: 100%; padding: 2rem 5%; z-index: 100;">
-                <div class="logo">
-                    <img src="assets/signpost-logo.png" alt="Logo" style="height: 35px; filter: invert(1);">
-                </div>
-            </header>
+            <div class="fade-in-up"
+                style="opacity: 0.5; margin-bottom: var(--space-6); font-family: var(--font-display); font-size: var(--text-xs); letter-spacing: 4px; text-transform: uppercase; font-weight: 900;">
+                Where will we be next?
+            </div>
 
-            <!-- HERO -->
-            <section class="hero">
-                <div class="hero-background"></div>
-                <div class="hero-content">
-                    <h1 class="title-stamp" style="font-size: clamp(4rem, 12vw, 10rem); margin-bottom: 2rem;">PLOT SWAP
-                    </h1>
-                    <p class="tagline-sub" style="max-width: 900px; margin: 0 auto 4rem;">
-                        Houston's Hiding Theater Company<br>
-                        Scripted theater in disguise. No stage. No tickets.<br>
-                        Just stories worth telling.
+            <div class="hero-cta">
+                <a href="mailto:russell@plotswap.org" class="btn btn-primary">Get Invited</a>
+                <a href="business.html" class="btn btn-outline">Host A Show</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO SECTION -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label">THE CONCEPT</span>
+                <h2 class="section-title">What We Do</h2>
+
+                <div class="section-description">
+                    <p>
+                        We perform scripted theater masquerading as real life. You might overhear a scam artist exposed,
+                        a cheater getting caught, or a family secret revealed. It's all scripted, but it feels real.
                     </p>
-                    <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
-                        <div style="text-align: center;">
-                            <a href="mailto:russell@plotswap.org" class="btn">Join Mailing List</a>
-                            <span class="btn-caption">Get notified of shows</span>
-                        </div>
-                        <div style="text-align: center;">
-                            <a href="business.html" class="btn btn-outline">Host Us</a>
-                            <span class="btn-caption">Bring theater to your venue</span>
-                        </div>
-                    </div>
+
+                    <p>
+                        We give away stories to create memories. Something you carry with you, not something you paid to
+                        see.
+                    </p>
                 </div>
-            </section>
 
-            <!-- WHAT WE DO -->
-            <section class="section" style="background: rgba(138, 29, 29, 0.03);">
-                <div class="container">
-                    <div class="section-cinematic" style="max-width: 900px; margin: 0 auto;">
-                        <span class="ink-stamp" style="margin-bottom: 3rem;">THE_CONCEPT</span>
-                        <h2 style="margin-top: 2rem; margin-bottom: 4rem;">What We Do.</h2>
-
-                        <div
-                            style="font-size: 1.2rem; line-height: 1.9; color: var(--color-text-muted); margin-bottom: 3rem;">
-                            <p style="margin-bottom: 2.5rem;">
-                                We perform scripted theater masquerading as real life. You might overhear a scam artist
-                                exposed, a cheater getting caught, or a family secret revealed. It's all scripted, but
-                                it feels real.
-                            </p>
-
-                            <p style="margin-bottom: 2.5rem;">
-                                We give away stories to create memories. Something you carry with you, not something you
-                                paid to see.
-                            </p>
-
-                            <div
-                                style="padding: 3rem; background: rgba(0, 0, 0, 0.2); border-left: 4px solid var(--color-primary); margin-top: 4rem;">
-                                <h3
-                                    style="font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; margin-bottom: 2rem; color: var(--color-accent);">
-                                    TWO WAYS TO EXPERIENCE IT</h3>
-                                <p style="margin-bottom: 1.5rem;">
-                                    <strong style="color: var(--color-text-main);">Think it's real?</strong><br>
-                                    You get a genuine surprise, a story you'll tell for years.
-                                </p>
-                                <p>
-                                    <strong style="color: var(--color-text-main);">Know it's an act?</strong><br>
-                                    But what's going to happen? Sit back and watch the fireworks.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FOR BUSINESSES -->
-            <section class="section">
-                <div class="container">
-                    <div class="section-cinematic" style="max-width: 900px; margin: 0 auto; text-align: center;">
-                        <span class="ink-stamp" style="margin-bottom: 3rem;">VENUE_PARTNERSHIP</span>
-                        <h2 style="margin-top: 2rem; margin-bottom: 1.5rem;">Word of mouth, on demand.</h2>
-
-                        <p
-                            style="font-size: 1.3rem; line-height: 1.8; color: var(--color-text-muted); margin-bottom: 4rem; font-family: var(--font-serif); font-style: italic;">
-                            We bring our shows to your venue. Your customers get an unforgettable story. They tell their
-                            friends. Your place becomes part of the legend.
+                <!-- TWO WAYS TO EXPERIENCE IT -->
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 class="card-title">Think it's real?</h3>
+                        <p class="card-description">
+                            You get a genuine surprise, a story you'll tell for years.
                         </p>
+                    </div>
 
-                        <a href="business.html" class="btn">Learn About Hosting</a>
+                    <div class="card">
+                        <h3 class="card-title">Know it's an act?</h3>
+                        <p class="card-description">
+                            But what's going to happen? Sit back and watch the fireworks.
+                        </p>
                     </div>
                 </div>
-            </section>
-
-            <footer>
-                <p>&copy; 2026 PLOT SWAP THEATER</p>
-                <a href="season1.html"
-                    style="color: var(--color-primary); margin-top: 1rem; display: inline-block; font-size: 0.7rem; border-bottom: 1px dotted rgba(138, 29, 29, 0.4);">SEASON_1_ARCHIVE</a>
-            </footer>
-        </main>
-
-        <aside class="gutter">
-            <div class="nav-tabs">
-                <a href="index.html" class="folder-tab active">
-                    <span class="tab-id">00</span>
-                    HOME
-                </a>
-                <a href="about.html" class="folder-tab">
-                    <span class="tab-id">01</span>
-                    ABOUT
-                </a>
-                <a href="business.html" class="folder-tab">
-                    <span class="tab-id">02</span>
-                    HOST A SHOW
-                </a>
             </div>
+        </div>
+    </section>
 
-            <div style="margin-top: auto; padding: 2.5rem; border-top: 1px solid rgba(138, 29, 29, 0.1);">
-                <div
-                    style="font-family: var(--font-display); font-size: 0.7rem; color: var(--color-primary); letter-spacing: 2px; margin-bottom: 1rem;">
-                    STATUS</div>
-                <div
-                    style="font-family: var(--font-ledger); font-size: 0.6rem; color: var(--color-text-muted); line-height: 1.6;">
-                    HOUSTON: ACTIVE<br>
-                    NEXT SHOW: TBA
-                </div>
+    <!-- FOR BUSINESSES SECTION -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="content-section" style="text-align: center;">
+                <span class="section-label">VENUE PARTNERSHIP</span>
+                <h2 class="section-title">Word of mouth, on demand.</h2>
+
+                <p class="section-description"
+                    style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-xl);">
+                    We bring our shows to your venue. Your customers get an unforgettable story. They tell their
+                    friends. Your place becomes part of the legend.
+                </p>
+
+                <a href="business-redesign.html" class="btn btn-primary">Learn About Hosting</a>
             </div>
-        </aside>
-    </div>
+        </div>
+    </section>
 
-    <script src="js/app.js"></script>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 PLOT SWAP THEATER</p>
+            <a href="season1-redesign.html" class="footer-link">Season 1 Archive</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
     <script>
-        const scrollObserver = new IntersectionObserver((entries) => {
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.section-cinematic').forEach(s => scrollObserver.observe(s));
+        // Observe all cards for scroll animation
+        document.querySelectorAll('.card, .section-description').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
     </script>
+
 </body>
 
 </html>
