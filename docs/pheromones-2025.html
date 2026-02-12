@@ -194,6 +194,7 @@
             box-shadow: 0 0 15px rgba(255, 23, 68, 0.4);
         }
 
+
         /* Responsive spacing for dividers */
         @media (max-width: 768px) {
             .section-divider {
@@ -332,7 +333,7 @@
 
     <!-- INTRO OVERLAY -->
     <div id="intro-overlay">
-        <img id="intro-image" src="assets/portrait_1.png" alt="Intro">
+        <img id="intro-image" src="assets/portrait_1.webp" alt="Intro">
     </div>
 
 
@@ -377,11 +378,9 @@
 
     </section>
 
-    <!-- SPIKE MARKER -->
     <div class="section-divider scroll-reveal"></div>
 
 
-    <!-- THE CAST SECTION -->
     <section class="section section-dark"
         style="background: var(--color-bg-dark); border-top: 1px solid rgba(255,255,255,0.1);">
         <div class="container">
@@ -392,7 +391,7 @@
                 <div class="cast-grid">
                     <div class="cast-card scroll-reveal">
                         <div class="cast-image-container">
-                            <img src="assets/portrait_4.png" alt="Nico Castillo">
+                            <img src="assets/portrait_4.webp" alt="Nico Castillo">
                         </div>
                         <div class="cast-info">
                             <h3 class="character-name">THE STORYTELLER</h3>
@@ -409,7 +408,7 @@
 
                     <div class="cast-card scroll-reveal">
                         <div class="cast-image-container">
-                            <img src="assets/portrait_1.png" alt="Austin Hanna">
+                            <img src="assets/portrait_1.webp" alt="Austin Hanna">
                         </div>
                         <div class="cast-info">
                             <h3 class="character-name">DANNY</h3>
@@ -426,7 +425,7 @@
 
                     <div class="cast-card scroll-reveal">
                         <div class="cast-image-container">
-                            <img src="assets/portrait_2.png" alt="Allison Taylor">
+                            <img src="assets/portrait_2.webp" alt="Allison Taylor">
                         </div>
                         <div class="cast-info">
                             <h3 class="character-name">VIC</h3>
@@ -443,7 +442,7 @@
 
                     <div class="cast-card scroll-reveal">
                         <div class="cast-image-container">
-                            <img src="assets/portrait_3.png" alt="Caitlin Meaux">
+                            <img src="assets/portrait_3.webp" alt="Caitlin Meaux">
                         </div>
                         <div class="cast-info">
                             <h3 class="character-name">LUCY</h3>
@@ -476,7 +475,7 @@
                     <h3 class="experiential-subtitle">10 SEATS &middot; NO STAGE</h3>
 
                     <div class="experiential-frame">
-                        <img src="assets/CloseAndPersonal.png" alt="Close and Personal in Pheromones"
+                        <img src="assets/CloseAndPersonal.webp" alt="Close and Personal in Pheromones"
                             class="experiential-image">
                         <div class="experiential-overlay"></div>
                     </div>
@@ -571,7 +570,7 @@
                 </div>
 
                 <div class="step-cta scroll-reveal" style="background: rgba(0,0,0,0.4); backdrop-filter: blur(5px);">
-                    <p>Want a deeper explanation? <a href="season1.html" class="cta-link">Read the full design
+                    <p>Want a deeper explanation? <a href="curiosity.html" class="cta-link">Read the full design
                             breakdown.</a></p>
                 </div>
 
@@ -584,7 +583,7 @@
 
     <!-- THE DECISION TREE SECTION -->
     <section class="section section-dark"
-        style="background: #000; border-top: 1px solid rgba(255,255,255,0.05); padding-bottom: var(--space-20);">
+        style="background: #000; border-top: 1px solid rgba(255,255,255,0.05); padding-bottom: 80px;">
         <div class="container">
             <div class="content-section" style="text-align: center;">
                 <span class="section-label">THE STRUCTURE</span>
@@ -593,7 +592,7 @@
 
 
                 <div class="tree-container scroll-reveal">
-                    <img src="assets/story-tree-purple_gold.png" alt="Pheromones Decision Tree" class="tree-image">
+                    <img src="assets/story-tree-purple_gold.webp" alt="Pheromones Decision Tree" class="tree-image">
                     <div class="tree-micro-proof">
                         15 scenes • 8 endings • fully scripted • zero improv
                     </div>
@@ -788,15 +787,15 @@
             font-size: clamp(4rem, 15vw, 10rem);
             font-weight: 900;
             line-height: 0.8;
-            color: rgba(255, 255, 255, 0.03);
-            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.15);
+            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.15);
             filter: blur(2px);
             transition: all var(--transition-slow);
         }
 
         .floating-step.visible .step-giant-num {
-            color: rgba(var(--color-accent-rgb, 139, 92, 246), 0.1);
-            -webkit-text-stroke: 0.5px rgba(var(--color-accent-rgb, 139, 92, 246), 0.1);
+            color: rgba(var(--color-accent-rgb, 139, 92, 246), 0.25);
+            -webkit-text-stroke: 0.5px rgba(var(--color-accent-rgb, 139, 92, 246), 0.25);
             filter: blur(1px);
             opacity: 1;
         }
@@ -825,7 +824,7 @@
             letter-spacing: 0.25em;
             color: var(--color-accent);
             margin-bottom: var(--space-2);
-            opacity: 0.35;
+            opacity: 0.5;
             /* Tier 3 Hierarchy */
         }
 
@@ -1011,18 +1010,46 @@
 
         /* Debrief Section (Dossier Layout) */
         .debrief-section {
-            background: var(--color-bg-dark);
+            background: #F5F5F7;
+            /* Apple-style light gray */
             padding: var(--space-24) 0 var(--space-32) 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
+            color: #0A0A0A;
+            overflow: hidden;
+            /* For texture overlay */
+        }
+
+        .debrief-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.12;
+            /* Increased from 0.05 */
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            filter: contrast(120%) brightness(100%);
+            z-index: 1;
+        }
+
+        .debrief-section .container {
+            position: relative;
+            z-index: 2;
+            /* Sit above texture */
+        }
+
+        .debrief-section .section-title {
+            color: #0A0A0A;
         }
 
         .debrief-lead {
             font-family: var(--font-serif);
             font-size: clamp(var(--text-xl), 3vw, var(--text-4xl));
-            color: #fff;
-            opacity: 0.85;
-            /* Increased visibility */
+            color: #0A0A0A;
+            opacity: 0.9;
             max-width: 900px;
             margin: 0 auto var(--space-12) auto;
             line-height: 1.3;
@@ -1041,7 +1068,7 @@
         .debrief-column {
             flex: 1;
             padding-left: var(--space-8);
-            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .debrief-column:first-child {
@@ -1065,7 +1092,7 @@
         .debrief-body {
             font-size: 0.95rem;
             line-height: 1.6;
-            color: #fff;
+            color: #0A0A0A;
             opacity: 0.8;
         }
 
@@ -1117,7 +1144,7 @@
 
 
     <!-- WHAT WE LEARNED SECTION -->
-    <section class="section section-dark debrief-section">
+    <section class="section debrief-section">
         <div class="container">
             <div class="content-section" style="text-align: center;">
                 <span class="section-label">THE DEBRIEF</span>
@@ -1163,10 +1190,10 @@
     <script>
         // Shutter Burst Intro Logic
         const introPortraits = [
-            'assets/portrait_1.png',
-            'assets/portrait_2.png',
-            'assets/portrait_3.png',
-            'assets/portrait_4.png'
+            'assets/portrait_1.webp',
+            'assets/portrait_2.webp',
+            'assets/portrait_3.webp',
+            'assets/portrait_4.webp'
         ];
         const introOverlay = document.getElementById('intro-overlay');
         const introImage = document.getElementById('intro-image');
