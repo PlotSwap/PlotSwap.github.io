@@ -94,7 +94,12 @@
     --transition-slow: 300ms ease;
 }
 
-/* Color Variants for Different Pages */
+/* Base Utils */
+.text-highlight {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
 body.page-home {
     --color-accent: #14B8A6;
     /* Teal */
@@ -266,6 +271,189 @@ p {
     letter-spacing: 0.05em;
 }
 
+/* Hero Static Top (Consistent branding across pages) */
+.hero-static-top {
+    width: 100%;
+    margin-bottom: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    /* Force teal accent for branding header on all pages */
+    --branding-accent: #14B8A6;
+    --branding-accent-hover: #0D9488;
+}
+
+.hero-branding {
+    margin-bottom: var(--space-2);
+    text-align: center;
+    pointer-events: auto;
+}
+
+.hero-branding .hero-title {
+    margin-bottom: 0px;
+    color: var(--color-text-primary);
+}
+
+.hero-branding .hero-subtitle {
+    margin-bottom: 0;
+    color: var(--branding-accent);
+    font-size: clamp(var(--text-base), 2.1vw, var(--text-lg));
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Hero Badge (New in 2026) */
+.hero-badge {
+    margin-top: var(--space-4);
+    /* Pulled up closer to header */
+    margin-bottom: var(--space-6);
+    /* Reduced bridge to pitch by ~30% */
+    text-align: center;
+}
+
+.badge-label {
+    display: block;
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: var(--text-base);
+    /* Reduced slightly from lg for quiet caption feel */
+    color: var(--color-text-primary);
+    opacity: 0.8;
+    margin-bottom: -2px;
+    /* Increased from -6px to give more air/fix overlap */
+}
+
+.badge-year {
+    display: block;
+    font-size: var(--text-6xl);
+    font-weight: 800;
+    line-height: 1;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+}
+
+/* Hero Tagline */
+.hero-tagline {
+    opacity: 0.5;
+    margin-top: var(--space-12);
+    /* Breathing room above CTA block */
+    margin-bottom: var(--space-4);
+    /* Reduced gap to Get Invited */
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Hero CTA Block */
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    /* Consistent chunk of breathing room */
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.hero-cta .btn {
+    width: 100%;
+    padding: var(--space-4) var(--space-8);
+}
+
+/* Last Season Module */
+.hero-last-season {
+    margin-top: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Hero Divider (Last Season) */
+.hero-divider {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: var(--space-4);
+    /* Reduced gap to card by ~40% */
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    color: var(--color-text-muted);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    letter-spacing: 2.5px;
+    /* Slightly increased for strength */
+    text-transform: uppercase;
+    opacity: 0.8;
+    /* Strengthened by ~15% from default ghosted state */
+}
+
+.hero-divider::before,
+.hero-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.hero-divider span {
+    white-space: nowrap;
+}
+
+/* Hero Footer Link (2025 • Pheromones) */
+.hero-footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: var(--text-lg);
+    transition: all var(--transition-base);
+}
+
+.hero-footer-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+.hero-footer-link .link-year {
+    font-family: var(--font-display);
+    font-style: normal;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.hero-footer-link .link-arrow {
+    transition: transform var(--transition-base);
+}
+
+.hero-footer-link .link-context {
+    font-style: normal;
+    /* Regular font for context bracket */
+    font-size: 0.75em;
+    /* Reduced from 0.85em for hierarchy */
+    opacity: 0.5;
+    /* Reduced from 0.7 to deemphasize */
+    margin-left: 2px;
+    /* Balanced spacing between Pheromones and (Season 1) */
+}
+
+.hero-footer-link:hover .link-arrow {
+    transform: translateX(4px);
+}
+
 .nav-links {
     display: flex;
     gap: var(--space-8);
@@ -313,15 +501,16 @@ p {
 .hero {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
     background: var(--color-bg-dark);
     color: var(--color-text-primary);
-    padding: var(--space-24) var(--space-6);
+    padding: var(--space-24) var(--space-6) var(--space-16);
+    /* Reduced top/bottom padding to tighten valley */
     position: relative;
     overflow: hidden;
-    /* Ensure spotlights don't overflow */
 }
 
 /* Spotlights */
@@ -343,7 +532,7 @@ p {
     background: radial-gradient(circle, var(--color-accent) 0%, transparent 60%);
     border-radius: 50%;
     filter: blur(60px);
-    opacity: 0.7;
+    opacity: 0.2;
     mix-blend-mode: screen;
 }
 
@@ -408,22 +597,28 @@ p {
 }
 
 .hero-subtitle {
-    font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+    font-size: clamp(var(--text-lg), 2.5vw, var(--text-xl));
     color: var(--color-accent);
-    margin-bottom: var(--space-8);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.15em;
+    opacity: 0.8;
 }
 
-.hero-description {
-    font-size: clamp(var(--text-base), 2vw, var(--text-lg));
-    color: var(--color-text-primary);
-    line-height: 1.8;
-    margin-bottom: var(--space-12);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    /* Stacked as per mockup */
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.hero-cta .btn {
+    width: 100%;
+    padding: var(--space-4) var(--space-8);
 }
 
 .hero-cta {
@@ -685,6 +880,145 @@ p {
 
     .section {
         padding: var(--space-12) 0;
+    }
+}
+
+/* ============================================
+   LOCATION SECTION
+   ============================================ */
+
+.location-section {
+    background: var(--color-bg-dark);
+}
+
+.location-section .section-label {
+    text-align: left;
+    display: block;
+    margin-bottom: var(--space-8);
+}
+
+@media (max-width: 899px) {
+    .location-section .section-label {
+        text-align: left;
+    }
+}
+
+.location-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+@media (min-width: 900px) {
+    .location-grid {
+        grid-template-columns: 1.6fr 1fr;
+        gap: 56px;
+    }
+}
+
+.location-text {
+    text-align: left;
+}
+
+.location-title {
+    font-size: clamp(40px, 4.2vw, 64px);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.location-body {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 56ch;
+}
+
+.location-body p {
+    margin-bottom: 20px;
+}
+
+.location-body p:last-child {
+    margin-bottom: 0;
+}
+
+.location-cta-line {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.location-cta-line strong {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.location-cta-sub {
+    display: block;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 4px;
+}
+
+.location-cta-column {
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .location-cta-column {
+        padding-top: 120px;
+    }
+}
+
+
+
+.location-btn {
+    width: 100%;
+    max-width: 400px;
+    padding: 18px 22px;
+    text-align: center;
+}
+
+@media (min-width: 900px) {
+    .location-btn {
+        margin-left: 0;
+    }
+}
+
+.location-microline {
+    margin-top: 6px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+@media (min-width: 900px) {
+    .location-microline {
+        text-align: left;
+    }
+
+    .location-cta-column {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 899px) {
+    .location-inner {
+        padding: 48px 20px 72px;
+    }
+
+    .location-grid {
+        gap: 32px;
     }
 }
 

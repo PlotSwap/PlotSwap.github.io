@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Host a Show | Plot Swap</title>
+    <meta name="description"
+        content="Bring scripted stories hiding in plain sight to your venue. Word of mouth, on demand.">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/redesign.css">
+    <style>
+        .step-grid {
+            margin-top: var(--space-12);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-8);
+        }
+
+        .step-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: var(--space-8);
+            align-items: start;
+        }
+
+        .step-number {
+            font-family: var(--font-display);
+            font-size: var(--text-5xl);
+            font-weight: 800;
+            color: var(--color-accent);
+            opacity: 0.2;
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .step-item {
+                grid-template-columns: 1fr;
+                gap: var(--space-2);
+            }
+        }
+    </style>
+</head>
+
+<body class="page-business">
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index-redesign.html" class="nav-logo">PLOT SWAP</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="index-redesign.html" class="nav-link">Home</a></li>
+                <li><a href="about-redesign.html" class="nav-link">About</a></li>
+                <li><a href="business-redesign.html" class="nav-link active">Host a Show</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="min-height: 70vh;">
+        <div class="hero-content fade-in-up">
+            <span class="text-uppercase text-accent">VENUE_PARTNERSHIP</span>
+            <h1 class="hero-title" style="margin-top: var(--space-4);">Word of Mouth, on Demand.</h1>
+            <p class="hero-description"
+                style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-2xl); color: var(--color-accent);">
+                People don't remember normal. They remember moments.
+            </p>
+            <p class="hero-description" style="margin-top: var(--space-4);">
+                We bring professional actors into your venue and stage a surprising, scripted moment that guests will
+                tell their friends about. Customized for your space. It happens fast. Then it's back to business as
+                usual.
+            </p>
+            <div class="hero-cta">
+                <a href="https://calendly.com/plotswap" target="_blank" class="btn btn-primary">Book 10-Min Call</a>
+                <span
+                    style="font-family: var(--font-display); font-size: var(--text-xs); color: var(--color-text-primary); opacity: 0.6; letter-spacing: 2px; align-self: center;">PILOT_SHOW:
+                    FREE OF CHARGE</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENGAGEMENT SAMPLES -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label">A_B_TESTING</span>
+                <h2 class="section-title">Engagement Samples.</h2>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <span class="text-uppercase text-accent"
+                            style="display: block; margin-bottom: var(--space-4);">RESTAURANT</span>
+                        <p class="card-description" style="font-style: italic;">
+                            "A guy walked in and confessed his love to a woman who was clearly on a date. He gave this
+                            whole speech and proposed. The whole place was silent for ten seconds until she finally said
+                            no. He apologized and walked out. She ran out after him. It was bonkers."
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="text-uppercase text-accent"
+                            style="display: block; margin-bottom: var(--space-4);">TRIVIA NIGHT</span>
+                        <p class="card-description" style="font-style: italic;">
+                            "A guy got kicked off his team for using his phone. A few rounds later someone else on that
+                            same team got caught doing the same thing. It was the same guy in a disguise! Sunglasses and
+                            a FAKE MUSTACHE! It was hilarious."
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="text-uppercase text-accent"
+                            style="display: block; margin-bottom: var(--space-4);">PAINTING CLASS</span>
+                        <p class="card-description" style="font-style: italic;">
+                            "A painter had the biggest crush on the instructor. She kept trying to get his attention
+                            with saucy jokes. We were dying! As we were all leaving, I heard him ASK HER TO STAY AFTER
+                            CLASS!!!"
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <span class="text-uppercase text-accent"
+                            style="display: block; margin-bottom: var(--space-4);">YOUR VENUE</span>
+                        <p class="card-description"
+                            style="font-style: italic; font-size: var(--text-lg); color: var(--color-text-dark);">
+                            What story do you want your customers to remember?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label">OPERATIONAL_FLOW</span>
+                <h2 class="section-title">How It Works.</h2>
+
+                <div class="step-grid">
+                    <div class="step-item scroll-reveal">
+                        <div class="step-number">01</div>
+                        <div>
+                            <h3>10-Minute Call</h3>
+                            <p class="text-muted">Goals, crowd, and boundaries. We establish the parameters of the
+                                anomaly.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item scroll-reveal">
+                        <div class="step-number">02</div>
+                        <div>
+                            <h3>On-Site Walkthrough</h3>
+                            <p class="text-muted">We meet in person, choose placement, pick the right story, and lock
+                                the plan.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item scroll-reveal">
+                        <div class="step-number">03</div>
+                        <div>
+                            <h3>Cast Walkthrough</h3>
+                            <p class="text-muted">Actors walk the space and rehearse timing, entrances, and exits. Zero
+                                margin for error.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item scroll-reveal">
+                        <div class="step-number">04</div>
+                        <div>
+                            <h3>Performance</h3>
+                            <p class="text-muted">A scripted moment that blends in. Clean start and stop. Then it's back
+                                to business as usual.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item scroll-reveal">
+                        <div class="step-number">05</div>
+                        <div>
+                            <h3>Recap</h3>
+                            <p class="text-muted">Quick debrief and scalability analysis. If the pilot holds, we plan
+                                the repertoire.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card"
+                    style="margin-top: var(--space-16); border-left: 4px solid var(--color-accent); background: var(--color-bg-light);">
+                    <p
+                        style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-lg); margin-bottom: 0;">
+                        <strong>Minimum Lift:</strong> A point of contact, a walkthrough, and approval of the plan. We
+                        handle the rest.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section section-dark" style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title">Word of mouth, on demand.</h2>
+            <div class="hero-cta" style="margin-top: var(--space-8);">
+                <a href="https://calendly.com/plotswap" target="_blank" class="btn btn-primary"
+                    style="padding: var(--space-6) var(--space-12);">Schedule Your Anomaly</a>
+            </div>
+            <p class="text-uppercase" style="margin-top: var(--space-8); opacity: 0.4;">[ REF: OPERATIONAL_PROPOSAL_v4.2
+                ]</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 PLOT SWAP THEATER</p>
+            <a href="season1-redesign.html" class="footer-link">Season 1 Archive</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal, .card, .step-item').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

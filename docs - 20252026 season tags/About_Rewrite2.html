@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Story | Plot Swap</title>
+    <meta name="description"
+        content="Designing human connection in Houston. Meet the writer, director, and designer behind Plot Swap.">
+    <meta name="theme-color" content="#0A0A0A">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/redesign.css">
+    <style>
+        .profile-section {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--space-12);
+            align-items: start;
+            margin-top: var(--space-8);
+        }
+
+        .profile-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: #111;
+            border-radius: var(--radius-lg);
+            background-image: url('assets/founder.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(1) contrast(1.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .quote-box {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: var(--text-xl);
+            color: var(--color-accent);
+            border-left: 3px solid var(--color-accent);
+            padding-left: var(--space-6);
+            margin: var(--space-8) 0;
+        }
+
+        /* Massive Typographic Hero override for Option B */
+        .hero-title-massive {
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+            margin: 0;
+            text-align: center;
+        }
+
+        .principle-wrapper {
+            margin-top: var(--space-6);
+            padding-left: var(--space-4);
+        }
+
+        .principle-intro {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-text-muted);
+            opacity: 0.8;
+            display: block;
+            margin-bottom: 10px;
+            padding-left: 17px;
+            /* Aligns with text edge (1.5px border + 15.5px padding) */
+        }
+
+        .principle-block {
+            border-left: 1.5px solid var(--color-accent);
+            padding-left: 15.5px;
+            position: relative;
+        }
+
+        /* Tiny horizontal cap for the gold rule */
+        .principle-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -1.5px;
+            width: 6px;
+            height: 1.5px;
+            background: var(--color-accent);
+        }
+
+        .principle-line {
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            font-weight: 400;
+            line-height: 2;
+            color: #444;
+            display: block;
+        }
+
+        .principle-line strong {
+            color: var(--color-black);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+                gap: var(--space-8);
+            }
+        }
+    </style>
+</head>
+
+<body class="page-about">
+
+    <!-- SPOTLIGHTS -->
+    <div class="spotlight"></div>
+    <div class="spotlight" style="animation-delay: -5s; left: 60%;"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">PLOT SWAP</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="About_Rewrite2.html" class="nav-link active">About</a></li>
+                <li><a href="business.html" class="nav-link">Host a Show</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="min-height: 70vh;">
+        <div class="hero-content fade-in-up" style="max-width: 1200px;">
+            <span class="text-uppercase text-accent"
+                style="letter-spacing: 0.3em; margin-bottom: var(--space-6);">EXPERIMENTAL PERFORMANCE DESIGN</span>
+            <h1 class="hero-title-massive">The Architecture<br>of Story</h1>
+            <p
+                style="margin-top: var(--space-8); font-size: var(--text-lg); opacity: 0.8; max-width: 600px; margin-inline: auto;">
+                It feels like eavesdropping. It’s fully scripted.<br>Stories hiding in Houston.
+            </p>
+        </div>
+    </section>
+
+    <!-- THE CRAFT SECTION -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <h2 class="section-title">The Craft</h2>
+                <div class="section-description">
+                    <p>
+                        Plot Swap is an exercise in experiential design. I research, write, and direct <strong
+                            class="text-accent">scripted plays that hide in the real world</strong>. It’s theater staged
+                        where life is already happening: an overly confident third-date proposal, a best man
+                        speech that turns into a confession, or a painting class with a teacher’s pet
+                        crush.
+                    </p>
+                    <div class="principle-wrapper scroll-reveal">
+                        <span class="principle-intro">The craft is in the build:</span>
+                        <div class="principle-block">
+                            <span class="principle-line"><strong>Curiosity</strong> earns attention.</span>
+                            <span class="principle-line"><strong>Attention</strong> invites connection.</span>
+                            <span class="principle-line"><strong>Connection</strong> unlocks emotion.</span>
+                            <span class="principle-line"><strong>Emotion</strong> becomes memory.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE ARCHITECT SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="profile-section">
+                <div class="scroll-reveal">
+                    <div class="profile-photo"></div>
+                    <div class="quote-box">
+                        "Real world entertainment deserves another chance."
+                    </div>
+                </div>
+
+                <div class="scroll-reveal">
+                    <span class="text-uppercase text-accent">RUSSELL VARNER // HOUSTON</span>
+                    <h2 style="margin: var(--space-4) 0 var(--space-6);">Meet the Designer</h2>
+
+                    <div class="section-description" style="color: var(--color-text-dark);">
+                        <p
+                            style="font-family: var(--font-accent); font-size: var(--text-xl); font-style: italic; margin-bottom: var(--space-8); color: var(--color-black);">
+                            I'm a Universal Designer. Most days, I solve complex design problems for video games and
+                            digital platforms. But I've always known that the most important interface is the one
+                            between two human beings.
+                        </p>
+                        <p style="font-size: var(--text-base); color: var(--color-text-muted);">
+                            My restlessness started as a kid with an overactive imagination that often got me into
+                            trouble. Today, I use that same energy to unlock the hidden potential in ordinary spaces. I
+                            don't have a giant production budget or a marketing team. It is just me, a few dedicated
+                            actors, and a belief that <strong>human connection is the ultimate design
+                                challenge.</strong>
+                        </p>
+                        <p
+                            style="font-size: var(--text-base); color: var(--color-text-muted); margin-top: var(--space-4);">
+                            If you've ever looked at a local business or a quiet city street and wondered, <em>"What if
+                                this could be more?"</em> – then you and I speak the same language.
+                        </p>
+                        <p
+                            style="font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 2px; margin-top: var(--space-8);">
+                            Current Status: Punching Up Real Life.
+                        </p>
+
+                        <!-- Subtle Cross-link -->
+                        <div
+                            style="margin-top: var(--space-12); border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-8); display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap;">
+                            <p style="font-size: var(--text-sm); opacity: 0.6; font-style: italic; margin: 0;">
+                                Have a space that could hide a story?
+                            </p>
+                            <a href="business.html" class="btn btn-outline"
+                                style="font-size: 10px; padding: 6px 12px; font-style: normal; letter-spacing: 0.1em;">Host
+                                a Plot Swap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRENT STATUS SECTION -->
+    <section class="section section-light" style="padding: var(--space-12) 0;">
+        <div class="container" style="text-align: center;">
+            <div class="scroll-reveal">
+                <span class="text-uppercase text-accent"
+                    style="letter-spacing: 0.2em; font-size: var(--text-xs);">Current Status</span>
+                <p style="margin: var(--space-4) 0 var(--space-8); font-size: var(--text-base); opacity: 0.8;">
+                    New stories are being built. Locations go to the list first.
+                </p>
+                <a href="#newsletter" class="btn btn-outline" style="font-size: var(--text-xs); padding: 8px 20px;">Get
+                    Notified</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUSTAIN THE SECRET (Support Section) -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section"
+                style="text-align: center; border: 2px dashed rgba(212, 175, 55, 0.2); padding: var(--space-12); border-radius: var(--radius-lg);">
+                <h2 class="section-title">Sustain the Secret</h2>
+                <p class="section-description">
+                    Every Plot Swap performance is a personal investment in the stories of our community. Since these
+                    shows are free to discover in the wild, the mission relies entirely on the generosity of those who
+                    believe in it.
+                </p>
+                <div class="hero-cta" style="margin-top: var(--space-8);">
+                    <a href="https://www.patreon.com/plotswap" target="_blank" class="btn btn-primary">Support on
+                        Patreon</a>
+                    <a href="https://www.instagram.com/plotswaptheater" target="_blank" class="btn btn-outline">Follow
+                        the Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 PLOT SWAP THEATER</p>
+            <a href="season1.html" class="footer-link">Season 1 Archive</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal, .card, .section-description, .hero-content').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

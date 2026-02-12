@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Season 1: Pheromones | Plot Swap</title>
+    <meta name="description"
+        content="Archive of Season 1: Pheromones. A live performance controlled like a video game.">
+    <meta name="theme-color" content="#0A0A0A">
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/redesign.css">
+    <style>
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            margin-bottom: var(--space-8);
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: var(--space-8);
+        }
+
+        .stat-large {
+            font-family: var(--font-display);
+            font-size: var(--text-7xl);
+            font-weight: 800;
+            color: var(--color-accent);
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            margin-top: var(--space-2);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-8);
+        }
+
+        .gallery-item img {
+            border-radius: var(--radius-md);
+            filter: grayscale(0.5) contrast(1.1);
+            transition: filter var(--transition-base);
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0);
+        }
+
+        .gallery-caption {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: var(--text-sm);
+            color: var(--color-accent);
+            margin-top: var(--space-4);
+        }
+
+        .debrief-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-8);
+        }
+
+        @media (max-width: 768px) {
+
+            .split-grid,
+            .gallery-grid,
+            .debrief-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-season1">
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">PLOT SWAP</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="business.html" class="nav-link">Host a Show</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="min-height: 70vh;">
+        <div class="static-label-container">
+            <div class="season-year-label" onclick="window.location.href='index.html'">
+                <div class="year-stack">
+                    <span class="label-arrow">▲</span>
+                    <span class="year-number">2025</span>
+                    <span class="label-arrow">▼</span>
+                </div>
+                <span class="label-text">Season</span>
+            </div>
+        </div>
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title" style="margin-top: var(--space-4);">PHEROMONES</h1>
+            <p class="hero-description"
+                style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-2xl); color: var(--color-accent);">
+                A live performance controlled like a video game.
+            </p>
+            <p class="hero-description" style="margin-top: var(--space-4);">
+                Eavesdrop on the drama at the next table. At key moments you choose. Their night is in your hands.
+            </p>
+        </div>
+    </section>
+
+    <!-- OPPORTUNITY SECTION -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <span class="text-uppercase text-accent"
+                    style="display: block; text-align: center; margin-bottom: var(--space-8);">THE OPPORTUNITY</span>
+
+                <div class="split-grid">
+                    <div class="card" style="border-left: 4px solid var(--color-text-muted);">
+                        <span class="text-uppercase text-muted">VENUE CONSTRAINT</span>
+                        <p
+                            style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-2xl); margin-top: var(--space-4); color: var(--color-black);">
+                            Thursdays 6-7pm.<br>Dead hour.<br>Needs filling.
+                        </p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--color-accent);">
+                        <span class="text-uppercase text-accent">PLOT SWAP SOLUTION</span>
+                        <p
+                            style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-2xl); margin-top: var(--space-4); color: var(--color-black);">
+                            Intimate space.<br>Captive audience.<br>Unconventional format.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    style="text-align: center; margin-top: var(--space-8); opacity: 0.4; font-weight: 700; letter-spacing: 2px;">
+                    → PERFECT ALIGNMENT
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="section">
+        <div class="container">
+            <div class="card-grid">
+                <div class="stat-card scroll-reveal">
+                    <span class="stat-large">15</span>
+                    <span class="stat-label">Scripted Scenes</span>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <span class="stat-large">08</span>
+                    <span class="stat-label">Different Endings</span>
+                </div>
+                <div class="stat-card scroll-reveal">
+                    <span class="stat-large">0%</span>
+                    <span class="stat-label">Improvisation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF GALLERY -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label" style="text-align: center; display: block;">EVIDENCE TRANSCRIPT</span>
+                <div class="gallery-grid" style="margin-top: var(--space-12);">
+                    <div class="gallery-item scroll-reveal">
+                        <img src="assets/media_1.jpg" alt="Foundation Room">
+                        <p class="gallery-caption">The Foundation Room at House of Blues. Extreme proximity.</p>
+                    </div>
+                    <div class="gallery-item scroll-reveal">
+                        <img src="assets/media_2.jpg" alt="Performance">
+                        <p class="gallery-caption">Captive audience, high-stakes decisions.</p>
+                    </div>
+                    <div class="gallery-item scroll-reveal">
+                        <img src="assets/media_4.jpg" alt="Marketing">
+                        <p class="gallery-caption">Street marketing. One question to hook the right people.</p>
+                    </div>
+                    <div class="gallery-item scroll-reveal">
+                        <img src="assets/media_3.jpg" alt="Cast">
+                        <p class="gallery-caption">Cast and crew. Load-in, reset, repeat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSTRAINTS & PROBLEMS -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label">THE CONSTRAINTS</span>
+                <h2 class="section-title">Location-made from scratch</h2>
+
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div class="card">
+                        <span class="text-uppercase text-accent">[ TIME WINDOW ]</span>
+                        <p
+                            style="font-size: var(--text-2xl); margin-top: var(--space-2); font-family: var(--font-accent);">
+                            6 - 8 PM</p>
+                    </div>
+                    <div class="card">
+                        <span class="text-uppercase text-accent">[ SPACE SPEC ]</span>
+                        <p
+                            style="font-size: var(--text-2xl); margin-top: var(--space-2); font-family: var(--font-accent);">
+                            15' x 15'</p>
+                    </div>
+                    <div class="card">
+                        <span class="text-uppercase text-accent">[ EQUIPMENT ]</span>
+                        <p
+                            style="font-size: var(--text-2xl); margin-top: var(--space-2); font-family: var(--font-accent);">
+                            NONE</p>
+                    </div>
+                    <div class="card">
+                        <span class="text-uppercase text-accent">[ STARTING POINT ]</span>
+                        <p
+                            style="font-size: var(--text-2xl); margin-top: var(--space-2); font-family: var(--font-accent);">
+                            No actors. No story.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: var(--space-16);">
+                    <span class="section-label">R&D PHASE</span>
+                    <h2 class="section-title">Design Problems Solved</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h3 class="card-title">Narrative Integrity</h3>
+                            <ul class="text-muted" style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: var(--space-2);">→ No backward writing</li>
+                                <li style="margin-bottom: var(--space-2);">→ Each split multiplies risk</li>
+                                <li>→ Choices must matter</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Choice Transmission</h3>
+                            <ul class="text-muted" style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: var(--space-2);">→ Actors not in the room</li>
+                                <li style="margin-bottom: var(--space-2);">→ Unambiguous scene cues</li>
+                                <li>→ Zero room for error</li>
+                            </ul>
+                        </div>
+                        <div class="card">
+                            <h3 class="card-title">Seamless Flow</h3>
+                            <ul class="text-muted" style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: var(--space-2);">→ Entrances and resets</li>
+                                <li style="margin-bottom: var(--space-2);">→ Close range realism</li>
+                                <li>→ Hard time window</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY MAP -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section" style="text-align: center;">
+                <span class="section-label">STORY MAP v1.0</span>
+                <div class="card" style="margin-top: var(--space-8); padding: var(--space-4);">
+                    <img src="assets/story-tree-final.png" alt="Story Map"
+                        style="width: 100%; filter: grayscale(1) contrast(1.1);">
+                    <p class="text-uppercase" style="margin-top: var(--space-4); opacity: 0.3;">[ REF:
+                        PHEROMONES TREE FINAL ]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEBRIEF -->
+    <section class="section">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label">FINAL DEBRIEF</span>
+                <h2 class="section-title">The Analysis</h2>
+                <div class="debrief-grid">
+                    <div class="scroll-reveal">
+                        <h4 class="text-accent text-uppercase" style="margin-bottom: var(--space-4);">HELD UP</h4>
+                        <ul
+                            style="list-style: none; font-family: var(--font-accent); font-style: italic; font-size: var(--text-lg);">
+                            <li style="margin-bottom: var(--space-2);">Story Integrity</li>
+                            <li style="margin-bottom: var(--space-2);">Direction</li>
+                            <li style="margin-bottom: var(--space-2);">Performances</li>
+                            <li>System Reliability</li>
+                        </ul>
+                    </div>
+                    <div class="scroll-reveal">
+                        <h4 class="text-accent text-uppercase" style="margin-bottom: var(--space-4);">PRIMARY GAP</h4>
+                        <ul
+                            style="list-style: none; font-family: var(--font-accent); font-style: italic; font-size: var(--text-lg);">
+                            <li class="text-accent">Immersion Consistency</li>
+                            <p class="text-muted"
+                                style="font-size: var(--text-sm); font-family: var(--font-body); font-style: normal; margin-top: var(--space-4);">
+                                Believability varied by room context and ticketed framing.
+                            </p>
+                        </ul>
+                    </div>
+                    <div class="scroll-reveal">
+                        <h4 class="text-accent text-uppercase" style="margin-bottom: var(--space-4);">WHY</h4>
+                        <ul
+                            style="list-style: none; font-family: var(--font-accent); font-style: italic; font-size: var(--text-lg);">
+                            <li style="margin-bottom: var(--space-2);">Theater corner vibe</li>
+                            <li style="margin-bottom: var(--space-2);">Space read as "set"</li>
+                            <li>Context fought belief</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRIDGE TO S2 -->
+    <section class="section section-dark" style="background: var(--color-accent);">
+        <div class="container">
+            <div class="content-section" style="text-align: center;">
+                <h2 class="section-title">What Season 2 Fixes</h2>
+                <p
+                    style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-2xl); line-height: 1.4; margin-bottom: var(--space-12);">
+                    Season 2 is immersion first. We stage contained scripted moments in real places so the moment feels
+                    like it is actually happening.
+                </p>
+                <div style="text-align: left; display: inline-block;">
+                    <ul style="list-style: none; opacity: 0.9;">
+                        <li style="margin-bottom: var(--space-4);">[+] Location chosen for realism, not convenience.
+                        </li>
+                        <li style="margin-bottom: var(--space-4);">[+] Contained "moment zone" staging.</li>
+                        <li style="margin-bottom: var(--space-4);">[+] Entry/Exit beats avoid "show framing."</li>
+                        <li style="margin-bottom: var(--space-4);">[+] Audience perspective as witness.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 PLOT SWAP THEATER // ARCHIVE S1</p>
+            <a href="legacy/index.html" class="footer-link">Legacy Site Access</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal, .card, .stat-card, .gallery-item').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
