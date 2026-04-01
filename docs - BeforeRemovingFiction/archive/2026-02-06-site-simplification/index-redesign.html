@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plot Swap | Scripted Stories Hiding in Plain Sight</title>
+    <meta name="description"
+        content="Houston's secret theater company. Scripted stories hiding in plain sight. No stage. No tickets. Just stories.">
+    <meta name="theme-color" content="#0A0A0A">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/redesign.css">
+</head>
+
+<body class="page-home">
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index-redesign.html" class="nav-logo">PLOT SWAP</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links">
+                <li><a href="index-redesign.html" class="nav-link active">Home</a></li>
+                <li><a href="about-redesign.html" class="nav-link">About</a></li>
+                <li><a href="business-redesign.html" class="nav-link">Host a Show</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <style>
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/landing_clean.png');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(1) contrast(1.1) brightness(0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content fade-in-up">
+            <h1 class="hero-title">PLOT SWAP</h1>
+            <p class="hero-subtitle">Houston's secret theater company</p>
+            <p class="hero-description" style="margin-bottom: var(--space-12);">
+                SCRIPTED STORIES HIDING IN PLAIN SIGHT<br>
+                No Stage. Professional Actors.
+            </p>
+
+            <div class="fade-in-up"
+                style="opacity: 0.5; margin-bottom: var(--space-6); font-family: var(--font-display); font-size: var(--text-xs); letter-spacing: 4px; text-transform: uppercase; font-weight: 900;">
+                Where will we be next?
+            </div>
+
+            <div class="hero-cta">
+                <a href="mailto:russell@plotswap.org" class="btn btn-primary">Get Invited</a>
+                <a href="business-redesign.html" class="btn btn-outline">Host A Show</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO SECTION -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="content-section">
+                <span class="section-label">THE CONCEPT</span>
+                <h2 class="section-title">What We Do.</h2>
+
+                <div class="section-description">
+                    <p>
+                        We perform scripted theater masquerading as real life. You might overhear a scam artist exposed,
+                        a cheater getting caught, or a family secret revealed. It's all scripted, but it feels real.
+                    </p>
+
+                    <p>
+                        We give away stories to create memories. Something you carry with you, not something you paid to
+                        see.
+                    </p>
+                </div>
+
+                <!-- TWO WAYS TO EXPERIENCE IT -->
+                <div class="card-grid">
+                    <div class="card">
+                        <h3 class="card-title">Think it's real?</h3>
+                        <p class="card-description">
+                            You get a genuine surprise, a story you'll tell for years.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="card-title">Know it's an act?</h3>
+                        <p class="card-description">
+                            But what's going to happen? Sit back and watch the fireworks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR BUSINESSES SECTION -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="content-section" style="text-align: center;">
+                <span class="section-label">VENUE PARTNERSHIP</span>
+                <h2 class="section-title">Word of Mouth, on Demand.</h2>
+
+                <p class="section-description"
+                    style="font-family: var(--font-accent); font-style: italic; font-size: var(--text-xl); color: rgba(255, 255, 255, 0.7);">
+                    We bring our shows to your venue. Your customers get an unforgettable story. They tell their
+                    friends. Your place becomes part of the legend.
+                </p>
+
+                <a href="business-redesign.html" class="btn btn-primary">Learn About Hosting</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">&copy; 2026 PLOT SWAP THEATER</p>
+            <a href="season1-redesign.html" class="footer-link">Season 1 Archive</a>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for scroll animation
+        document.querySelectorAll('.card, .section-description').forEach(el => {
+            el.classList.add('scroll-reveal');
+            observer.observe(el);
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operational Proposal: Staging Anomalies | Plot Swap Archive</title>
+    <meta name="theme-color" content="#050505">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700&family=Oswald:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .proposal-header {
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 4rem;
+            margin-bottom: 8rem;
+        }
+
+        .proposal-meta {
+            font-family: var(--font-ledger);
+            font-size: 0.8rem;
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .sample-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin: 6rem 0;
+        }
+
+        .sample-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .sample-box::before {
+            content: "RECON_LOG";
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: var(--font-ledger);
+            font-size: 0.6rem;
+            color: var(--color-primary);
+            opacity: 0.5;
+        }
+
+        .process-flow {
+            margin: 8rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .flow-step {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--color-accent);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .sample-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-step {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="layout-90-10">
+        <main class="main-content">
+            <header style="position: absolute; top: 0; left: 0; width: 100%; padding: 2rem 5%; z-index: 100;">
+                <div class="logo">
+                    <a href="index.html"
+                        style="font-family: var(--font-display); font-size: 1rem; letter-spacing: 2px; color: var(--color-text-muted);">←
+                        BACK_TO_INDEX</a>
+                </div>
+            </header>
+
+            <section class="section">
+                <div class="container">
+                    <div class="proposal-header section-cinematic">
+                        <div class="proposal-meta">
+                            <div>FILE: PROPOSAL_STG2_HOU</div>
+                            <div style="text-align: right;">STATUS: PENDING_APPROVAL</div>
+                        </div>
+                        <span class="ink-stamp" style="margin-bottom: 3rem;">15_SECOND_PITCH</span>
+                        <h1 class="title-stamp" style="font-size: clamp(3rem, 10vw, 8rem); margin-top: 2rem;">Give us 15
+                            seconds.</h1>
+
+                        <div style="max-width: 800px; margin-top: 4rem;">
+                            <p
+                                style="font-family: var(--font-serif); font-size: 1.8rem; font-style: italic; color: var(--color-accent); line-height: 1.4;">
+                                People don't remember normal. They remember moments.
+                            </p>
+                            <p
+                                style="margin-top: 3rem; font-size: 1.2rem; line-height: 1.8; color: var(--color-text-muted);">
+                                We bring professional actors into your venue and stage a surprising, scripted moment
+                                that guests will tell their friends about. Customized for your space. It happens fast.
+                                Then it's back to business as usual.
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 6rem; display: flex; gap: 3rem; align-items: center;">
+                            <a href="https://calendly.com/plotswap" target="_blank" class="btn">Book 10-Min Call</a>
+                            <span
+                                style="font-family: var(--font-ledger); font-size: 0.7rem; color: var(--color-primary); letter-spacing: 2px;">PILOT_SHOW:
+                                FREE OF CHARGE</span>
+                        </div>
+                    </div>
+
+                    <!-- SAMPLES -->
+                    <div class="section-cinematic">
+                        <span class="ink-stamp">A_B_TESTING</span>
+                        <h2 style="margin-top: 3rem;">Engagement Samples.</h2>
+
+                        <div class="sample-grid">
+                            <div class="sample-box">
+                                <h3
+                                    style="font-family: var(--font-display); font-size: 0.9rem; color: var(--color-accent); margin-bottom: 2rem;">
+                                    RESTAURANT</h3>
+                                <p
+                                    style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-muted); font-style: italic;">
+                                    "A guy walked in and confessed his love to a woman who was clearly on a date. He
+                                    gave this whole speech and proposed. The whole place was silent for ten seconds
+                                    until she finally said no. He apologized and walked out. She ran out after him. It
+                                    was bonkers."
+                                </p>
+                            </div>
+                            <div class="sample-box">
+                                <h3
+                                    style="font-family: var(--font-display); font-size: 0.9rem; color: var(--color-accent); margin-bottom: 2rem;">
+                                    TRIVIA NIGHT</h3>
+                                <p
+                                    style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-muted); font-style: italic;">
+                                    "A guy got kicked off his team for using his phone. A few rounds later someone else
+                                    on that same team got caught doing the same thing. It was the same guy in a
+                                    disguise!
+                                    Sunglasses and a FAKE MUSTACHE! It was hilarious."
+                                </p>
+                            </div>
+                            <div class="sample-box">
+                                <h3
+                                    style="font-family: var(--font-display); font-size: 0.9rem; color: var(--color-accent); margin-bottom: 2rem;">
+                                    PAINTING CLASS</h3>
+                                <p
+                                    style="font-size: 0.95rem; line-height: 1.7; color: var(--color-text-muted); font-style: italic;">
+                                    "A painter had the biggest crush on the instructor. She kept trying to get his
+                                    attention with saucy jokes. We were dying! As we were all leaving, I heard him ASK
+                                    HER TO STAY AFTER CLASS!!!"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HOW IT WORKS -->
+                    <div class="section-cinematic" style="margin-top: 10rem;">
+                        <span class="ink-stamp">OPERATIONAL_FLOW</span>
+                        <h2 style="margin-top: 3rem; margin-bottom: 6rem;">How It Works.</h2>
+
+                        <div class="process-flow">
+                            <div class="flow-step">
+                                <div class="step-num">01</div>
+                                <div>
+                                    <h3
+                                        style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1rem;">
+                                        10-Minute Call</h3>
+                                    <p style="color: var(--color-text-muted);">Goals, crowd, and boundaries. We
+                                        establish the parameters of the anomaly.</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-num">02</div>
+                                <div>
+                                    <h3
+                                        style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1rem;">
+                                        On-Site Walkthrough</h3>
+                                    <p style="color: var(--color-text-muted);">We meet in person, choose placement, pick
+                                        the right story, and lock the plan.</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-num">03</div>
+                                <div>
+                                    <h3
+                                        style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1rem;">
+                                        Cast Walkthrough</h3>
+                                    <p style="color: var(--color-text-muted);">Actors walk the space and rehearse
+                                        timing, entrances, and exits. Zero margin for error.</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-num">04</div>
+                                <div>
+                                    <h3
+                                        style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1rem;">
+                                        Performance</h3>
+                                    <p style="color: var(--color-text-muted);">A scripted moment that blends in. Clean
+                                        start and stop. Then it's back to business as usual.</p>
+                                </div>
+                            </div>
+                            <div class="flow-step">
+                                <div class="step-num">05</div>
+                                <div>
+                                    <h3
+                                        style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 1rem;">
+                                        Recap</h3>
+                                    <p style="color: var(--color-text-muted);">Quick debrief and scalability analysis.
+                                        If the pilot holds, we plan the repertoire.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            style="margin-top: 6rem; padding: 4rem; background: rgba(138, 29, 29, 0.05); border-left: 4px solid var(--color-primary);">
+                            <p style="font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.6;">
+                                <strong>Minimum Lift:</strong> A point of contact, a walkthrough, and approval of the
+                                plan. We handle the rest.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10rem; text-align: center;" class="section-cinematic">
+                        <a href="https://calendly.com/plotswap" target="_blank" class="btn"
+                            style="padding: 2rem 5rem;">Schedule Your Anomaly</a>
+                        <p
+                            style="margin-top: 2rem; font-family: var(--font-ledger); font-size: 0.7rem; color: var(--color-text-muted);">
+                            [ REF: OPERATIONAL_PROPOSAL_v4.2 ]</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <p>&copy; 2026 PLOT SWAP THEATER</p>
+                <a href="season1.html"
+                    style="color: var(--color-primary); margin-top: 1rem; display: inline-block; font-size: 0.7rem; border-bottom: 1px dotted rgba(138, 29, 29, 0.4);">SEASON_1_ARCHIVE</a>
+            </footer>
+        </main>
+
+        <aside class="gutter">
+            <div class="nav-tabs">
+                <a href="index.html" class="folder-tab">
+                    <span class="tab-id">00</span>
+                    HOME
+                </a>
+                <a href="about.html" class="folder-tab">
+                    <span class="tab-id">01</span>
+                    ABOUT
+                </a>
+                <a href="business.html" class="folder-tab active">
+                    <span class="tab-id">02</span>
+                    HOST A SHOW
+                </a>
+            </div>
+
+            <div style="margin-top: auto; padding: 2.5rem; border-top: 1px solid rgba(138, 29, 29, 0.1);">
+                <div
+                    style="font-family: var(--font-display); font-size: 0.7rem; color: var(--color-primary); letter-spacing: 2px; margin-bottom: 1rem;">
+                    PROPOSAL_STATUS</div>
+                <div
+                    style="font-family: var(--font-ledger); font-size: 0.6rem; color: var(--color-text-muted); line-height: 1.6;">
+                    ANALYSIS: COMPLETE<br>
+                    STRATEGY: IMMERSION_FIRST<br>
+                    COST: PILOT_SUBSIDIZED
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section-cinematic').forEach(s => scrollObserver.observe(s));
+    </script>
+</body>
+
+</html>
