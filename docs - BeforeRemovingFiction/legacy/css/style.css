@@ -1,0 +1,196 @@
+/* -------------------------------------------------
+   Roboto font
+------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+/* -------------------------------------------------
+   Global reset & base styles
+------------------------------------------------- */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{
+  scroll-behavior:smooth;   /* smooth anchor scrolling */
+}
+
+body{
+  background:#000;
+  color:#fff;
+  font-family:'Roboto',sans-serif;
+  min-height:100vh;
+}
+
+/* -------------------------------------------------
+   Screen container (each “page” / section)
+------------------------------------------------- */
+.container{
+  max-width:600px;
+  margin:4rem auto;
+  background:#222;
+  padding:2rem;
+  border-radius:8px;
+  box-shadow:0 0 10px rgba(0,0,0,.5);
+}
+
+.container h1,
+.container h2{margin-top:0;}
+
+/* -------------------------------------------------
+   Initial choice screen
+------------------------------------------------- */
+.choice-grid{
+  display:flex;
+  gap:1rem;
+  margin-top:2rem;
+}
+
+.choice-box{
+  flex:1;
+  background:#333;
+  border-radius:8px;
+  padding:1.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition:background .3s;
+}
+.choice-box:hover{background:#444;}
+
+.or-separator{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:1.5em;
+  padding:0 1rem;
+}
+
+/* -------------------------------------------------
+   Captain screen
+------------------------------------------------- */
+.banner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:linear-gradient(135deg,#333,#444);
+  padding:1rem;
+  margin:-2rem -2rem 1rem;
+  border-radius:8px 8px 0 0;
+}
+.banner-title{
+  flex:1;
+  text-align:center;
+  margin:0;
+  font-size:1.5em;
+}
+.back-button{
+  background:none;
+  border:none;
+  color:#fff;
+  font-size:1em;
+  cursor:pointer;
+  padding:.5rem 1rem;
+  text-transform:uppercase;
+  font-weight:bold;
+  border-radius:4px;
+  transition:background .3s;
+}
+.back-button:hover{background:#555;}
+
+.captain-subtitle{
+  text-align:center;
+  margin:0 0 1rem;
+  font-size:1.2em;
+  color:#ccc;
+}
+
+/* Two-column area */
+.two-column{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1rem;
+  margin-top:1.5rem;
+}
+.left-col,
+.right-col{
+  flex:1;
+  min-width:0;
+  background:#333;
+  padding:1rem;
+  border-radius:4px;
+}
+
+/* Add-on */
+.addon-title{margin-top:0;color:#ffb74d;}
+.addon-subtext{margin:.5rem 0 1rem;font-size:.9em;color:#ccc;}
+.upgrade-label{
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+  font-weight:bold;
+  cursor:pointer;
+}
+.upgrade-label input[type="checkbox"]{transform:scale(1.2);}
+
+/* Included perks */
+.included-title{margin-top:0;color:#ffb74d;}
+.included-list{list-style:none;margin:0;padding:0;}
+.included-list li{margin:.5rem 0;font-size:1em;}
+.crossed-out{text-decoration:line-through;color:#777;}
+
+/* Price & buy */
+.final-price-area{text-align:center;margin-top:1.5rem;}
+.price-details{margin-bottom:1rem;font-size:1em;}
+.price-details strong{font-size:1.2em;}
+.buy-now-button{
+  background:#f1a53d;
+  color:#000;
+  font-weight:bold;
+  text-transform:uppercase;
+  border:none;
+  border-radius:4px;
+  padding:.75rem 1.5rem;
+  cursor:pointer;
+  font-size:1em;
+  transition:background .3s;
+}
+.buy-now-button:hover{background:#e08f2f;}
+
+/* -------------------------------------------------
+   Fade / visibility helpers
+------------------------------------------------- */
+.fade{
+  transition:opacity .5s ease,max-height .5s ease;
+  overflow:hidden;
+  max-height:1000px;
+  opacity:1;
+}
+.hidden{
+  visibility:hidden;   /* keeps element in flow for smooth fade */
+  opacity:0;
+  max-height:0;
+}
+.gone{display:none!important;}
+
+/* -------------------------------------------------
+   Instagram floating button — TOP-RIGHT
+------------------------------------------------- */
+#instaBtn{
+  position:fixed;
+  top:16px;
+  right:16px;            /* anchored to top-right */
+  width:56px;
+  height:56px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#C13584;
+  border-radius:50%;
+  box-shadow:0 3px 8px rgba(0,0,0,.35);
+  z-index:5;
+  transition:transform .2s ease;
+}
+#instaBtn:hover{transform:scale(1.08);}
+#instaBtn svg{
+  width:28px;
+  height:28px;
+  pointer-events:none;
+}
