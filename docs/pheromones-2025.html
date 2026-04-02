@@ -44,11 +44,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.6)), url('assets/pheromones-action.jpg');
+            background: url('assets/pheromones-action.jpg');
             background-size: cover;
             background-position: center;
             z-index: -1;
-            filter: grayscale(0.2) contrast(1.1);
+            filter: contrast(1.1);
         }
 
         .hero-overlay-panel {
@@ -301,6 +301,15 @@
         @media (max-width: 640px) {
             .hero-overlay-panel {
                 padding: var(--space-8) var(--space-4);
+                padding-bottom: 8.5rem; /* Ensure clearance for tall wrapped absolute text */
+            }
+            
+            .kicker {
+                margin-bottom: var(--space-6); /* Slightly tighter top spacing on mobile vs desktop */
+            }
+            
+            .hero-subhead {
+                margin-bottom: var(--space-6); 
             }
         }
 
@@ -518,7 +527,7 @@
 
     <!-- HOW IT WORKED SECTION (Option B: Floating Experience with Heavy Scrim) -->
     <section class="section section-dark"
-        style="background: rgba(0,0,0,0.4); backdrop-filter: blur(16px); border-top: 1px solid rgba(255,255,255,0.05); position: relative; padding: var(--space-32) 0;">
+        style="background: rgba(0,0,0,0.85); backdrop-filter: blur(16px); border-top: 1px solid rgba(255,255,255,0.05); position: relative; padding: var(--space-32) 0;">
 
 
         <!-- Blend Gradients -->

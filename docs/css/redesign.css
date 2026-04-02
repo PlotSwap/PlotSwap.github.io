@@ -1012,17 +1012,16 @@ p {
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Scroll-triggered animations */
+/* Scroll-triggered animations (Fading only, no sliding) */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
+    transition: opacity 0.6s ease-out;
 }
 
 .scroll-reveal.visible {
     opacity: 1;
-    transform: translateY(0);
 }
+
 
 /* ============================================
    RESPONSIVE DESIGN
