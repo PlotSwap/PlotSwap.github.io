@@ -52,10 +52,12 @@
         }
 
         .hero-overlay-panel {
+            position: relative;
             background: linear-gradient(to bottom,
                     rgba(10, 10, 10, 0.5) 0%,
                     rgba(10, 10, 10, 0.8) 100%);
             padding: var(--space-12) var(--space-8);
+            padding-bottom: var(--space-24); /* Extra room for absolute-positioned footer text */
             border-radius: var(--radius-xl);
             backdrop-filter: blur(8px);
             max-width: 800px;
@@ -70,7 +72,7 @@
             letter-spacing: 0.3em;
             font-weight: 800;
             color: var(--color-accent);
-            margin-bottom: var(--space-4);
+            margin-bottom: var(--space-12);
             display: block;
         }
 
@@ -88,7 +90,7 @@
             color: rgba(255, 255, 255, 0.95);
             font-weight: 400;
             max-width: 600px;
-            margin: 0 auto var(--space-8) auto;
+            margin: 0 auto var(--space-2) auto;
             line-height: 1.5;
         }
 
@@ -97,7 +99,7 @@
             gap: var(--space-4);
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: var(--space-6);
+            margin-bottom: var(--space-10);
             opacity: 0.8;
         }
 
@@ -359,16 +361,16 @@
                 <span class="chip">10-week run</span>
             </div>
 
-            <p class="micro-proof">
-                Performed at House of Blues Houston
-            </p>
-
-
-
-
+            <div style="position: absolute; bottom: var(--space-6); left: 0; width: 100%; text-align: center;">
+                <p class="micro-proof" style="margin: 0 auto var(--space-2) auto;">
+                    Performed at Foundation Room, House of Blues Houston
+                </p>
+                <p class="micro-proof proof-aside" style="margin: 0 auto; padding: 0 var(--space-4); font-size: 0.75rem; letter-spacing: 0.05em; opacity: 0.6;">
+                    Special thanks to <span style="color: rgba(255,255,255,1); font-style: normal; font-weight: 600;">Ric Ancira</span>, who made the show possible!
+                </p>
+            </div>
 
         </div>
-
 
     </section>
 
@@ -502,8 +504,7 @@
 
                 <!-- Global Attribution -->
                 <div style="margin-top: var(--space-20);">
-                    <span class="experiential-attribution">All quotes are from audience members at Pheromones (House of
-                        Blues Houston, 2025).</span>
+                    <span class="experiential-attribution">All quotes are from audience members at Pheromones (Foundation Room, House of Blues Houston).</span>
                 </div>
 
 
